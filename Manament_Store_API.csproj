@@ -436,6 +436,7 @@
     <Content Include="Views\AddEmployee\Index.cshtml" />
     <Content Include="Views\UpdateEmployee\Index.cshtml" />
     <Content Include="Views\DeleteEmployee\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndustry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
