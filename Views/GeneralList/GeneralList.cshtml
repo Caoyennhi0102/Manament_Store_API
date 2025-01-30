@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "GeneralList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DANH SÁCH TỔNG HỢP</h2>
+<link rel="stylesheet" href="~/Content/GeneralList.css">
+<div id="filterForm">
+    <!-- Nhân Viên Section -->
+    <div class="filter-group">
+        <h4>Lọc Nhân Viên</h4>
+        <div class="filter-options">
+            <label><input type="radio" id="hasUser" name="filter" value="hasUser" /> Nhân viên đã có User </label>
+            <label><input type="radio" id="noUser" name="filter" value="noUser" /> Nhân viên chưa có User </label>
+            <label><input type="radio" id="activeEmployees" name="filter" value="activeEmployees" /> Nhân viên đang làm việc</label>
+            <label><input type="radio" id="inactiveEmployees" name="filter" value="inactiveEmployees" /> Nhân viên đã nghỉ việc</label>
+        </div>
+        <!-- Kết quả Nhân Viên -->
+        <div class="result-section">
+            <h4>Danh Sách Nhân Viên</h4>
+            <ul id="employeeList"></ul>
+        </div>
+    </div>
+
+    <!-- Cửa Hàng Section -->
+    <div class="filter-group">
+        <h4>Lọc Cửa Hàng</h4>
+        <div class="filter-options">
+            <label><input type="radio" id="allStores" name="filter" value="allStores" /> Danh sách tất cả cửa hàng</label>
+            <label><input type="radio" id="storeManagers" name="filter" value="storeManagers" /> Cửa hàng trưởng</label>
+            <label><input type="radio" id="closedStores" name="filter" value="closedStores" /> Cửa hàng đã đóng cửa</label>
+            <label><input type="radio" id="openStores" name="filter" value="openStores" /> Cửa hàng đang hoạt động</label>
+        </div>
+        <!-- Kết quả Cửa Hàng -->
+        <div class="result-section">
+            <h4>Danh Sách Cửa Hàng</h4>
+            <ul id="storeList"></ul>
+        </div>
+    </div>
+
+    <!-- User Section -->
+    <div class="filter-group">
+        <h4>Lọc User</h4>
+        <div class="filter-options">
+            <label><input type="radio" id="loginHistory" name="filter" value="loginHistory" /> Thời gian đăng nhập User</label>
+            <label><input type="radio" id="logOutHistory" name="filter" value="logOutHistory" /> Thời gian đăng xuất User</label>
+        </div>
+        <!-- Kết quả User -->
+        <div class="result-section">
+            <h4>Danh Sách User</h4>
+            <ul id="userList"></ul>
+        </div>
+    </div>
+
+    <!-- Nút lọc -->
+    <div class="filter-actions">
+        <button type="button" id="filterButton">Lọc</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Giữ nguyên phần JavaScript
+    $(document).ready(function () {
+        $('#filterButton').on('click', function () {
+            var filter = $('input[name="filter"]:checked').val();
+            if (!filter) {
+                alert("Vui lòng chọn một bộ lọc.");
+                return;
+            }
+
+            $.ajax({
+                url: '/GeneralList/GeneralList',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(filter),
+                success: function (response) {
+                    if (response.success) {
+                        $('#employeeList').empty();
+                        $('#storeList').empty();
+                        $('#userList').empty();
+
+                        // Cập nhật dữ liệu
+                        if (response.employees?.length > 0) {
+                            response.employees.forEach(emp => {
+                                $('#employeeList').append(`<li>${emp.HoTen} - ${emp.TrangThai}</li>`);
+                            });
+                        } else {
+                            $('#employeeList').append('<li>Không có nhân viên</li>');
+                        }
+
+                        if (response.stores?.length > 0) {
+                            response.stores.forEach(store => {
+                                $('#storeList').append(`<li>${store.TenCH} - ${store.TrangThai}</li>`);
+                            });
+                        } else {
+                            $('#storeList').append('<li>Không có cửa hàng</li>');
+                        }
+
+                        if (response.user?.length > 0) {
+                            response.user.forEach(user => {
+                                $('#userList').append(
+                                    `<li>${user.UserID} - ${user.MaNhanVien} - ${user.HoTen} - ${user.TGDangNhap} - ${user.TGDangXuat} - ${user.TrangThai}</li>`
+                                );
+                            });
+                        } else {
+                            $('#userList').append('<li>Không có User</li>');
+                        }
+                    } else {
+                        alert(response.message || 'Lỗi không xác định');
+                    }
+                },
+                error: function () {
+                    alert('Lỗi kết nối');
+                }
+            });
+        });
+    });
+</script>

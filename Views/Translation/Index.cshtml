@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Manament_Store_API.Models.BanDich>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>DANH SÁCH BẢN DỊCH</h2>
+
+<link rel="stylesheet" href="~/Content/IndexTranslation.css">
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ngôn Ngữ</th>
+            <th>Khóa Dịch</th>
+            <th>Giá Trị Dịch</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+{
+            <tr>
+                <td>@item.IDBanDich</td>
+                <td>@item.NgonNgu.TenNgonNgu</td>
+                <td>@item.KhoaDich</td>
+                <td>@item.GiaTriDich</td>
+                <td>
+                    <a href="@Url.Action("EditTranslation", "Translation", new {id = item.IDBanDich})" class="btn btn-primary">Cập Nhật Bản Dịch</a>
+                    <a href="@Url.Action("DeleteTranslation", "Translation", new {id = item.IDBanDich})"class="btn btn-danger">Xóa Bản Dịch</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
+<a href="@Url.Action("CreateTranslation", "Translation")"class="btn btn-outline-success">Thêm Bản Dịch Mới</a>
+

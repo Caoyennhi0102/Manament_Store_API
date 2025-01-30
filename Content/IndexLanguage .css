@@ -1,0 +1,81 @@
+﻿/* Định dạng chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Tiêu đề trang */
+h2 {
+    color: red;
+    text-align: center;
+    
+}
+
+/* Nút tạo ngôn ngữ mới */
+p a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+    p a:hover {
+        background-color: #45a049;
+    }
+
+/* Bảng danh sách ngôn ngữ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Định dạng header của bảng */
+th {
+    background-color: #4CAF50;
+    color: #0094ff;
+}
+
+/* Định dạng các dòng trong bảng */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Định dạng các liên kết trong cột Action */
+td a {
+    margin-right: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+    td a:hover {
+        text-decoration: underline;
+    }
+
+    /* Định dạng nút xóa */
+    td a:last-child {
+        color: #f44336;
+    }
+
+        td a:last-child:hover {
+            color: #d32f2f;
+        }

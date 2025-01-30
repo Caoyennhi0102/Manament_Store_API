@@ -1,0 +1,136 @@
+﻿
+/* Tổng quan */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: red;
+}
+
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%; /* Input full chiều ngang */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.form-group {
+    width: 100%; /* Input sẽ chiếm toàn bộ chiều ngang */
+    text-align: left; /* Label căn lề trái */
+}
+/* Form tìm kiếm */
+.search-form {
+    display: flex;
+    flex-direction: column; /* Đưa các phần tử theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+}
+
+    .search-form input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+.btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Bảng kết quả */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    table th, table td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+/* Nút xóa */
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .delete-btn:hover {
+        background-color: #b21f2d;
+    }
+
+/* Tin nhắn thông báo */
+.message {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+    .message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }

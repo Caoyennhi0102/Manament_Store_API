@@ -1,0 +1,31 @@
+﻿@model Manament_Store_API.Models.NgonNgu
+@{
+    ViewBag.Title = "CreateLanguage";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>THÊM NGÔN NGỮ MỚI</h2>
+<link rel="stylesheet" href="~/Content/CreateLanguage.css">
+<form asp-action="CreateLanguage" method="post">
+    <div class="form-group">
+        <label for="MaNgonNgu">Mã Ngôn Ngữ</label>
+        <input type="text" class="form-control" id="MaNgonNgu" name="MaNgonNgu" required/>
+    </div>
+    <div class="form-group">
+        <label for="TenNgonNgu">Tên Ngôn Ngữ</label>
+        <input type="text" class="form-control" id="TenNgonNgu" name="TenNgonNgu"required/>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="NgonNguMacDinh" name="NgonNguMacDinh"/>
+        <label class="form-check-label" for="NgonNguMacDinh">Ngôn Ngữ Mặc Định</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Lưu Ngôn Ngữ</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
+</form>

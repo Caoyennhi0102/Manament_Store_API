@@ -1,0 +1,102 @@
+﻿/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: red;
+    font-weight:bold;
+}
+
+/* Form Container */
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for Submit and Cancel buttons */
+button[type="submit"], a.btn-secondary {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 10px;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+    button[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+a.btn-secondary {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+    a.btn-secondary:hover {
+        background-color: #5a6268;
+        text-decoration: none;
+    }
+
+    a.btn-secondary:focus {
+        outline: none;
+    }
+
+/* Styling for Dropdown */
+select.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+/* Styling for Input Fields */
+input.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    form {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+}

@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E51ECA66-CDBA-47E2-8941-4A0EECCC9C2A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Manament_Store_API</RootNamespace>
+    <AssemblyName>Manament_Store_API</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44362</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddEmployeeController.cs" />
+    <Compile Include="Controllers\AddPositionController.cs" />
+    <Compile Include="Controllers\AddStoreController.cs" />
+    <Compile Include="Controllers\AddUserController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApproveController.cs" />
+    <Compile Include="Controllers\ChangeCredentialsController.cs" />
+    <Compile Include="Controllers\CreateDepartmentsController.cs" />
+    <Compile Include="Controllers\CreatePermissionsController.cs" />
+    <Compile Include="Controllers\DeleteDepartmentsController.cs" />
+    <Compile Include="Controllers\DeleteEmployeeController.cs" />
+    <Compile Include="Controllers\DeletePermissionsController.cs" />
+    <Compile Include="Controllers\DeletePositionController.cs" />
+    <Compile Include="Controllers\DeleteStoreController.cs" />
+    <Compile Include="Controllers\DeleteUserController.cs" />
+    <Compile Include="Controllers\GeneralListController.cs" />
+    <Compile Include="Controllers\GetAllEmployeeController.cs" />
+    <Compile Include="Controllers\GetAllUserListController.cs" />
+    <Compile Include="Controllers\GetDepartmentsController.cs" />
+    <Compile Include="Controllers\GetPermissionsController.cs" />
+    <Compile Include="Controllers\GetPositionByDepartmentsController.cs" />
+    <Compile Include="Controllers\GetStoreController.cs" />
+    <Compile Include="Controllers\GetStroreController.cs" />
+    <Compile Include="Controllers\GrantingPermissionsController.cs" />
+    <Compile Include="Controllers\ImageSettingsController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\LockUserController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogOutController.cs" />
+    <Compile Include="Controllers\RevokePermissionsController.cs" />
+    <Compile Include="Controllers\SearchCodePermissionsController.cs" />
+    <Compile Include="Controllers\SearchDepartmentsByIDController.cs" />
+    <Compile Include="Controllers\SearchEmployeeCodeController.cs" />
+    <Compile Include="Controllers\SearchPositionController.cs" />
+    <Compile Include="Controllers\SearchStoreController.cs" />
+    <Compile Include="Controllers\SearchUserByMaNVController.cs" />
+    <Compile Include="Controllers\TranslationController.cs" />
+    <Compile Include="Controllers\UnlockUserController.cs" />
+    <Compile Include="Controllers\UpdateDepartmentsController.cs" />
+    <Compile Include="Controllers\UpdateEmployeeController.cs" />
+    <Compile Include="Controllers\UpdatePermissionsController.cs" />
+    <Compile Include="Controllers\UpdatePositionDefaultController.cs" />
+    <Compile Include="Controllers\UpdateStoreController.cs" />
+    <Compile Include="Controllers\UpdateUserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BacLuong.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BanDich.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BoPhan.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietHoaDon.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietPhieuNhap.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietPhieuTra.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChucVu.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cong.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CuaHang.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucSanPham.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HangHoa.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HDLaoDong.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ImageSetting.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kho.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KHThanThiet.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhuyenMai.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KPI.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Luong.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NgonNgu.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaCungCap.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhieuNhapHang.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhieuTraHang.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pos.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLCaNV.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quyen.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQLConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQLConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQLConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQLConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQLConnection.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongKeBanHang.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YeuCauNghiPhep.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\CheckAccountBank.cs" />
+    <Compile Include="Service\CheckAddresss.cs" />
+    <Compile Include="Service\CheckBrithDayEmployee.cs" />
+    <Compile Include="Service\CheckPhone.cs" />
+    <Compile Include="Service\CodePermissions.cs" />
+    <Compile Include="Service\DaysLeaveUsed.cs" />
+    <Compile Include="Service\DepartmentsCode.cs" />
+    <Compile Include="Service\EmailService.cs" />
+    <Compile Include="Service\EmployeeID.cs" />
+    <Compile Include="Service\EmployeeLeaveDay.cs" />
+    <Compile Include="Service\InternalEmail.cs" />
+    <Compile Include="Service\IsEmail.cs" />
+    <Compile Include="Service\Isitizenidentificationnumber.cs" />
+    <Compile Include="Service\IsTaxCode.cs" />
+    <Compile Include="Service\PasswordRandom.cs" />
+    <Compile Include="Service\PositionCode.cs" />
+    <Compile Include="Service\StoreCode.cs" />
+    <Compile Include="Service\TranslationService.cs" />
+    <Compile Include="Service\UserNameRandom.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AddEmployee.css" />
+    <Content Include="Content\AddPosition.css" />
+    <Content Include="Content\AddStore.css" />
+    <Content Include="Content\AddUser.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\ChangeCredentials.css" />
+    <Content Include="Content\CreateDepartments.css" />
+    <Content Include="Content\CreateLanguage.css" />
+    <Content Include="Content\CreatePermissions.css" />
+    <Content Include="Content\CreateTranslation.css" />
+    <Content Include="Content\DeleteEmployee.css" />
+    <Content Include="Content\DeleteLanguage.css" />
+    <Content Include="Content\DeletePermissions.css" />
+    <Content Include="Content\DeletePosition.css" />
+    <Content Include="Content\DeleteStore.css" />
+    <Content Include="Content\DeleteUser.css" />
+    <Content Include="Content\EditImage.css" />
+    <Content Include="Content\EditLanguage.css" />
+    <Content Include="Content\EditTranslation.css" />
+    <Content Include="Content\GeneralList.css" />
+    <Content Include="Content\GrantingPermissions.css" />
+    <Content Include="Content\IndexLanguage .css" />
+    <Content Include="Content\IndexTranslation.css" />
+    <Content Include="Content\LockUser.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\RevokePermissions.css" />
+    <Content Include="Content\sidebar.css" />
+    <Content Include="Content\UnlockUser.css" />
+    <Content Include="Content\UpdateDepartments.css" />
+    <Content Include="Content\UpdateEmployee.css" />
+    <Content Include="Content\UpdatePermissions.css" />
+    <Content Include="Content\UpdatePosition.css" />
+    <Content Include="Content\UpdateStore.css" />
+    <Content Include="Content\UpdateUser.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\SQLConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SQLConnection.Context.cs</LastGenOutput>
+      <DependentUpon>SQLConnection.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SQLConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SQLConnection.edmx</DependentUpon>
+      <LastGenOutput>SQLConnection.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\SQLConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SQLConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SQLConnection.edmx.diagram">
+      <DependentUpon>SQLConnection.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\ChangeCredentials\ChangeCredentials.cshtml" />
+    <Content Include="Views\Admin\AddPosition.cshtml" />
+    <Content Include="Views\ImageSettings\EditImage.cshtml" />
+    <Content Include="Views\Language\Index.cshtml" />
+    <Content Include="Views\Language\CreateLanguage.cshtml" />
+    <Content Include="Views\Language\EditLanguage.cshtml" />
+    <Content Include="Views\Language\DeleteLanguage.cshtml" />
+    <Content Include="Views\Translation\Index.cshtml" />
+    <Content Include="Views\Translation\CreateTranslation.cshtml" />
+    <Content Include="Views\Translation\EditTranslation.cshtml" />
+    <Content Include="Views\Translation\DeleteTranslation.cshtml" />
+    <Content Include="Views\GeneralList\GeneralList.cshtml" />
+    <Content Include="Views\UpdatePositionDefault\Index.cshtml" />
+    <Content Include="Views\DeletePosition\Index.cshtml" />
+    <Content Include="Views\AddPosition\Index.cshtml" />
+    <Content Include="Views\AddStore\Index.cshtml" />
+    <Content Include="Views\UpdateStore\Index.cshtml" />
+    <Content Include="Views\DeleteStore\Index.cshtml" />
+    <Content Include="Views\CreateDepartments\Index.cshtml" />
+    <Content Include="Views\UpdateDepartments\Index.cshtml" />
+    <Content Include="Views\DeleteDepartments\Index.cshtml" />
+    <Content Include="Views\AddUser\Index.cshtml" />
+    <Content Include="Views\UpdateUser\Index.cshtml" />
+    <Content Include="Views\DeleteUser\Index.cshtml" />
+    <Content Include="Views\LockUser\Index.cshtml" />
+    <Content Include="Views\UnlockUser\Index.cshtml" />
+    <Content Include="Views\CreatePermissions\Index.cshtml" />
+    <Content Include="Views\UpdatePermissions\Index.cshtml" />
+    <Content Include="Views\DeletePermissions\Index.cshtml" />
+    <Content Include="Views\GrantingPermissions\Index.cshtml" />
+    <Content Include="Views\RevokePermissions\Index.cshtml" />
+    <Content Include="Views\AddEmployee\Index.cshtml" />
+    <Content Include="Views\UpdateEmployee\Index.cshtml" />
+    <Content Include="Views\DeleteEmployee\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Image\Uploads\" />
+    <Folder Include="Views\Approve\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\GetAllEmployee\" />
+    <Folder Include="Views\GetAllUserList\" />
+    <Folder Include="Views\GetDepartments\" />
+    <Folder Include="Views\GetPermissions\" />
+    <Folder Include="Views\GetPositionByDepartments\" />
+    <Folder Include="Views\GetStore\" />
+    <Folder Include="Views\GetStrore\" />
+    <Folder Include="Views\LogOut\" />
+    <Folder Include="Views\SearchCodePermissions\" />
+    <Folder Include="Views\SearchDepartmentsByID\" />
+    <Folder Include="Views\SearchEmployeeCode\" />
+    <Folder Include="Views\SearchPosition\" />
+    <Folder Include="Views\SearchStore\" />
+    <Folder Include="Views\SearchUserByMaNV\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57916</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44362/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

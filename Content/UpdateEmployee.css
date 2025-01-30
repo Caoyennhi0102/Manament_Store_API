@@ -1,0 +1,13 @@
+﻿h2 {
+    text-align: center;
+    color: red;
+}
+
+.btn-success {
+    background-color: #007bff; /* Màu xanh dương */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}

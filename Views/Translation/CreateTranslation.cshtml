@@ -1,0 +1,36 @@
+﻿@model Manament_Store_API.Models.BanDich
+@{
+    ViewBag.Title = "CreateTranslation";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>THÊM BẢN DỊCH</h2>
+
+<link rel="stylesheet" href="~/Content/CreateTranslation.css">
+
+@using(Html.BeginForm("CreateTranslation", "Translation", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="IDNgonNgu">Ngôn Ngữ</label>
+        @Html.DropDownList("IDNgonNgu", ViewBag.NgonNgus as SelectList, "Chọn ngôn ngữ", new {@class = "form-control"})
+
+    </div>
+    <div class="form-group">
+        <label for="KhoaDich">Khóa Dịch</label>
+        @Html.TextBoxFor(m => m.KhoaDich, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        <label for="GiaTriDich">Giá Trị Dịch</label>
+        @Html.TextBoxFor(m => m.GiaTriDich, new {@class = "form-control"})
+    </div>
+    <button type="submit" class="btn btn-success">Lưu Bản Dịch</button>
+    <a href="@Url.Action("Index", "Translation")" class="btn btn-secondary">Hủy</a>
+}
+

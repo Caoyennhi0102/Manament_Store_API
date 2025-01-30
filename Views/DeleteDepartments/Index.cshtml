@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";  // Đường dẫn Layout
+}
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<link rel="stylesheet" href="~/Content/DeleteDepartments.css" />
+<div class="container">
+    <h2>XÓA BỘ PHẬN</h2>
+
+    <!-- Form tìm kiếm -->
+    <div class="search-container">
+        <input type="text" id="maBP" name="maBP" placeholder="Nhập mã bộ phận..." />
+        <button id="searchButton" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+    <!-- Kết quả tìm kiếm -->
+    <div id="searchResult" style="display: none; margin-top: 20px;">
+        <h3>Kết quả tìm kiếm</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mã Bộ Phận</th>
+                    <th>Tên Bộ Phận</th>
+                    <th>Tên Cửa Hàng</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="resultMaBP"></td>
+                    <td id="resultTenBP"></td>
+                    <td id="resultTenCH"></td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="delete-btn-container">
+            <button id="deleteButton" class="btn btn-primary">Xóa</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   // Tìm kiếm bộ phận
+ $('#searchButton').on('click', function () {
+    const maBP = $('#maBP').val(); // Lấy giá trị từ input
+
+    if (!maBP) {
+        alert('Vui lòng nhập mã bộ phận!');
+        return;
+    }
+
+    $.ajax({
+        url: '@Url.Action("SearchDepartmentsByID", "SearchDepartmentsByID")',
+        type: 'POST',
+        data: { MaBP: maBP },
+        success: function (response) {
+            if (response.success) {
+                $('#searchResult').show();
+                $('#resultMaBP').text(response.data.MaBoPhan);
+                $('#resultTenBP').text(response.data.TenBP);
+                $('#resultTenCH').text(response.data.TenCuaHang);
+            } else {
+                alert(response.message);
+                $('#searchResult').hide();
+            }
+        },
+        error: function () {
+            alert("Có lỗi xảy ra trong quá trình tìm kiếm.");
+        }
+    });
+});
+
+
+
+
+    // Xóa bộ phận
+    $('#searchResult').on('click', '#deleteButton', function () {
+        const maBP = $('#resultMaBP').text();
+
+        if (confirm("Bạn có chắc chắn muốn xóa bộ phận này?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteDepartments", "DeleteDepartments")',
+                type: 'POST',
+                data: { MaBP: maBP },
+                success: function (response) {
+                    alert(response.message);
+                    if (response.success) {
+                        $('#searchResult').hide();
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra trong quá trình xóa.");
+                }
+            });
+        }
+    });
+</script>
+
+
+

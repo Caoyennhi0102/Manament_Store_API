@@ -1,0 +1,107 @@
+﻿/* Định dạng cho tiêu đề */
+h2 {
+    text-align: center;
+    color: red;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Định dạng form */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Input và nút tìm kiếm */
+input#maCuaHang {
+    width: calc(100% - 110px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button#btnSearch {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button#btnSearch:hover {
+        background-color: #218838;
+    }
+
+/* Bảng kết quả tìm kiếm */
+#resultContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    background-color: #e0f7fa; /* Màu xanh nhạt */
+}
+
+th, td {
+    border: 1px solid #4caf50; /* Đường viền màu xanh */
+    padding: 8px;
+    color: #004d40; /* Màu chữ xanh đậm */
+}
+
+th {
+    background-color: #00796b; /* Nền tiêu đề màu xanh đậm */
+    color: white; /* Chữ trắng */
+}
+
+tr:nth-child(even) {
+    background-color: #e9f7ff; /* Xanh nhạt hơn */
+}
+
+tr:hover {
+    background-color: #cce7ff; /* Màu hover cho bảng */
+}
+
+/* Nút xóa */
+.button#btnDelete {
+    display: block;
+    margin: 20px auto;
+    background-color: #0094ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Bo góc */
+    transition: background-color 0.3s ease;
+}
+
+
+
+    .button#btnDelete:hover:enabled {
+        background-color: #218838;
+    }
+
+/* Thông báo lỗi */
+#searchResult p.text-danger {
+    color: red;
+    font-weight: bold;
+}
+
+/* Căn chỉnh margin giữa các thành phần */
+.mt-3 {
+    margin-top: 20px;
+}

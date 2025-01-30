@@ -1,0 +1,96 @@
+﻿/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 20px;
+}
+
+h2, h3 {
+    color: #343a40;
+    font-weight: bold;
+}
+
+/* Center the form container */
+div.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling headings */
+h2 {
+    text-align: center;
+   
+    color: red;
+    
+}
+
+h3 {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Buttons */
+button[type="submit"], .btn-secondary {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin: 10px 0;
+    width: 100%;
+}
+
+button[type="submit"] {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+    button[type="submit"]:hover {
+        background-color: #c82333;
+    }
+
+a.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    text-decoration: none;
+}
+
+    a.btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    div.container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    h3, h4 {
+        font-size: 1rem;
+    }
+}

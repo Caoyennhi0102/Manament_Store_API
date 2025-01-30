@@ -1,0 +1,44 @@
+﻿@model Manament_Store_API.Models.ImageSetting
+@{
+    ViewBag.Title = "EditImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Thay đổi ảnh đăng nhập</h2>
+<link rel="stylesheet" href="~/Content/EditImage.css">
+@using (Html.BeginForm("EditImage", "ImageSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.DuLieuAnh)
+    <div class="form-group">
+        <label>Chọn ảnh mới</label>
+        <input type="file" name="imageFile" id="imageFile" class="form-control" required />
+        <div id="imagePreview" style="display: none;">
+            <img id="previewImage" src="#" alt="Preview Image" style="max-width: 100%; max-height: 200px;" />
+            <span id="removeImage" style="color: red; cursor: pointer;">X</span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save">Lưu thay đổi</i>
+    </button>
+}
+
+
+<script>
+        document.getElementById('imageFile').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    console.log(e.target.result); // Kiểm tra data URL
+                    document.getElementById('previewImage').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('removeImage').addEventListener('click', function() {
+            document.getElementById('previewImage').src = '#';
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('imageFile').value = '';
+        });
+</script>

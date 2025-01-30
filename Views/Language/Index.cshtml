@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Manament_Store_API.Models.NgonNgu>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>Danh sách ngôn ngữ</h2>
+<link rel="stylesheet" href="~/Content/IndexLanguage .css">
+<p>
+    <a href="@Url.Action("CreateLanguage")">Tạo Ngôn Ngữ mới</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Mã Nghôn Ngữ</th>
+        <th>Tên ngôn ngữ</th>
+        <th>Ngôn Ngữ Mặc Định</th>
+        <th>Action</th>
+    </tr>
+        </thead>
+    <tbody>
+
+    @foreach(var language in Model) {
+     <tr>
+         <td>@language.IDNgonNgu</td>
+         <td>@language.MaNgonNgu</td>
+         <td>@language.TenNgonNgu</td>
+         <td>@language.NgonNguMacDinh</td>
+         <td>
+             <a href="@Url.Action("Details", new {id = language.IDNgonNgu})">Chi Tiết</a>
+             <a href="@Url.Action("EditLanguage", new {id = language.IDNgonNgu})">Cập Nhật Ngôn Ngữ</a>
+            <a href="@Url.Action("DeleteLanguage", new {id =language.IDNgonNgu})">Xóa Ngôn Ngữ</a>
+         </td>
+     </tr>
+}
+        </tbody>
+    </table>
+
+
+

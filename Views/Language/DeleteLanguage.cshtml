@@ -1,0 +1,25 @@
+﻿@model Manament_Store_API.Models.NgonNgu
+@{
+    ViewBag.Title = "DeleteLanguage";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<div class="container">
+<h2>Xóa Ngôn Ngữ</h2>
+<link rel="stylesheet" href="~/Content/DeleteLanguage.css">
+<h3>Bạn có chắc chắn muốn xóa ngôn ngữ này không?</h3>
+
+    <h4>@Model.TenNgonNgu</h4>
+    <form action="@Url.Action("DeleteConfirmed", "Language", new {id = Model.IDNgonNgu})"method="post">
+        <input type="hidden" name="id" value="@Model.IDNgonNgu"/>
+        <button type="submit" class="btn btn-danger">Xóa Ngôn Ngữ</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a> 
+    </form>
+</div>
+

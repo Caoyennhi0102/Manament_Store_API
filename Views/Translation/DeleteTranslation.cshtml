@@ -1,0 +1,36 @@
+﻿@model Manament_Store_API.Models.BanDich
+@{
+    ViewBag.Title = "DeleteTranslation";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>XÓA BẢN DỊCH</h2>
+<div>
+    <h3>Bạn có chắc chắn muốn xóa bản dịch này?</h3>
+    <dl class="dl-horizontal">
+        <dt>ID Bản Dịch</dt>
+        <dd>@Model.IDBanDich</dd>
+
+        <dt>Ngôn Ngữ</dt>
+        <dd>@Model.NgonNgu.TenNgonNgu</dd>
+
+        <dt>Khóa Dịch</dt>
+        <dd>@Model.KhoaDich</dd>
+
+        <dt>Giá Trị Dịch</dt>
+        <dd>@Model.GiaTriDich</dd>
+    </dl>
+    @using(Html.BeginForm("DeleteConfirmed", "Translation", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.IDBanDich)
+        <button type="submit" class="btn btn-danger">Xóa Bản Dịch</button>
+        <a href="@Url.Action("Index","Translation")" class="btn btn-secondary">Hủy</a>
+    }
+</div>
+
