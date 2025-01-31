@@ -22,6 +22,8 @@ namespace Manament_Store_API.Models
     
         public string MaDanhMucSP { get; set; }
         public string TenDanhMuc { get; set; }
+        public string MoTa { get; set; }
+        public System.DateTime NgayvaGio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HangHoa> HangHoas { get; set; }

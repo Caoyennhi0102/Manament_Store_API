@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "AddProductCategory";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+<h2>Thêm Danh Mục Sản Phẩm</h2>
+
+<link rel="stylesheet" href="~/Content/AddProductCategory.css">
+
+<div class="container">
+    <!-- Form thêm danh mục sản phẩm -->
+    <form id="categoryForm" method="post">
+        <div class="form-group">
+            <label for="categoryName">Tên Danh Mục</label>
+            <input type="text" id="categoryName" name="categoryName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="describe">Mô Tả</label>
+            <textarea id="describe" name="describe" class="form-control" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Datecreated">Ngày Tạo</label>
+            <input type="date" id="Datecreated" name="Datecreated" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Thêm Danh Mục</button>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Hủy</a>
+    </form>
+
+    <hr>
+    <h3>Danh Sách Danh Mục Sản Phẩm</h3>
+    <table id="categoryTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Mã Danh Mục</th>
+                <th>Tên Danh Mục</th>
+                <th>Ngày & Giờ</th>
+                <th>Mô Tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dữ liệu sẽ được AJAX thêm vào đây -->
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        loadProductCategories();
+    });
+
+    function loadProductCategories() {
+        $.ajax({
+            url: '/ProductCategory/GetProductCategories',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                let tableBody = $("#categoryTable tbody");
+                tableBody.empty();
+                $.each(data, function (index, category) {
+                    tableBody.append(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${category.MaDanhMucSP}</td>
+                            <td>${category.TenDanhMuc}</td>
+                            <td>${category.NgayvaGio}</td>
+                            <td>${category.MoTa}</td>
+                        </tr>
+                    `);
+                });
+            },
+            error: function (error) {
+                console.log("Lỗi khi lấy danh mục sản phẩm:", error);
+            }
+        });
+    }
+</script>
+<script>
+        $(document).ready(function () {
+            // Gửi form thêm danh mục sản phẩm
+            $("#categoryForm").submit(function (event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("AddProductCategory", "ProductCategory")",
+                    data: formData,
+                    success: function (response) {
+                        alert(response.message);
+                        if (response.success) {
+                            location.reload(); // Tải lại trang để cập nhật danh sách
+                        }
+                    },
+                    error: function () {
+                        alert("Có lỗi xảy ra, vui lòng thử lại.");
+                    }
+                });
+            });
+        });
+</script>
+

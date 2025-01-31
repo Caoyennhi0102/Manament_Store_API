@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "UpdateProductCategory";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>CẬP NHẬT THÔNG TIN DANH MỤC</h2>
+<form id="searchCategoryForm">
+    <div class="form-group">
+        <label for="searchMaDanhMuc">Nhập Mã Danh Mục:</label>
+        <input type="text" id="searchMaDanhMuc" name="codeCategory" class="form-control" placeholder="Nhập mã danh mục..." required />
+        <button type="submit" class="btn btn-primary mt-2">Tìm Kiếm</button>
+    </div>
+</form>
+<!-- Kết quả tìm kiếm -->
+<div id="searchResult" class="mt-3"></div>
+
+   
+<div id="updateForm" class="mt-3" style="display: none;">
+    <h3>Cập Nhật Danh Mục</h3>
+    <form id="updateCategoryForm" method="post">
+        <div class="form-group">
+            <label>Mã Danh Mục:</label>
+            <input type="text" id="maDanhMucSP" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label>Tên Danh Mục:</label>
+            <input type="text" id="tenDanhMuc" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Mô Tả:</label>
+            <textarea id="moTa" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Ngày Cập Nhật:</label>
+            <input type="date" id="ngayCapNhat" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-success mt-2">Cập Nhật</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Tìm kiếm danh mục (sử dụng form)
+        $("#searchCategoryForm").submit(function (event) {
+            event.preventDefault(); // Ngăn form reload trang
+
+            var maDanhMucSP = $("#searchMaDanhMuc").val().trim();
+            if (maDanhMucSP === "") {
+                alert("Vui lòng nhập mã danh mục!");
+                return;
+            }
+            $.ajax({
+                url: '/ProductCategory/SearchCodeCategory',
+                type: 'POST',
+                data: { codeCategory: maDanhMucSP },
+                success: function (response) {
+                    console.log("Dữ liệu nhận từ API:", response);
+                    if (response.success) {
+                        $("#searchResult").html("<p class='text-success'>Tìm thấy danh mục!</p>");
+                        $("#updateForm").show();
+                        $("#maDanhMucSP").val(response.data.MaDanhMucSP);
+                        $("#tenDanhMuc").val(response.data.TenDanhMuc);
+                        $("#moTa").val(response.data.MoTa);
+                        if (response.data.NgayvaGio) {
+                            var dateObj = new Date(response.data.NgayvaGio);
+                            var formattedDate = dateObj.toISOString().split("T")[0];
+                            $("#ngayCapNhat").val(formattedDate);
+                        } else {
+                            $("#ngayCapNhat").val("");
+                        }
+                    } else {
+                        $("#searchResult").html("<p class='text-danger'>" + response.message + "</p>");
+                        $("#updateForm").hide();
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra khi tìm kiếm!");
+                }
+            });
+        });
+
+    });
+    
+    $("#updateCategoryForm").submit(function (event) {
+        event.preventDefault(); // Ngăn form reload trang
+        console.log("Submit nút cập nhật đã được bấm!");
+
+        var formData = {
+            codeCategoryID: $("#maDanhMucSP").val().trim(),
+            categoryUpdate: {
+                TenDanhMuc: $("#tenDanhMuc").val().trim(),
+                MoTa: $("#moTa").val().trim(),
+                NgayvaGio: $("#ngayCapNhat").val()
+            }
+        };
+        console.log("Dữ liệu gửi đi:", formData);
+
+        $.ajax({
+            url: '@Url.Action("UpdateProductCategory", "ProductCategory")',
+            type: 'POST',
+            contentType: "application/json", // Đảm bảo gửi dữ liệu dưới dạng JSON
+            data: JSON.stringify(formData), // Chuyển object thành JSON string
+            success: function (response) {
+                console.log("Phản hồi từ server:", response);
+                if (response.success) {
+                    alert(response.message);
+                } else {
+                    alert("Lỗi: " + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("Lỗi AJAX:", error);
+                alert("Có lỗi xảy ra khi cập nhật!");
+            }
+        });
+    });
+    
+</script>

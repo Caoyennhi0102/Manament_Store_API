@@ -28,7 +28,7 @@ namespace Manament_Store_API
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "ProductCategory", action = "AddProductCategory", id = UrlParameter.Optional }
             );
             
            

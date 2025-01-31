@@ -1,0 +1,244 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>Thêm Nhân Viên</h2>
+<link rel="stylesheet" href="~/Content/AddEmployee.css">
+<form id="addEmployeeForm">
+    <div class="form-group">
+        <label for="macuahang">Mã Cửa Hàng:</label>
+        <input type="number" id="macuahang" name="macuahang" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="MaBoPhan">Bộ Phận:</label>
+        <select id="MaBoPhan" name="MaBoPhan" class="form-control">
+            <option value="">-- Chọn Bộ Phận --</option>
+            @foreach (var item in ViewBag.DSBoPhan as SelectList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="MaChucVu">Chức Vụ:</label>
+        <select id="MaChucVu" name="MaChucVu" class="form-control">
+            <option value="">-- Chọn Chức Vụ --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="HoTen">Họ Tên:</label>
+        <input type="text" id="HoTen" name="HoTen" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="gioiTinh">Giới Tính:</label>
+        <select id="gioiTinh" name="gioiTinh" class="form-control" required>
+            <option value="">-- Chọn giới tính --</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="NgaySinh">Ngày Sinh:</label>
+        <input type="date" id="NgaySinh" name="NgaySinh" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="cccd">Căn Cước Công Dân:</label>
+        <input type="text" id="cccd" name="cccd" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="diaChi">Địa Chỉ Thường Trú (Theo căn cước công dân):</label>
+        <input type="text" id="diaChi" name="diaChi" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="DiaChiTamTru">Địa Chỉ Tạm Trú (nếu có):</label>
+        <textarea id="diachiTamTru" name="diachiTamTru" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="trinhdoHocVan">Trình Độ Học Vấn:</label>
+        <select id="trinhdoHocVan" name="trinhdoHocVan" class="form-control" required>
+            <option value="">-- Chọn trình độ --</option>
+            <option value="Trung Học Phổ Thông">Trung Học Phổ Thông</option>
+            <option value="Đang Chờ Bằng">Đang Chờ Bằng</option>
+            <option value="Trung Cấp">Trung Cấp</option>
+            <option value="Cao Đẳng">Cao Đẳng</option>
+            <option value="Đại Học">Đại Học</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="PhoneNumber">Số điện thoại:</label>
+        <div class="input-group">
+            <select id="CountryCode" name="CountryCode" class="form-select">
+                <option value="84">+84</option>
+                <option value="028">+028</option>
+            </select>
+            <input type="text" id="dienThoai" name="dienThoai" class="form-control" placeholder="Nhập số điện thoại" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="NgayVaoLam">Ngày Vào Làm:</label>
+        <input type="date" id="NgayVaoLam" name="NgayVaoLam" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="TKNhanLuong">Tài Khoản Nhận Lương (mặc định ngân hàng ACB):</label>
+        <input type="text" id="TKNhanLuong" name="TKNhanLuong" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="trangthai">Trạng Thái:</label>
+        <select id="trangthai" name="trangthai" class="form-control">
+            <option value="">-- Chọn trạng thái --</option>
+            <option value="Hoạt Động">Hoạt Động</option>
+            <option value="Không Hoạt Động">Không Hoạt Động</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm Nhân Viên</button>
+
+</form>
+<h3>Danh Sách Nhân Viên</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã Nhân Viên</th>
+            <th>Mã Cửa Hàng</th>
+            <th>Bộ Phận</th>
+            <th>Chức Vụ</th>
+            <th>Họ Tên</th>
+            <th>Ngày Sinh</th>
+            <th>Giới Tính</th>
+            <th>Căn Cước Công Dân</th>
+            <th>Điện Thoại</th>
+            <th>Địa Chỉ Thường Trú</th>
+            <th>Địa Chỉ Tạm Trú</th>
+            <th>Email</th>
+            <th>Ngày Vào Làm</th>
+            <th>Trình Độ Học Vấn</th>
+            <th>Số Phép Năm</th>
+            <th>Số Ngày Phép Đã Sử Dụng</th>
+            <th>Số Ngày Phép Còn Lại</th>
+            <th>Trạng Thái</th>
+            <th>Trạng Thái Duyệt Của Quản Lý</th>
+        </tr>
+    </thead>
+    <tbody id="employeeTableBody">
+        <!-- Dữ liệu nhân viên sẽ được chèn vào đây -->
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lấy chức vụ khi chọn bộ phận
+        $('#MaBoPhan').change(function () {
+            const maBP = $(this).val();
+            $('#MaChucVu').empty().append('<option value="">-- Chọn Chức Vụ --</option>');
+
+            if (maBP) {
+                $.ajax({
+                    url: '/Position/GetPositionByDepartments',
+                    type: 'GET',
+                    data: { maBP: maBP },
+                    success: function (data) {
+                        if (data && data.length > 0) {
+                            $.each(data, function (index, item) {
+                                $('#MaChucVu').append(`<option value="${item.MaChucVu}">${item.TenChucVu}</option>`);
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Lỗi khi lấy chức vụ:', error);
+                    }
+                });
+            }
+        });
+    });
+    function loadEmployeeTable() {
+        $.ajax({
+            url: '/GetAllEmployee/GetAllEmployee',
+            type: 'GET',
+            success: function (response) {
+                if (response.success) {
+                    const tableBody = $('#employeeTableBody'); // ID của bảng danh sách nhân viên
+                    tableBody.empty(); // Xóa dữ liệu cũ
+
+                    // Thêm dữ liệu mới vào bảng
+                    response.data.forEach(employee => {
+                        tableBody.append(`
+                        <tr>
+                            <td>${employee.MaNhanVien}</td>
+                            <td>${employee.MaCuaHang}</td>
+                            <td>${employee.MaBoPhan}</td>
+                            <td>${employee.MaChucVu}</td>
+                            <td>${employee.HoTen}</td>
+                            <td>${employee.NgaySinh}</td>
+                            <td>${employee.GioiTinh}</td>
+                            <td>${employee.CCCD}</td>
+                            <td>${employee.DienThoai}</td>
+                            <td>${employee.DiaChi}</td>
+                            <td>${employee.DiaChiTamtru}</td>
+                            <td>${employee.Email}</td>
+                            <td>${employee.NgayVaoLam}</td>
+                            <td>${employee.TrinhDoHocVan}</td>
+                            <td>${employee.NgayPhepNam}</td>
+                            <td>${employee.SoPhepDaDung}</td>
+                            <td>${employee.SoNgayPhepConLai}</td>
+                            <td>${employee.TrangThai}</td>
+                            <td>${employee.TrangThaiDuyetQL}</td>
+                        </tr>
+                    `);
+                    });
+                } else {
+                    alert(response.message); // Hiển thị thông báo lỗi
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Lỗi khi tải danh sách nhân viên:', error);
+            }
+        });
+    }
+
+    // Gọi hàm loadEmployeeTable() sau khi thêm nhân viên thành công
+    $('#addEmployeeForm').submit(function (e) {
+        e.preventDefault();
+        const formData = $(this).serialize();
+
+        $.ajax({
+            url: '/Employee/AddEmployee',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                alert(response.message);
+                if (response.success) {
+                    loadEmployeeTable(); // Tải lại danh sách nhân viên
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Lỗi khi thêm nhân viên:', error);
+            }
+        });
+    });
+</script>
+@*
+    <script>
+            $(document).ready(function () {
+                // Kiểm tra Session
+                var isSessionActive = @isSessionActive.ToString().ToLower();
+
+                // Nếu Session hết hạn, vô hiệu hóa form
+                if (!isSessionActive) {
+                    $("#myForm input, #myForm button").prop("disabled", true);
+                    alert("Phiên làm việc của bạn đã hết hạn. Vui lòng đăng nhập lại.");
+                }
+            });
+    </script>
+*@
+
+
+
+
+

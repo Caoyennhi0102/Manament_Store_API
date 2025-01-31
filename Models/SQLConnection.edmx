@@ -106,6 +106,8 @@
           </Key>
           <Property Name="MaDanhMucSP" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NgayvaGio" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="HangHoa">
           <Key>
@@ -1316,6 +1318,8 @@
           <Property Name="MaDanhMucSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenDanhMuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="HangHoas" Relationship="Self.FK__HangHoa__MaDanhM__6A30C649" FromRole="DanhMucSanPham" ToRole="HangHoa" />
+          <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayvaGio" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="HangHoa">
           <Key>
@@ -2577,6 +2581,8 @@
           <EntitySetMapping Name="DanhMucSanPhams">
             <EntityTypeMapping TypeName="QLCHTLModel.DanhMucSanPham">
               <MappingFragment StoreEntitySet="DanhMucSanPham">
+                <ScalarProperty Name="NgayvaGio" ColumnName="NgayvaGio" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaDanhMucSP" ColumnName="MaDanhMucSP" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
               </MappingFragment>
