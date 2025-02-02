@@ -1,0 +1,56 @@
+﻿@model Manament_Store_API.Models.HopDong
+@{
+    ViewBag.Title = "Print";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>In Hợp Đồng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .contract-details {
+            margin-top: 20px;
+        }
+
+            .contract-details img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 20px auto;
+            }
+    </style>
+</head>
+<body>
+    <h2>Hợp Đồng: @Model.TenHopDong</h2>
+    <div class="contract-details">
+        <p><strong>Nội Dung:</strong> @Model.NoiDung</p>
+        <p><strong>Ngày Lưu:</strong> @Model.NgayLuu.ToString("dd/MM/yyyy")</p>
+        <p><strong>Thời Hạn Hợp Đồng:</strong> @Model.ThoiHanHop.ToString("dd/MM/yyyy")</p>
+        <p><strong>Ngày Ký Hợp Đồng:</strong> @Model.NgayKyHopDong.ToString("dd/MM/yyyy")</p>
+        <img src="@Model.DuongDan" alt="Hình Ảnh Hợp Đồng" />
+    </div>
+
+    <script>
+        window.onload = function () {
+            window.print();
+        }
+    </script>
+</body>
+</html>
+

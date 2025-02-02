@@ -1,0 +1,50 @@
+﻿@model Manament_Store_API.Models.HopDong
+@{
+    ViewBag.Title = "ContractCreate";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>LƯU HỢP ĐỒNG</h2>
+
+@using (Html.BeginForm("ContractCreate", "Contract", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.MaHopDong, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.MaHopDong, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.MaHopDong)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenHopDong, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.TenHopDong, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TenHopDong)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoiDung, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.NoiDung, new { @class = "form-control", rows = 5 })
+        @Html.ValidationMessageFor(model => model.NoiDung)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ThoiHanHop, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ThoiHanHop, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.ThoiHanHop)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NgayKyHopDong, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.NgayKyHopDong, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.NgayKyHopDong)
+    </div>
+    <div class="form-group">
+        <label for="file">Upload Hình Ảnh Hợp Đồng:</label>
+        <input type="file" name="file" id="file" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu Hợp Đồng</button>
+}

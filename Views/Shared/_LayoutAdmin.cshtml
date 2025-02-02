@@ -64,13 +64,13 @@
                         <i class="bi bi-shop-window"></i> QUẢN LÝ CỬA HÀNG
                     </a>
                     <div class="collapse" id="StoreFunctions">
-                        <a href="/AddStore/Index" class="list-group-item list-group-item-action">
+                        <a href="/Store/AddStore" class="list-group-item list-group-item-action">
                             <i class="bi bi-plus-circle"></i> Thêm Cửa Hàng
                         </a>
-                        <a href="/UpdateStore/Index" class="list-group-item list-group-item-action">
+                        <a href="/Store/UpdateStore" class="list-group-item list-group-item-action">
                             <i class="bi bi-pencil-square"></i> Cập Nhật Thông Tin Cửa Hàng
                         </a>
-                        <a href="/DeleteStore/Index" class="list-group-item list-group-item-action">
+                        <a href="/Store/DeleteStore" class="list-group-item list-group-item-action">
                             <i class="bi bi-trash"></i> Xóa Cửa Hàng
                         </a>
                     </div>
@@ -79,13 +79,13 @@
                         <i class="bi bi-house-door-fill"></i> QUẢN LÝ BỘ PHẬN
                     </a>
                     <div class="collapse" id="departmentFunctions">
-                        <a href="/CreateDepartments/Index" class="list-group-item list-group-item-action">
+                        <a href="/Departments/CreateDepartments" class="list-group-item list-group-item-action">
                             <i class="bi bi-plus-square"></i>Thêm bộ phận
                         </a>
-                        <a href="/UpdateDepartments/Index" class="list-group-item list-group-item-action">
+                        <a href="/Departments/UpdateDepartments" class="list-group-item list-group-item-action">
                             <i class="bi bi-pencil-square"></i>Cập nhật thông tin bộ phận
                         </a>
-                        <a href="/DeleteDepartments/Index" class="list-group-item list-group-item-action">
+                        <a href="/Departments/DeleteDepartments" class="list-group-item list-group-item-action">
                             <i class="bi bi-x-circle"></i>Xóa bộ phận
                         </a>
                     </div>
@@ -94,13 +94,13 @@
                         <i class="bi bi-person-lines-fill"></i> QUẢN LÝ CHỨC VỤ
                     </a>
                     <div class="collapse" id="positionFunctions">
-                        <a href="/AddPosition/Index" class="list-group-item list-group-item-action">
+                        <a href="/Position/AddPosition" class="list-group-item list-group-item-action">
                             <i class="bi bi-plus-circle"></i> Thêm chức vụ
                         </a>
-                        <a href="/UpdatePositionDefault/Index" class="list-group-item list-group-item-action">
+                        <a href="/Position/UpdatePosition" class="list-group-item list-group-item-action">
                             <i class="bi bi-pencil-square"></i> Cập nhật chức vụ
                         </a>
-                        <a href="/DeletePosition/Index" class="list-group-item list-group-item-action">
+                        <a href="/Position/DeletePosition" class="list-group-item list-group-item-action">
                             <i class="bi bi-trash-fill"></i> Xóa chức vụ
                         </a>
                     </div>
@@ -109,95 +109,101 @@
                         <i class="bi bi-people-fill"></i> QUẢN LÝ USER
                     </a>
                     <div class="collapse" id="userFunctions">
-                        <a href="/AddUser/Index" class="list-group-item list-group-item-action">
+                        <a href="/User/AddUser" class="list-group-item list-group-item-action">
                             <i class="bi bi-person-plus-fill"></i> Thêm User
                         </a>
-                        <a href="/UpdateUser/Index" class="list-group-item list-group-item-action">
+                        <a href="/User/UpdateUser" class="list-group-item list-group-item-action">
                             <i class="bi bi-pencil-fill"></i> Cập nhật User
                         </a>
-                        <a href="/DeleteUser/Index" class="list-group-item list-group-item-action">
+                        <a href="/User/DeleteUser" class="list-group-item list-group-item-action">
                             <i class="bi bi-person-x-fill"></i> Xóa User
                         </a>
-                        <a href="/LockUser/Index" class="list-group-item list-group-item-action">
+                        <a href="/User/LockUser" class="list-group-item list-group-item-action">
                             <i class="bi bi-lock-fill"></i> Khóa User
                         </a>
-                        <a href="/UnlockUser/Index" class="list-group-item list-group-item-action">
+                        <a href="/User/UnlockUser" class="list-group-item list-group-item-action">
                             <i class="bi bi-unlock-fill"></i> Mở khóa User
                         </a>
 
-                        <a href="/CreatePermissions/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-person-plus-fill"></i> Tạo Quyền User
-                        </a>
-                        <a href="/UpdatePermissions/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-gear-wide-connected"></i> Cập nhật quyền
-                        </a>
-                        <a href="/DeletePermissions/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-trash"></i> Xóa quyền
-                        </a>
-                        <a href="/GrantingPermissions/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-key-fill"></i> Cấp quyền User
-                        </a>
-                        <a href="/RevokePermissions/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-key"></i> Thu quyền User
-                        </a>
-                    </div>
-                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#employeeFunctions" aria-expanded="false" aria-controls="employeeFunctions">
-                        <i class="bi bi-people-fill"></i> QUẢN LÝ NHÂN VIÊN
+                        </div>
+                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#PermissionsFunctions" aria-expanded="false" aria-controls="PermissionsFunctions">
+                        <i class="bi bi-people-fill"></i> QUẢN LÝ QUYỀN HỆ THỐNG
                     </a>
-                    <div class="collapse" id="employeeFunctions">
-                        <a href="/AddEmployee/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-person-plus-fill"></i> Thêm nhân viên
-                        </a>
-                        <a href="/UpdateEmployee/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-person-badge"></i> Cập nhật thông tin nhân viên
-                        </a>
-                        <a href="/DeleteEmployee/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-person-x-fill"></i> Xóa nhân viên
-                        </a>
 
-                    </div>
-                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#generalList" aria-expanded="false" aria-controls="generalList">
-                        <i class="bi bi-clipboard-data"></i> Quản Lý Tổng Hợp
-                    </a>
-                    <div class="collapse" id="generalList">
-                        <a href="/GeneralList/GeneralList" class="list-group-item list-group-item-action">
-                            <i class="bi bi-table"></i> Danh Sách Tổng Hợp
+                        <div class="collapse" id="PermissionsFunctions">
+                            <a href="/Permissions/CreatePermissions" class="list-group-item list-group-item-action">
+                                <i class="bi bi-person-plus-fill"></i> Tạo Quyền User
+                            </a>
+                            <a href="/Permissions/UpdatePermissions" class="list-group-item list-group-item-action">
+                                <i class="bi bi-gear-wide-connected"></i> Cập nhật quyền
+                            </a>
+                            <a href="/Permissions/DeletePermissions" class="list-group-item list-group-item-action">
+                                <i class="bi bi-trash"></i> Xóa quyền
+                            </a>
+                            <a href="/Permissions/GrantingPermissions" class="list-group-item list-group-item-action">
+                                <i class="bi bi-key-fill"></i> Cấp quyền User
+                            </a>
+                            <a href="/Permissions/RevokePermissions" class="list-group-item list-group-item-action">
+                                <i class="bi bi-key"></i> Thu quyền User
+                            </a>
+                        </div>
+                        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#employeeFunctions" aria-expanded="false" aria-controls="employeeFunctions">
+                            <i class="bi bi-people-fill"></i> QUẢN LÝ NHÂN VIÊN
                         </a>
-                    </div>
-                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#SystemConfigurationSettings" aria-expanded="false" aria-controls="SystemConfigurationSettings">
-                        <i class="bi bi-gear"></i> Cài Đặt Cấu Hình Hệ Thống
-                    </a>
-                    <div class="collapse" id="SystemConfigurationSettings">
-                        <a href="/ImageSettings/EditImage" class="list-group-item list-group-item-action">
-                            <i class="bi bi-image"></i> Thay Ảnh
+                        <div class="collapse" id="employeeFunctions">
+                            <a href="/Employee/AddEmployee" class="list-group-item list-group-item-action">
+                                <i class="bi bi-person-plus-fill"></i> Thêm nhân viên
+                            </a>
+                            <a href="/Employee/UpdateEmployee" class="list-group-item list-group-item-action">
+                                <i class="bi bi-person-badge"></i> Cập nhật thông tin nhân viên
+                            </a>
+                            <a href="/Employee/DeleteEmployee" class="list-group-item list-group-item-action">
+                                <i class="bi bi-person-x-fill"></i> Xóa nhân viên
+                            </a>
+
+                        </div>
+                        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#generalList" aria-expanded="false" aria-controls="generalList">
+                            <i class="bi bi-clipboard-data"></i> Quản Lý Tổng Hợp
                         </a>
-                    </div>
-                    <div class="collapse" id="SystemConfigurationSettings">
-                        <a href="/Language/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-globe"></i> Ngôn Ngữ
+                        <div class="collapse" id="generalList">
+                            <a href="/GeneralList/GeneralList" class="list-group-item list-group-item-action">
+                                <i class="bi bi-table"></i> Danh Sách Tổng Hợp
+                            </a>
+                        </div>
+                        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#SystemConfigurationSettings" aria-expanded="false" aria-controls="SystemConfigurationSettings">
+                            <i class="bi bi-gear"></i> Cài Đặt Cấu Hình Hệ Thống
                         </a>
-                    </div>
-                    <div class="collapse" id="SystemConfigurationSettings">
-                        <a href="/Translation/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-translate"></i> Bản Dịch Ngôn Ngữ
+                        <div class="collapse" id="SystemConfigurationSettings">
+                            <a href="/ImageSettings/EditImage" class="list-group-item list-group-item-action">
+                                <i class="bi bi-image"></i> Thay Ảnh
+                            </a>
+                        </div>
+                        <div class="collapse" id="SystemConfigurationSettings">
+                            <a href="/Language/Index" class="list-group-item list-group-item-action">
+                                <i class="bi bi-globe"></i> Ngôn Ngữ
+                            </a>
+                        </div>
+                        <div class="collapse" id="SystemConfigurationSettings">
+                            <a href="/Translation/Index" class="list-group-item list-group-item-action">
+                                <i class="bi bi-translate"></i> Bản Dịch Ngôn Ngữ
+                            </a>
+                        </div>
+                        <!-- Nút Logout -->
+                        <a href="@Url.Action("Logout", "LogOut")" class="list-group-item list-group-item-action text-danger">
+                            <i class="bi bi-box-arrow-right"></i> Đăng xuất
                         </a>
+                        @*
+        }
+        else
+        {
+             <!-- Nút Login -->
+                        *@
+                        <!-- Hiển thị đăng nhập nếu người dùng chưa đăng nhập -->
+                        <a href="@Url.Action("Login", "Login")" class="list-group-item list-group-item-action">
+                            <i class="fa fa-key" style="color:gold;"></i> Đăng nhập
+                        </a>
+                        @*}*@
                     </div>
-                    <!-- Nút Logout -->
-                    <a href="@Url.Action("Logout", "LogOut")" class="list-group-item list-group-item-action text-danger">
-                        <i class="bi bi-box-arrow-right"></i> Đăng xuất
-                    </a>
-                    @*
-                        }
-                        else
-                        {
-                             <!-- Nút Login -->
-                    *@
-                    <!-- Hiển thị đăng nhập nếu người dùng chưa đăng nhập -->
-                    <a href="@Url.Action("Login", "Login")" class="list-group-item list-group-item-action">
-                        <i class="fa fa-key" style="color:gold;"></i> Đăng nhập
-                    </a>
-                    @*}*@
-                </div>
             </div>
             <!-- Main Content Area -->
             <div class="col-md-9">

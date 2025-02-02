@@ -51,18 +51,76 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=9.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.9.0.1\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=9.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.9.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.9.0.1\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.9.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.9.0.1\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.9.0.1\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.9.0.1\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.3.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -130,7 +188,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ApproveController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\ChangeCredentialsController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GeneralListController.cs" />
@@ -144,6 +204,7 @@
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\TranslationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,6 +216,8 @@
     <Compile Include="Models\BanDich.cs">
       <DependentUpon>SQLConnection.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BankApiResponse.cs" />
+    <Compile Include="Models\BankInfo.cs" />
     <Compile Include="Models\BoPhan.cs">
       <DependentUpon>SQLConnection.tt</DependentUpon>
     </Compile>
@@ -186,6 +249,9 @@
       <DependentUpon>SQLConnection.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>SQLConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HopDong.cs">
       <DependentUpon>SQLConnection.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ImageSetting.cs">
@@ -269,6 +335,7 @@
     <Compile Include="Service\EmployeeID.cs" />
     <Compile Include="Service\EmployeeLeaveDay.cs" />
     <Compile Include="Service\InternalEmail.cs" />
+    <Compile Include="Service\IsCheckAccountBankSupplier.cs" />
     <Compile Include="Service\IsDate.cs" />
     <Compile Include="Service\IsEmail.cs" />
     <Compile Include="Service\Isitizenidentificationnumber.cs" />
@@ -277,14 +344,19 @@
     <Compile Include="Service\PositionCode.cs" />
     <Compile Include="Service\ProductCategory.cs" />
     <Compile Include="Service\StoreCode.cs" />
+    <Compile Include="Service\SupplierCode.cs" />
     <Compile Include="Service\TranslationService.cs" />
     <Compile Include="Service\UserNameRandom.cs" />
+    <Compile Include="Service\Validator.cs" />
+    <Compile Include="Service\WebsiteValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AddAccountBankSupplier.css" />
     <Content Include="Content\AddEmployee.css" />
     <Content Include="Content\AddPosition.css" />
     <Content Include="Content\AddProductCategory.css" />
     <Content Include="Content\AddStore.css" />
+    <Content Include="Content\AddSupplier.css" />
     <Content Include="Content\AddUser.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -311,6 +383,7 @@
     <Content Include="Content\DeleteLanguage.css" />
     <Content Include="Content\DeletePermissions.css" />
     <Content Include="Content\DeletePosition.css" />
+    <Content Include="Content\DeleteProductCategory.css" />
     <Content Include="Content\DeleteStore.css" />
     <Content Include="Content\DeleteUser.css" />
     <Content Include="Content\EditImage.css" />
@@ -330,11 +403,13 @@
     <Content Include="Content\UpdateEmployee.css" />
     <Content Include="Content\UpdatePermissions.css" />
     <Content Include="Content\UpdatePosition.css" />
+    <Content Include="Content\UpdateProductCategory.css" />
     <Content Include="Content\UpdateStore.css" />
     <Content Include="Content\UpdateUser.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
     <Content Include="Models\SQLConnection.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SQLConnection.Context.cs</LastGenOutput>
@@ -416,10 +491,17 @@
     <Content Include="Views\Employee\DeleteEmployee.cshtml" />
     <Content Include="Views\ProductCategory\AddProductCategory.cshtml" />
     <Content Include="Views\ProductCategory\UpdateProductCategory.cshtml" />
+    <Content Include="Views\ProductCategory\DeleteProductCategory.cshtml" />
+    <Content Include="Views\Supplier\AddSupplier.cshtml" />
+    <Content Include="Views\Bank\AddAccountBankSupplier.cshtml" />
+    <Content Include="Views\Contract\ContractCreate.cshtml" />
+    <Content Include="Views\Contract\ContractView.cshtml" />
+    <Content Include="Views\Contract\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\Uploads\" />
+    <Folder Include="Uploads\Contrat\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Approve\" />
     <Folder Include="Views\Default\" />

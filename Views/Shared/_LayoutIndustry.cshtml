@@ -50,9 +50,9 @@
                 <div class="list-group">
 
                     @*  @if (Session["UserName"] != null)
-                        {
+        {
                     *@
-                   
+
 
                     <div id="language-dropdown">
                         <select id="language-select" class="form-select">
@@ -60,30 +60,67 @@
                         </select>
                     </div>
                     <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#ProductGroupManagement" aria-expanded="false" aria-controls="ProductGroupManagement">
-                        <i class="bi bi-collection"></i> QUẢN LÝ NHÓM HÀNG 
+                        <i class="bi bi-collection"></i> QUẢN LÝ NHÓM HÀNG
                     </a>
                     <div class="collapse" id="ProductGroupManagement">
                         <a href="/ProductCategory/AddProductCategory" class="list-group-item list-group-item-action">
-                            <i class="bi bi-plus-square"></i> Thêm Danh Mục Sản Phẩm 
+                            <i class="bi bi-plus-square"></i> Thêm Danh Mục Sản Phẩm
                         </a>
                         <a href="/ProductCategory/UpdateProductCategory" class="list-group-item list-group-item-action">
-                            <i class="bi bi-arrow-clockwise"></i> Cập Nhật Danh Mục Sản Phẩm 
+                            <i class="bi bi-arrow-clockwise"></i> Cập Nhật Danh Mục Sản Phẩm
                         </a>
-                        <a href="/DeleteStore/Index" class="list-group-item list-group-item-action">
-                            <i class="bi bi-eraser"></i> Xóa Danh Mục Sản Phẩm 
+                        <a href="/ProductCategory/DeleteProductCategory" class="list-group-item list-group-item-action">
+                            <i class="bi bi-eraser"></i> Xóa Danh Mục Sản Phẩm
                         </a>
                     </div>
-                   
-                    
+                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#SupplierManagement" aria-expanded="false" aria-controls="SupplierManagement">
+                        <i class="bi-building"></i> QUẢN LÝ NHÀ CUNG CẤP
+                    </a>
+                    <div class="collapse" id="SupplierManagement">
+                        <a href="/Supplier/AddSupplier" class="list-group-item list-group-item-action">
+                            <i class="bi-building-add"></i> Thêm Nhà Cung Cấp
+                        </a>
+                        <a href="/Supplier/UpdateSupplier" class="list-group-item list-group-item-action">
+                            <i class="bi-person-fill-gear"></i> Cập Nhật Thông Tin Nhà Cung Cấp
+                        </a>
+                        <a href="/Supplier/DeleteSupplier" class="list-group-item list-group-item-action">
+                            <i class="bi-person-dash"></i> Xóa Nhà Cung Cấp
+                        </a>
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#SupplierManagementAccountBank" aria-expanded="false" aria-controls="SupplierManagementAccountBank">
+                        <i class="bi-bank"></i> QUẢN LÝ TÀI KHOẢN THANH TOÁN NHÀ CUNG CẤP
+                    </a>
+                    <div class="collapse" id="SupplierManagementAccountBank">
+                        <a href="/Bank/AddAccountBankSupplier" class="list-group-item list-group-item-action">
+                            <i class="bi-file-earmark-plus"></i> Kiểm Tra Số Tài Khoản Ngân Hàng
+                        </a>
+
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target="#SupplierContract" aria-expanded="false" aria-controls="SupplierContract">
+                        <i class="bi-briefcase"></i> QUẢN LÝ HỒ SƠ ĐỐI TÁC
+                    </a>
+                    <div class="collapse" id="SupplierContract">
+                        <a href="/Contract/ContractCreate" class="list-group-item list-group-item-action">
+                            <i class="bi-document-text-plus"></i> Lưu Hợp Đồng Mới
+                        </a>
+                        <a href="/Contract/ContractView" class="list-group-item list-group-item-action">
+                            <i class="bi-file-earmark-text"></i> Xem Hợp Đồng
+                        </a>
+                        <a href="/Contract/Print" class="list-group-item list-group-item-action">
+                            <i class="bi-printer-fill"></i> In Hợp Đồng
+                        </a>
+                    </div>
+
+
                     <!-- Nút Logout -->
                     <a href="@Url.Action("Logout", "LogOut")" class="list-group-item list-group-item-action text-danger">
                         <i class="bi bi-box-arrow-right"></i> Đăng xuất
                     </a>
                     @*
-                        }
-                        else
-                        {
-                             <!-- Nút Login -->
+        }
+        else
+        {
+             <!-- Nút Login -->
                     *@
                     <!-- Hiển thị đăng nhập nếu người dùng chưa đăng nhập -->
                     <a href="@Url.Action("Login", "Login")" class="list-group-item list-group-item-action">

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Kiểm tra tài khoản";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>KIỂM TRA TÀI KHOẢN NGÂN HÀNG NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/AddAccountBankSupplier.css">
+
+@using (Html.BeginForm("AddAccountBankSupplier", "Bank", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="bankCode">Ngân hàng:</label>
+        <select id="bankCode" name="bankCode" class="form-control" required>
+            <option value="">-- Chọn ngân hàng --</option>
+            @if (ViewBag.BankList != null)
+            {
+                foreach (var bank in ViewBag.BankList)
+                {
+                    <option value="@bank.Code">@bank.Name</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="accountNumber">Số tài khoản:</label>
+        <input type="text" id="accountNumber" name="accountNumber" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Kiểm tra</button>
+}
+
+@if (ViewBag.Success != null && ViewBag.Success == true)
+{
+    <div class="form-group">
+        <label for="ownerName">Tên chủ tài khoản:</label>
+        <div style="display: flex; align-items: center;">
+            <input type="text" id="ownerName" name="ownerName" class="form-control result-textbox" value="@ViewBag.OwnerName" readonly />
+            <button type="button" class="copy-button" onclick="copyToClipboard()">Sao chép</button>
+        </div>
+    </div>
+
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">
+        @ViewBag.Error
+    </div>
+}
+
+<script>
+    // Hàm sao chép nội dung vào clipboard
+    function copyToClipboard() {
+        // Lấy phần tử input chứa tên chủ tài khoản
+        const input = document.getElementById("ownerName");
+        // Chọn nội dung trong input
+        input.select();
+        input.setSelectionRange(0, 99999); // Dành cho các thiết bị di động
+        // Sao chép nội dung vào clipboard
+        document.execCommand("copy");
+        // Thông báo cho người dùng (tùy chọn)
+        alert("Đã sao chép: " + input.value);
+    }
+</script>

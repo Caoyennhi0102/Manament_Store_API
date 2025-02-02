@@ -23,13 +23,32 @@ namespace Manament_Store_API
                 },
                 namespaces: new[] { "Manament_Store_API.Controllers.Admin" }
                 );
+             routes.MapRoute(
+             name: "GetBankList",
+             url: "bank/list",
+             defaults: new { controller = "Bank", action = "GetBankList" }
+         );
+            routes.MapRoute(
+            name: "ContractDefault",
+            url: "{controller}/{action}/{id}",
+             defaults: new { controller = "Contract", action = "ContractCreate", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+             name: "CheckAccount",
+             url: "bank/check-account",
+            defaults: new { controller = "Bank", action = "CheckAccount" }
+         );
+
+
+
 
 
             routes.MapRoute(
-                name: "Default",
+                name: "SupplierDefault",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ProductCategory", action = "AddProductCategory", id = UrlParameter.Optional }
+                defaults: new { controller = "Supplier", action = "AddSupplier", id = UrlParameter.Optional }
             );
+
             
            
         }

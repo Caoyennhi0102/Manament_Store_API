@@ -22,6 +22,7 @@ namespace Manament_Store_API.Controllers
         {
             return View();
         }
+        // GET: ProductCategory/GetProductCategories
         [HttpGet]
         public JsonResult GetProductCategories()
         {
@@ -34,6 +35,7 @@ namespace Manament_Store_API.Controllers
             }).ToList();
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
+        // POST: ProductCategory/SearchCodeCategory
         [HttpPost]
         public JsonResult SearchCodeCategory(string codeCategory)
         {
@@ -163,7 +165,30 @@ namespace Manament_Store_API.Controllers
         [HttpPost]
         public ActionResult DeleteProductCategory(string codeCategoryID)
         {
-
+            try
+            {
+                if (string.IsNullOrEmpty(codeCategoryID))
+                {
+                    return Json(new { success = false, message = "Vui lòng nhập mã tìm kiếm" });
+                }
+                var category = _sqlConnectionServer.DanhMucSanPhams.Find(codeCategoryID);
+                if(category != null)
+                {
+                    var deletecategoryHH = _sqlConnectionServer.HangHoas.Where(c => c.MaDanhMucSP == codeCategoryID);
+                    if (deletecategoryHH.Any())
+                    {
+                        _sqlConnectionServer.HangHoas.RemoveRange(deletecategoryHH);
+                    }
+                    _sqlConnectionServer.DanhMucSanPhams.Remove(category);
+                    _sqlConnectionServer.SaveChanges();
+                    return Json(new { success = true, message = "Xóa danh mục thành công" });
+                }
+                return Json(new { success = false, message = "Xóa danh mục không thành công" });
+            }
+            catch(Exception ex)
+            {
+                return Json(new { success = false, message = $"Lỗi:{ex.Message}" });
+            }
         }
     }
 }

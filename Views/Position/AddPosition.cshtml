@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Manament_Store_API.Models.ChucVu
+@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";  // Đường dẫn Layout
 }
 @*
@@ -47,8 +48,8 @@
                 foreach (var chucVu in ViewBag.DSCV)
                 {
                     <tr>
-                        <td>@chucVu.MaBP</td> <!-- Hiển thị mã bộ phận -->
-                        <td>@chucVu.BoPhan?.TenBoPhan</td> <!-- Hiển thị tên bộ phận -->
+                        <td>@chucVu.MaBoPhan</td> <!-- Hiển thị mã bộ phận -->
+                        <td>@chucVu.BoPhan.TenBP</td> <!-- Hiển thị tên bộ phận -->
                         <td>@chucVu.MaChucVu</td> <!-- Hiển thị mã chức vụ -->
                         <td>@chucVu.TenChucVu</td> <!-- Hiển thị tên chức vụ -->
                     </tr>

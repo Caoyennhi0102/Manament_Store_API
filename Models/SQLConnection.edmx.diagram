@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fadc976cde304980b5a4a004f940a326" Name="Diagram1">
+      <Diagram DiagramId="fadc976cde304980b5a4a004f940a326" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="QLCHTLModel.BacLuong" Width="1.5" PointX="9.75" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.BoPhan" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.ChiTietHoaDon" Width="1.5" PointX="20" PointY="19.875" IsExpanded="true" />
@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="QLCHTLModel.ChiTietPhieuTra" Width="1.5" PointX="20" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.ChucVu" Width="1.5" PointX="5.25" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.Cong" Width="1.5" PointX="9.75" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTLModel.CuaHang" Width="1.5" PointX="0.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHTLModel.CuaHang" Width="1.5" PointX="17.875" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.DanhMucSanPham" Width="1.5" PointX="1.5" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.HangHoa" Width="1.5" PointX="0.75" PointY="17.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.HDLaoDong" Width="1.5" PointX="12" PointY="23.375" IsExpanded="true" />
@@ -22,17 +22,17 @@
         <EntityTypeShape EntityType="QLCHTLModel.KhuyenMai" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.KPI" Width="1.5" PointX="9.75" PointY="31.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.Luong" Width="1.5" PointX="12" PointY="27.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTLModel.NhaCungCap" Width="1.5" PointX="1.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHTLModel.NhaCungCap" Width="1.5" PointX="15.375" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.NhanVien" Width="1.5" PointX="7.5" PointY="22.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.PhieuNhapHang" Width="1.5" PointX="14.75" PointY="29.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTLModel.PhieuTraHang" Width="1.5" PointX="17.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHTLModel.PhieuTraHang" Width="2" PointX="17.25" PointY="24.875" IsExpanded="false" />
         <EntityTypeShape EntityType="QLCHTLModel.Pos" Width="1.5" PointX="17.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.QLCaNV" Width="1.5" PointX="15" PointY="23.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.Quyen" Width="1.5" PointX="15.5" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.ThongKeBanHang" Width="1.5" PointX="17.75" PointY="29" IsExpanded="true" />
         <EntityTypeShape EntityType="QLCHTLModel.User" Width="1.5" PointX="17.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLCHTLModel.YeuCauNghiPhep" Width="1.5" PointX="9.75" PointY="53.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLCHTLModel.YeuCauNghiPhep" Width="1.5" PointX="15.5" PointY="46.375" IsExpanded="true" />
         <AssociationConnector Association="QLCHTLModel.FK__BacLuong__MaNhan__49C3F6B7" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__HDLaoDong__Luong__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__Luong__LuongCoBa__628FA481" ManuallyRouted="false" />
@@ -55,7 +55,25 @@
         <AssociationConnector Association="QLCHTLModel.FK__QLCaNV__MaCongTh__571DF1D5" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__QLCaNV__MaCongTh__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__QLCaNV__MaCongTh__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="QLCHTLModel.FK__Kho__MaCuaHang__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLCHTLModel.FK__Kho__MaCuaHang__1332DBDC" ManuallyRouted="true" >
+          <ConnectorPoint PointX="18.625" PointY="28.835999348958335" />
+          <ConnectorPoint PointX="18.625" PointY="28.929749348958339" />
+          <ConnectorPoint PointX="17.134333913980889" PointY="28.929749348958339" />
+          <ConnectorPoint PointX="17.134333913980889" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="16.833333333333332" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="16.666666666666668" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="16.552084583333333" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="16.322916666666664" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="14.458333333333334" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="14.291666666666666" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="11.864583333333334" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="11.3125" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="11.3125" PointY="22.1875" />
+          <ConnectorPoint PointX="4.59375" PointY="22.1875" />
+          <ConnectorPoint PointX="4.59375" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="4.5" PointY="23.211293945312498" />
+        </AssociationConnector>
         <AssociationConnector Association="QLCHTLModel.FK__NhanVien__MaCuaH__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__Pos__MaCuaHang__160F4887" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__HangHoa__MaDanhM__6A30C649" ManuallyRouted="false" />
@@ -84,6 +102,8 @@
         <EntityTypeShape EntityType="QLCHTLModel.BanDich" Width="1.5" PointX="3" PointY="3.875" />
         <EntityTypeShape EntityType="QLCHTLModel.NgonNgu" Width="1.5" PointX="0.75" PointY="3.875" />
         <AssociationConnector Association="QLCHTLModel.FK__BanDich__IDNgonN__7EF6D905" />
+        <EntityTypeShape EntityType="QLCHTLModel.HopDong" Width="1.5" PointX="0.75" PointY="10.625" />
+        <AssociationConnector Association="QLCHTLModel.FK_NhaCungCap_HopDong" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

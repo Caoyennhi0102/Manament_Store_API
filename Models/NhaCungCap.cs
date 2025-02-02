@@ -25,17 +25,18 @@ namespace Manament_Store_API.Models
         public string MaNhaCungCap { get; set; }
         public string TenNhaCungCap { get; set; }
         public string DiaChi { get; set; }
-        public string TKThanhToan { get; set; }
-        public string NganHangTH { get; set; }
         public string SoDienThoai { get; set; }
         public string Email { get; set; }
         public string Fax { get; set; }
         public string Website { get; set; }
         public System.DateTime NgayThanhLap { get; set; }
-        public System.DateTime NgayTaoHopDong { get; set; }
-        public System.DateTime ThoiHanHopDong { get; set; }
         public string TrangThai { get; set; }
         public string GhiChu { get; set; }
+        public string MaSoThue { get; set; }
+        public string MaHopDong { get; set; }
+        public string SoTaiKhoan { get; set; }
+        public string NganHang { get; set; }
+        public string ChutaiKhoan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HangHoa> HangHoas { get; set; }
@@ -43,5 +44,6 @@ namespace Manament_Store_API.Models
         public virtual ICollection<PhieuNhapHang> PhieuNhapHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuTraHang> PhieuTraHangs { get; set; }
+        public virtual HopDong HopDong1 { get; set; }
     }
 }

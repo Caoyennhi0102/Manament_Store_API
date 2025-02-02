@@ -1,0 +1,39 @@
+﻿@model Manament_Store_API.Models.HopDong
+@{
+    ViewBag.Title = "ContractView";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>XEM HỢP ĐỒNG</h2>
+<div>
+    <h4>@Model.TenHopDong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nội Dung:</dt>
+        <dd>@Model.NoiDung</dd>
+
+        <dt>Ngày Lưu:</dt>
+        <dd>@Model.NgayLuu.ToString("dd/MM/yyyy")</dd>
+
+        <dt>Thời Hạn Hợp Đồng:</dt>
+        <dd>@Model.ThoiHanHop.ToString("dd/MM/yyyy")</dd>
+
+        <dt>Ngày Ký Hợp Đồng:</dt>
+        <dd>@Model.NgayKyHopDong.ToString("dd/MM/yyyy")</dd>
+
+        <dt>Hình Ảnh Hợp Đồng:</dt>
+        <dd>
+            <img src="@Model.DuongDan" alt="Hình Ảnh Hợp Đồng" style="max-width: 100%; height: auto;" />
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("In Hợp Đồng", "Print", new { id = Model.MaHopDong }, new { @class = "btn btn-primary" })
+</p>
+

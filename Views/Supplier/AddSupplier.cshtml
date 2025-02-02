@@ -1,0 +1,138 @@
+﻿@model Manament_Store_API.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "Thêm Nhà Cung Cấp";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>THÊM NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/AddSupplier.css">
+<form id="addSupplierForm">
+    <div class="form-group">
+        <label for="supplierName">Tên Nhà Cung Cấp:</label>
+        <input type="text" id="supplierName" name="supplierName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="supplierAddress">Địa Chỉ:</label>
+        <input type="text" id="supplierAddress" name="supplierAddress" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="supplierNumberPhone">Số Điện Thoại:</label>
+        <input type="text" id="supplierNumberPhone" name="supplierNumberPhone" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="supplierEmail">Email:</label>
+        <input type="email" id="supplierEmail" name="supplierEmail" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="supplierFax">Fax:</label>
+        <input type="text" id="supplierFax" name="supplierFax" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="supplierWebsite">Website:</label>
+        <input type="text" id="supplierWebsite" name="supplierWebsite" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="supplierDateofEstablishment">Ngày Thành Lập:</label>
+        <input type="date" id="supplierDateofEstablishment" name="supplierDateofEstablishment" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="taxCode">Mã Số Thuế:</label>
+        <input type="text" id="taxCode" name="taxCode" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="contractcode">Mã Hợp Đồng:</label>
+        <input type="text" id="contractcode" name="contractcode" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="bankName">Nhập Tên Ngân Hàng:</label>
+        <input type="text" id="bankName" name="bankName" class="form-control" required />
+    </div>
+    <style>
+        /* CSS cho cảnh báo */
+        .text-warning {
+            color: #ffc107; /* Màu vàng cảnh báo */
+            font-size: 0.875rem; /* Kích thước chữ nhỏ hơn */
+            display: block; /* Hiển thị trên một dòng riêng */
+            margin-top: 0.25rem; /* Khoảng cách với input phía trên */
+        }
+    </style>
+
+    <div class="form-group">
+        <label for="accountNumber">Nhập Số Tài Khoản Ngân Hàng:</label>
+        <input type="text" id="accountNumber" name="accountNumber" class="form-control" required />
+        <!-- Thêm đoạn text cảnh báo -->
+        <small class="text-warning"><Vui lòng kiểm tra số tài khoản trước khi nhập vào></small>
+    </div>
+    <div class="form-group">
+        <label for="Owen">Nhập Họ và Tên Chủ Tài Khoản</label>
+        <input type="text" id="Owen" name="Owen" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Status">Trạng Thái:</label>
+        <select id="Status" name="Status" class="form-control" required>
+            <option value="Còn Hợp Tác">Còn Hợp Tác</option>
+            <option value="Ngưng Hợp Tác">Ngưng Hợp Tác</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Note">Ghi Chú:</label>
+        <textarea id="Note" name="Note" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm Nhà Cung Cấp</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+            // Submit Form
+    $("#addSupplierForm").submit(function (e) {
+        e.preventDefault();
+
+        var formData = {
+            supplierName: $("#supplierName").val(),
+            supplierAddress: $("#supplierAddress").val(),
+            bankCode: $("#bankCode").val(),
+            accountNumber: $("#accountNumber").val(),
+            supplierNumberPhone: $("#supplierNumberPhone").val(),
+            supplierEmail: $("#supplierEmail").val(),
+            supplierFax: $("#supplierFax").val(),
+            supplierWebsite: $("#supplierWebsite").val(),
+            supplierDateofEstablishment: $("#supplierDateofEstablishment").val(),
+            taxCode: $("#taxCode").val(),
+            contractcode: $("#contractcode").val(),
+            bankName: $("#bankName").val(),
+            accountNumber: $("#accountNumber").val(),
+            Owen: $("#Owen").val();
+            Status: $("#Status").val(),
+            Note: $("#Note").val()
+        };
+
+        $.ajax({
+            url: "@Url.Action("AddSupplier", "Supplier")",
+            type: "POST",
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    alert("Thêm nhà cung cấp thành công!");
+                    window.location.href = "@Url.Action("Index", "Industry")";
+                } else {
+                    alert("Lỗi: " + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("Lỗi hệ thống: " + error);
+            }
+        });
+    });
+
+
+
+</script>

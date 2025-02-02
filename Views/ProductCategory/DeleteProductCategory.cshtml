@@ -1,0 +1,76 @@
+﻿@model Manament_Store_API.Models.DanhMucSanPham
+@{
+    ViewBag.Title = "DeleteProductCategory";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>XÓA DANH MỤC SẢN PHẨM</h2>
+<link rel="stylesheet" href="~/Content/DeleteProductCategory.css">
+<div class="container mt-4">
+    <!-- Form tìm kiếm -->
+    <div class="crad p-3 shadow-sm">
+        <h4 class="text-primary text-center">Tìm Kiếm Danh Mục Sản Phẩm</h4>
+        <form id="searchCategoryForm">
+            <div class="form-group text-center">
+                <input type="text" id="codeCategoryID" class="form-control w-50 mx-auto" placeholder="Nhập mã danh mục" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Tìm kiếm</button>
+        </form>
+        <p id="searchResult" class="text-center mt-3 text-danger"></p>
+    </div>
+    <!-- Hiển thị thông tin danh mục nếu tìm thấy -->
+    <div id="categoryDetails" class="mt-4 d-none card p-3 shadow-sm">
+        <h4 class="text-success text-center">Thông Tin Danh Mục Sản Phẩm</h4>
+        <p><strong>Mã danh mục:</strong> <span id="MaDanhMucSP"></span></p>
+        <p><strong>Tên danh mục:</strong> <span id="TenDanhMuc"></span></p>
+        <p><strong>Mô tả:</strong> <span id="MoTa"></span></p>
+        <p><strong>Ngày và Giờ:</strong> <span id="NgayvaGio"></span></p>
+        <button id="deleteCategoryBtn" class="btn btn-danger btn-block">Xóa danh mục</button>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Xử lý tìm kiếm danh mục
+        $('#searchCategoryForm').submit(function (e) {
+            e.preventDefault();
+            let codeCategory = $('#codeCategoryID').val().trim();
+
+            $.post("/ProductCategory/SearchCodeCategory", { codeCategory: codeCategory }, function (response) {
+                if (response.success) {
+                    $('#MaDanhMucSP').text(response.data.MaDanhMucSP);
+                    $('#TenDanhMuc').text(response.data.TenDanhMuc);
+                    $('#MoTa').text(response.data.MoTa);
+                    $('#NgayvaGio').text(response.data.NgayvaGio);
+                    $('#categoryDetails').removeClass('d-none');
+                    $('#searchResult').text("");
+                } else {
+                    $('#searchResult').text(response.message);
+                    $('#categoryDetails').addClass('d-none');
+                }
+            });
+        });
+
+        // Xử lý xóa danh mục
+        $('#deleteCategoryBtn').click(function () {
+            let codeCategoryID = $('#MaDanhMucSP').text();
+            if (!confirm("Bạn có chắc chắn muốn xóa danh mục này không?")) return;
+
+            $.post("/ProductCategory/DeleteProductCategory", { codeCategoryID: codeCategoryID }, function (response) {
+                alert(response.message);
+                if (response.success) {
+                    $('#categoryDetails').addClass('d-none');
+                    $('#codeCategoryID').val('');
+                }
+            });
+        });
+    });
+</script>
+

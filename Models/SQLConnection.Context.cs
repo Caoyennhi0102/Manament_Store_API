@@ -56,5 +56,6 @@ namespace Manament_Store_API.Models
         public virtual DbSet<ImageSetting> ImageSettings { get; set; }
         public virtual DbSet<BanDich> BanDiches { get; set; }
         public virtual DbSet<NgonNgu> NgonNgus { get; set; }
+        public virtual DbSet<HopDong> HopDongs { get; set; }
     }
 }

@@ -26,7 +26,19 @@
         <div class="info">
 
             <label for="soluongNhanVien">Số lượng nhân viên hiện tại:</label>
-            <input type="text" id="soluongNhanVien" name="soluongNhanVien" value="@ViewData["SLNV"]" readonly />
+            <input type="number" id="soluongNhanVien" name="soluongNhanVien" placeholder="Nhaập số lượng nhân viên" required />
+
+            @*
+        <input type="text" id="soluongNhanVien" name="soluongNhanVien" value="@ViewData["SLNV"]" readonly />
+            *@
+            <div class="form-group">
+                <label for="status">Trạng Thái:</label>
+                <select class="form-control" id="role" name="status" required>
+                    <option value="Close">Close</option>
+                    <option value="Open">Open</option>
+                   
+                </select>
+            </div>
         </div>
         <button type="submit">Thêm cửa hàng</button>
     </div>

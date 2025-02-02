@@ -76,7 +76,7 @@ namespace Manament_Store_API.Controllers
             var listCV = _sqlConnectionserver.ChucVus.Include(c => c.BoPhan).ToList();
             ViewBag.DSCV = listCV;
             var bophans = _sqlConnectionserver.BoPhans.ToList();
-            ViewBag.DSBoPhan = new SelectList(listCV, "MaBoPhan", "TenBoPhan");
+            ViewBag.DSBoPhan = new SelectList(bophans, "MaBoPhan", "TenBP");
             return View();
         }
         [HttpPost]

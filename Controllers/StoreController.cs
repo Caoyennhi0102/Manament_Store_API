@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace Manament_Store_API.Controllers
 {
@@ -85,7 +86,7 @@ namespace Manament_Store_API.Controllers
         // GET: Admin
 
         [HttpPost]
-        public ActionResult AddStore(string tenCH, string diaChi, string dienThoai, string email, string mst, int chTruong = 123)
+        public ActionResult AddStore(string tenCH, string status, string diaChi, string dienThoai, string email, string mst, int chTruong = 123)
         {
 
             // Kiểm tra tên cửa hàng có để trống hay không 
@@ -114,6 +115,12 @@ namespace Manament_Store_API.Controllers
             {
                 return Json(new { success = false, message = "Mã số thuế không hợp lệ .Vui lòng kiểm tra lại." });
             }
+            
+            var listStatus = new List<string> { "Close", "Open" };
+            if (!listStatus.Contains(status))
+            {
+                return Json(new { success = false, message = "Vui lòng chọn trạng thái hợp lệ" });
+            }
             /*
             var CHTruong = _sqlConnectionserver.NhanViens.FirstOrDefault(nv => nv.MaNhanVien == chTruong);
             if (CHTruong == null)
@@ -124,12 +131,13 @@ namespace Manament_Store_API.Controllers
             var IsStore = new Service.StoreCode();
             int maCH = IsStore.GenerateCuaHangId();
             string formattedIdStore = IsStore.GetFormattedCuaHangId(maCH);
-            int soluongNhanVien = _sqlConnectionserver.NhanViens.Count(nv => nv.MaCuaHang == 0);
+
+          //  int soluongNhanVien = _sqlConnectionserver.NhanViens.Count(nv => nv.MaCuaHang == 0);
             /*
             // Truyền dữ liệu qua ViewData
             ViewData["SLNV"] = soluongNhanVien;
             */
-            ViewData["SLNV"] = soluongNhanVien;
+           
             var newStore = new CuaHang
             {
                 MaCuaHang = maCH,
@@ -138,8 +146,9 @@ namespace Manament_Store_API.Controllers
                 DienThoai = dienThoai,
                 Email = email,
                 MST = mst,
-                CHTruong = 123,
-                SLNV = soluongNhanVien
+                CHTruong = chTruong,
+                SLNV = 5,
+                TrangThai = status
             };
             _sqlConnectionserver.CuaHangs.Add(newStore);
             _sqlConnectionserver.SaveChanges();

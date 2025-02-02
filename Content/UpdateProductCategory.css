@@ -1,0 +1,132 @@
+﻿/* Thiết lập chung */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Form tìm kiếm */
+#searchCategoryForm {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Kết quả tìm kiếm */
+#searchResult {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#updateForm {
+    width: 80%; /* Tăng chiều rộng của form */
+    max-width: 800px; /* Giới hạn tối đa để không bị quá lớn */
+    margin: 0 auto; /* Căn giữa */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#updateCategoryForm .form-group input,
+#updateCategoryForm .form-group textarea {
+    width: 100%; /* Đảm bảo ô nhập chiếm hết phần có thể */
+}
+    #updateForm h3 {
+        text-align: center;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+
+    #updateForm .form-group label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    #updateForm .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    #updateForm textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    #searchCategoryForm, #updateForm, #searchResult {
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 14px;
+    }
+}

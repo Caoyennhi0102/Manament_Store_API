@@ -152,6 +152,18 @@
           <Property Name="PhuongThucThanhToan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="HopDong">
+          <Key>
+            <PropertyRef Name="MaHopDong" />
+          </Key>
+          <Property Name="MaHopDong" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenHopDong" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NoiDung" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NgayLuu" Type="date" Nullable="false" />
+          <Property Name="DuongDan" Type="nvarchar(max)" />
+          <Property Name="ThoiHanHop" Type="date" Nullable="false" />
+          <Property Name="NgayKyHopDong" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="ImageSetting">
           <Key>
             <PropertyRef Name="IDAnh" />
@@ -243,17 +255,18 @@
           <Property Name="MaNhaCungCap" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TenNhaCungCap" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="TKThanhToan" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="NganHangTH" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SoDienThoai" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Fax" Type="varchar" MaxLength="15" />
           <Property Name="Website" Type="nvarchar" MaxLength="255" />
           <Property Name="NgayThanhLap" Type="date" Nullable="false" />
-          <Property Name="NgayTaoHopDong" Type="date" Nullable="false" />
-          <Property Name="ThoiHanHopDong" Type="date" Nullable="false" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+          <Property Name="MaSoThue" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MaHopDong" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoTaiKhoan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NganHang" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ChutaiKhoan" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -944,15 +957,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CuaHang_NhanVien">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="CuaHang" Type="Self.CuaHang" Multiplicity="*" />
+        <Association Name="FK_NhaCungCap_HopDong">
+          <End Role="HopDong" Type="Self.HopDong" Multiplicity="1" />
+          <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
+            <Principal Role="HopDong">
+              <PropertyRef Name="MaHopDong" />
             </Principal>
-            <Dependent Role="CuaHang">
-              <PropertyRef Name="CHTruong" />
+            <Dependent Role="NhaCungCap">
+              <PropertyRef Name="MaHopDong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -982,6 +995,7 @@
           <EntitySet Name="HangHoa" EntityType="Self.HangHoa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HDLaoDong" EntityType="Self.HDLaoDong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HopDong" EntityType="Self.HopDong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageSetting" EntityType="Self.ImageSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kho" EntityType="Self.Kho" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHThanThiet" EntityType="Self.KHThanThiet" Schema="dbo" store:Type="Tables" />
@@ -1184,9 +1198,9 @@
             <End Role="Quyen" EntitySet="Quyen" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_CuaHang_NhanVien" Association="Self.FK_CuaHang_NhanVien">
-            <End Role="NhanVien" EntitySet="NhanVien" />
-            <End Role="CuaHang" EntitySet="CuaHang" />
+          <AssociationSet Name="FK_NhaCungCap_HopDong" Association="Self.FK_NhaCungCap_HopDong">
+            <End Role="HopDong" EntitySet="HopDong" />
+            <End Role="NhaCungCap" EntitySet="NhaCungCap" />
           </AssociationSet>
           <AssociationSet Name="FK_YeuCauNghiPhep_NhanVien" Association="Self.FK_YeuCauNghiPhep_NhanVien">
             <End Role="NhanVien" EntitySet="NhanVien" />
@@ -1460,20 +1474,22 @@
           <Property Name="MaNhaCungCap" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenNhaCungCap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TKThanhToan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NganHangTH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NgayThanhLap" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NgayTaoHopDong" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ThoiHanHopDong" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HangHoas" Relationship="Self.FK__HangHoa__MaNhaCu__6B24EA82" FromRole="NhaCungCap" ToRole="HangHoa" />
           <NavigationProperty Name="PhieuNhapHangs" Relationship="Self.FK__PhieuNhap__MaNha__71D1E811" FromRole="NhaCungCap" ToRole="PhieuNhapHang" />
           <NavigationProperty Name="PhieuTraHangs" Relationship="Self.FK__PhieuTraH__MaNha__797309D9" FromRole="NhaCungCap" ToRole="PhieuTraHang" />
+          <Property Name="MaSoThue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaHopDong" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HopDong1" Relationship="QLCHTLModel.FK_NhaCungCap_HopDong" FromRole="NhaCungCap" ToRole="HopDong" />
+          <Property Name="SoTaiKhoan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NganHang" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ChutaiKhoan" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -2427,6 +2443,11 @@
             <End Role="NgonNgu" EntitySet="NgonNgus" />
             <End Role="BanDich" EntitySet="BanDiches" />
           </AssociationSet>
+          <EntitySet Name="HopDongs" EntityType="QLCHTLModel.HopDong" />
+          <AssociationSet Name="FK_NhaCungCap_HopDong" Association="QLCHTLModel.FK_NhaCungCap_HopDong">
+            <End Role="HopDong" EntitySet="HopDongs" />
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_CuaHang_NhanVien">
           <End Type="QLCHTLModel.NhanVien" Role="NhanVien" Multiplicity="1" />
@@ -2478,6 +2499,31 @@
             </Principal>
             <Dependent Role="BanDich">
               <PropertyRef Name="IDNgonNgu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HopDong">
+          <Key>
+            <PropertyRef Name="MaHopDong" />
+          </Key>
+          <Property Name="MaHopDong" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TenHopDong" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayLuu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DuongDan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhaCungCaps" Relationship="QLCHTLModel.FK_NhaCungCap_HopDong" FromRole="HopDong" ToRole="NhaCungCap" />
+          <Property Name="ThoiHanHop" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKyHopDong" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <Association Name="FK_NhaCungCap_HopDong">
+          <End Type="QLCHTLModel.HopDong" Role="HopDong" Multiplicity="1" />
+          <End Type="QLCHTLModel.NhaCungCap" Role="NhaCungCap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HopDong">
+              <PropertyRef Name="MaHopDong" />
+            </Principal>
+            <Dependent Role="NhaCungCap">
+              <PropertyRef Name="MaHopDong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2708,18 +2754,19 @@
           <EntitySetMapping Name="NhaCungCaps">
             <EntityTypeMapping TypeName="QLCHTLModel.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
+                <ScalarProperty Name="ChutaiKhoan" ColumnName="ChutaiKhoan" />
+                <ScalarProperty Name="NganHang" ColumnName="NganHang" />
+                <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
+                <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
+                <ScalarProperty Name="MaSoThue" ColumnName="MaSoThue" />
                 <ScalarProperty Name="MaNhaCungCap" ColumnName="MaNhaCungCap" />
                 <ScalarProperty Name="TenNhaCungCap" ColumnName="TenNhaCungCap" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="TKThanhToan" ColumnName="TKThanhToan" />
-                <ScalarProperty Name="NganHangTH" ColumnName="NganHangTH" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Fax" ColumnName="Fax" />
                 <ScalarProperty Name="Website" ColumnName="Website" />
                 <ScalarProperty Name="NgayThanhLap" ColumnName="NgayThanhLap" />
-                <ScalarProperty Name="NgayTaoHopDong" ColumnName="NgayTaoHopDong" />
-                <ScalarProperty Name="ThoiHanHopDong" ColumnName="ThoiHanHopDong" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
               </MappingFragment>
@@ -2902,7 +2949,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="HopDongs">
+            <EntityTypeMapping TypeName="QLCHTLModel.HopDong">
+              <MappingFragment StoreEntitySet="HopDong">
+                <ScalarProperty Name="NgayKyHopDong" ColumnName="NgayKyHopDong" />
+                <ScalarProperty Name="ThoiHanHop" ColumnName="ThoiHanHop" />
+                <ScalarProperty Name="DuongDan" ColumnName="DuongDan" />
+                <ScalarProperty Name="NgayLuu" ColumnName="NgayLuu" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="TenHopDong" ColumnName="TenHopDong" />
+                <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
