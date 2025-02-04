@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "DeleteSupplier";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>XÓA NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/DeleteSupplier.css">
+<div class="form-group">
+    <label for="supplierID">Nhập mã nhà cung cấp:</label>
+    <input type="text" id="supplierID" class="form-control" placeholder="Nhập mã nhà cung cấp">
+    <button id="btnSearch" class="btn btn-primary mt-2">Tìm Kiếm</button>
+</div>
+<div id="supplierInfo" class="mt-3" style="display: none;">
+    <h4>Thông Tin Nhà Cung Cấp</h4>
+    <table class="table table-bordered">
+        <tbody>
+            <tr><th>Tên</th><td id="TenNhaCungCap"></td></tr>
+            <tr><th>Mã Hợp Đồng</th><td id="MaHopDong"></td></tr>
+            <tr><th>Địa Chỉ</th><td id="DiaChi"></td></tr>
+            <tr><th>Số Điện Thoại</th><td id="SoDienThoai"></td></tr>
+            <tr><th>Email</th><td id="Email"></td></tr>
+            <tr><th>Mã Số Thuế</th><td id="MaSoThue"></td></tr>
+            <tr><th>Fax</th><td id="Fax"></td></tr>
+            <tr><th>Website</th><td id="Website"></td></tr>
+            <tr><th>Ngày Thành Lập</th><td id="NgayThanhLap"></td></tr>
+            <tr><th>Ngân Hàng</th><td id="NganHang"></td></tr>
+            <tr><th>Số Tài Khoản</th><td id="SoTaiKhoan"></td></tr>
+            <tr><th>Chủ Tài Khoản</th><td id="ChutaiKhoan"></td></tr>
+            <tr><th>Trạng Thái</th><td id="TrangThai"></td></tr>
+        </tbody>
+    </table>
+    <button id="btnDelete" class="btn btn-danger">Xóa Nhà Cung Cấp</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>$(document).ready(function () {
+        $("#btnSearch").click(function () {
+            var supplierID = $("#supplierID").val();
+            if (supplierID === "") {
+                alert("Vui lòng nhập mã nhà cung cấp");
+                return;
+            }
+
+            $.post("/Supplier/SearchSupplierID", { supplierID: supplierID }, function (response) {
+                if (response.success) {
+                    $("#supplierInfo").show();
+                    $("#TenNhaCungCap").text(response.data.TenNhaCungCap);
+                    $("#MaHopDong").text(response.data.MaHopDong);
+                    $("#DiaChi").text(response.data.DiaChi);
+                    $("#SoDienThoai").text(response.data.SoDienThoai);
+                    $("#Email").text(response.data.Email);
+                    $("#MaSoThue").text(response.data.MaSoThue);
+                    $("#Fax").text(response.data.Fax);
+                    $("#Website").text(response.data.Website);
+                    $("#NgayThanhLap").text(response.data.NgayThanhLap);
+                    $("#NganHang").text(response.data.NganHang);
+                    $("#SoTaiKhoan").text(response.data.SoTaiKhoan);
+                    $("#ChutaiKhoan").text(response.data.ChutaiKhoan);
+                    $("#TrangThai").text(response.data.TrangThai);
+                } else {
+                    alert(response.message);
+                    $("#supplierInfo").hide();
+                }
+            });
+        });
+
+        $("#btnDelete").click(function () {
+            var supplierID = $("#supplierID").val();
+            if (!confirm("Bạn có chắc chắn muốn xóa nhà cung cấp này?")) {
+                return;
+            }
+
+            $.post("/Supplier/DeleteSupplier", { supplierId: supplierID }, function (response) {
+                alert(response.message);
+                if (response.success) {
+                    $("#supplierInfo").hide();
+                    $("#supplierID").val("");
+                }
+            });
+        });
+    });</script>
+
+

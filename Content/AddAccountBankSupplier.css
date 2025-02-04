@@ -70,3 +70,39 @@ h2{
     .copy-button:hover {
         background-color: #218838;
     }
+#bankCode {
+    border-color: #80bdff; /* Màu xanh nhạt */
+    background-color: #e9ecef; /* Màu xám nhạt */
+    color: #495057; /* Màu chữ đen */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Hiệu ứng khi focus */
+}
+    #bankCode:focus {
+        border-color: #66b3ff; /* Màu xanh đậm hơn khi focus */
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Đổ bóng khi focus */
+    }
+    /* Style cho các option trong select */
+    #bankCode option {
+        background-color: white; /* Màu nền trắng cho option */
+        color: black; /* Màu chữ đen cho option */
+    }
+/* Style cho input kết quả và nút sao chép */
+.result-textbox {
+    border-color: #ced4da; /* Màu xám nhạt */
+    background-color: #f8f9fa; /* Màu xám nhạt hơn */
+    color: #495057; /* Màu chữ đen */
+    margin-right: 10px; /* Khoảng cách với nút sao chép */
+}
+.copy-button {
+    background-color: #007bff; /* Màu xanh dương */
+    border-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer; /* Hiển thị con trỏ tay khi hover */
+}
+
+    .copy-button:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }

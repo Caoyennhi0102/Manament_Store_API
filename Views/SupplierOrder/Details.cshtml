@@ -1,0 +1,43 @@
+﻿@model Manament_Store_API.Models.ChiTietDonHangNCC
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>CHI TIẾT ĐƠN HÀNG NHÀ CUNG CẤP</h2>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Mã Ch Tiết Đơn Hàng</dt>
+        <dd>@Model.MaChiTietDonHang</dd>
+        <div>Mã Đặt Hàng</div>
+        <dd>@Model.MaDatHang</dd>
+        <dt>Mã Sản Phẩm</dt>
+        <dd>@Model.MaSanPham</dd>
+        <dt>Tên Sản Phẩm</dt>
+        <dd>@Model.TenSanPham</dd>
+        <dt>Đơn Vị Tính</dt>
+        <dd>@Model.DonViTinh</dd>
+        <dt>Số Lượng</dt>
+        <dd>@Model.SoLuong</dd>
+        <dt>Đơn Giá</dt>
+        <dd>@Model.DonGia</dd>
+        <dt>Chiết Khấu</dt>
+        <dd>@Model.ChietKhau</dd>
+        <dt>Thành Tiền</dt>
+        <dd>@Model.ThanhTien</dd>
+        <dt>Ngày Sản Xuất</dt>
+        <dd>@Model.NgaySX</dd>
+        <dt>Ngày Hết Hạn</dt>
+        <dd>@Model.NgayHH</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Cập Nhật Thông Tin Chi Tiết", "EditOrder", new {id = Model.MaDatHang})|
+    @Html.ActionLink("Quay lại", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Manament_Store_API.Models.DonHangNCC>
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>DANH SÁCH ĐƠN ĐẶT NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/SupplierListOrder.css">
+<p>
+    @Html.ActionLink("Tạo Đơn Đặt Hàng Nhà Cung Cấp Mới", "CreateOrder")
+</p>
+<table class="table">
+    <tr>
+        <th>Mã Đặt Hàng</th>
+        <th>Nhà Cung Cấp</th>
+        <th>Cửa Hàng</th>
+        <th>Nhân Viên Đặt Hàng</th>
+        <th>Ngày Đặt Hàng</th>
+        <th>Ngày Giao Hàng Dự Kiến</th>
+        <th>Tổng Tiền</th>
+        <th>Trạng Thái</th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.MaDatHang</td>
+            <td>@item.NhaCungCap.TenNhaCungCap</td>
+            <td>@item.CuaHang.TenCH</td>
+            <td>@item.NhanVien.HoTen</td>
+            <td>@item.NgayDatHang</td>
+            <td>@item.NgayGHDuKien</td>
+            <td>@item.TongTien</td>
+            <td>@item.TrangThai</td>
+            <td>
+                @Html.ActionLink("Cập Nhật Đơn Hàng", "EditOrder", new { id = item.MaDatHang }) |
+                @Html.ActionLink("Chi Tiết Đơn Hàng", "Details", new { id = item.MaDatHang }) |
+                @Html.ActionLink("Hủy Đơn Hàng", "Delete", new { id = item.MaDatHang })
+
+            </td>
+            
+        </tr>
+    }
+</table>
+

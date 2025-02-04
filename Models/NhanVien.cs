@@ -31,6 +31,7 @@ namespace Manament_Store_API.Models
             this.Users = new HashSet<User>();
             this.YeuCauNghiPheps = new HashSet<YeuCauNghiPhep>();
             this.CuaHangs = new HashSet<CuaHang>();
+            this.DonHangNCCs = new HashSet<DonHangNCC>();
         }
     
         public int MaNhanVien { get; set; }
@@ -85,5 +86,7 @@ namespace Manament_Store_API.Models
         public virtual ICollection<YeuCauNghiPhep> YeuCauNghiPheps { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CuaHang> CuaHangs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHangNCC> DonHangNCCs { get; set; }
     }
 }

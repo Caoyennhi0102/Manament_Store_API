@@ -20,6 +20,7 @@ namespace Manament_Store_API.Models
             this.HangHoas = new HashSet<HangHoa>();
             this.PhieuNhapHangs = new HashSet<PhieuNhapHang>();
             this.PhieuTraHangs = new HashSet<PhieuTraHang>();
+            this.DonHangNCCs = new HashSet<DonHangNCC>();
         }
     
         public string MaNhaCungCap { get; set; }
@@ -45,5 +46,7 @@ namespace Manament_Store_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuTraHang> PhieuTraHangs { get; set; }
         public virtual HopDong HopDong1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DonHangNCC> DonHangNCCs { get; set; }
     }
 }

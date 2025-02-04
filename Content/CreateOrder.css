@@ -1,0 +1,115 @@
+﻿.btn-default i {
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
+    font-size: 1.2em; /* Kích thước biểu tượng */
+}
+/* Style cho form */
+.form-horizontal {
+    margin-top: 20px; /* Khoảng cách trên của form */
+}
+
+    .form-horizontal h4 {
+        margin-bottom: 15px; /* Khoảng cách dưới của tiêu đề */
+        color: #333; /* Màu chữ tiêu đề */
+    }
+
+.form-group {
+    margin-bottom: 15px; /* Khoảng cách dưới của mỗi nhóm trường */
+}
+
+.control-label {
+    font-weight: bold; /* Chữ in đậm cho label */
+    text-align: left; /* Căn trái label */
+}
+
+.form-control {
+    border-radius: 5px; /* Góc bo tròn cho input */
+    padding: 8px; /* Padding cho input */
+    border: 1px solid #ccc; /* Viền cho input */
+    box-shadow: none; /* Loại bỏ box shadow mặc định */
+}
+
+    .form-control:focus {
+        border-color: #80bdff; /* Màu viền khi focus */
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Box shadow khi focus */
+    }
+
+.is-invalid { /* Style cho input khi bị lỗi */
+    border-color: #dc3545; /* Màu viền đỏ */
+}
+
+.text-danger {
+    color: #dc3545; /* Màu chữ đỏ cho thông báo lỗi */
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    margin-top: 5px; /* Khoảng cách trên của thông báo lỗi */
+}
+
+/* Style cho nút */
+.btn {
+    border-radius: 5px; /* Góc bo tròn cho nút */
+    padding: 8px 15px; /* Padding cho nút */
+    font-weight: bold; /* Chữ in đậm cho nút */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Màu nền xanh */
+    border-color: #007bff; /* Màu viền xanh */
+    color: #fff; /* Màu chữ trắng */
+}
+
+    .btn-primary:hover {
+        background-color: #0069d9; /* Màu nền xanh đậm hơn khi hover */
+        border-color: #0062cc; /* Màu viền xanh đậm hơn khi hover */
+    }
+
+.btn-danger {
+    background-color: #dc3545; /* Màu nền đỏ */
+    border-color: #dc3545; /* Màu viền đỏ */
+    color: #fff; /* Màu chữ trắng */
+}
+
+    .btn-danger:hover {
+        background-color: #c30010; /* Màu nền đỏ đậm hơn khi hover */
+        border-color: #bd2130; /* Màu viền đỏ đậm hơn khi hover */
+    }
+
+.btn-default {
+    background-color: #fff; /* Màu nền trắng */
+    border-color: #ccc; /* Màu viền xám */
+    color: #333; /* Màu chữ đen */
+}
+
+    .btn-default:hover {
+        background-color: #f0f0f0; /* Màu nền xám nhạt hơn khi hover */
+        border-color: #ccc; /* Màu viền xám */
+    }
+
+/* Style cho bảng chi tiết */
+#chiTietDonHangNCCs {
+    border: 1px solid #ccc; /* Viền cho bảng */
+    padding: 10px; /* Padding cho bảng */
+    margin-bottom: 20px; /* Khoảng cách dưới của bảng */
+}
+
+.chiTietDonHangNCC {
+    border-bottom: 1px solid #ccc; /* Viền dưới cho mỗi dòng */
+    padding-bottom: 10px; /* Padding dưới cho mỗi dòng */
+    margin-bottom: 10px; /* Khoảng cách dưới cho mỗi dòng */
+}
+
+    .chiTietDonHangNCC:last-child {
+        border-bottom: none; /* Loại bỏ viền dưới cho dòng cuối cùng */
+    }
+
+
+/* Style cho link quay lại */
+a {
+    color: #007bff; /* Màu chữ xanh */
+    text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+    a:hover {
+        text-decoration: underline; /* Gạch chân khi hover */
+    }

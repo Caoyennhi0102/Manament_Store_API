@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "SupplierList";
+   
+}
+@{
+
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+
+}
+
+@*
+
+    @{
+
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+
+    }
+
+*@
+<h2>DANH SÁCH NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/SupplierList.css" />
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table table-bordered table-hover">
+    @* Added Bootstrap classes *@
+    <thead>
+        <tr>
+            <th>Mã NCC</th>
+            <th>Tên Nhà Cung Cấp</th>
+            <th>Mã Hợp Đồng</th>
+            <th>Địa Chỉ</th>
+            <th>Số Điện Thoại</th>
+            <th>Email</th>
+            <th>Mã Số Thuế</th>
+            <th>Fax</th>
+            <th>Website</th>
+            <th>Ngày Thành Lập</th>
+            <th>Ngân Hàng</th>
+            <th>Số Tài Khoản</th>
+            <th>Chủ Tài Khoản</th>
+            <th>Trạng Thái</th>
+            <th>Ghi Chú</th> @* Added all columns *@
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any()) // Check for null and empty list
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaNhaCungCap</td>
+                    <td>@item.TenNhaCungCap</td>
+                    <td>@item.MaHopDong</td>
+                    <td>@item.DiaChi</td>
+                    <td>@item.SoDienThoai</td>
+                    <td>@item.Email</td>
+                    <td>@item.MaSoThue</td>
+                    <td>@item.Fax</td>
+                    <td>@item.Website</td>
+                    <td>@item.NgayThanhLap?.ToString("dd/MM/yyyy")</td> @* Format date *@
+                    <td>@item.NganHang</td>
+                    <td>@item.SoTaiKhoan</td>
+                    <td>@item.ChutaiKhoan</td>
+                    <td>@item.TrangThai</td>
+                    <td>@item.GhiChu</td> @* Added all columns *@
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="15">Không có dữ liệu nhà cung cấp.</td> @* colspan for all columns *@
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("PrintSupplierList", "Supplier")" class="btn btn-primary">
+    <i class="bi-printer-fill"></i> In danh sách
+</a>
+
+
+    <script>
+        $(document).ready(function () {
+            // Check if there's an error message and scroll to it
+            if ($('.alert-danger').length) {
+                $('html, body').animate({
+                    scrollTop: $('.alert-danger').offset().top
+                }, 500); // Adjust scroll speed as needed
+            }
+        });
+    </script>

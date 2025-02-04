@@ -1,0 +1,395 @@
+﻿@model Manament_Store_API.Models.DonHangNCCViewModel
+
+@{
+    ViewBag.Title = "Tạo mới đơn hàng";
+}
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>Tạo mới đơn hàng</h2>
+<link rel="stylesheet" href="~/Content/CreateOrder.css" />
+<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin đơn hàng</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Mã nhà cung cấp -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.MaNhaCungCap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DonHangNCC.MaNhaCungCap, (SelectList)ViewBag.MaNhaCungCap, "Chọn nhà cung cấp", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhaCungCap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Mã cửa hàng -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.MaCuaHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DonHangNCC.MaCuaHang, (SelectList)ViewBag.MaCuaHang, "Chọn cửa hàng", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.MaCuaHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Mã nhân viên -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.MaNhanVien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DonHangNCC.MaNhanVien, (SelectList)ViewBag.MaNhanVien, "Chọn nhân viên", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhanVien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Ngày đặt hàng -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.NgayDatHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonHangNCC.NgayDatHang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.NgayDatHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Ngày giao hàng dự kiến -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.NgayGHDuKien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonHangNCC.NgayGHDuKien, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.NgayGHDuKien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Ghi chú -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.DonHangNCC.GhiChu, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Trạng thái -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DonHangNCC.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DonHangNCC.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DonHangNCC.TrangThai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Chi tiết đơn hàng -->
+        <h4>Chi tiết đơn hàng</h4>
+        <hr />
+
+        <div id="chiTietDonHangNCCs">
+            @for (int i = 0; i < Model.ChiTietDonHangNCCs.Count; i++)
+            {
+                <div class="chiTietDonHangNCC">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].SoLuong, new { htmlAttributes = new { @class = "form-control soLuong", @onchange = "calculateAmount(this)" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].SoLuong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonGia, new { htmlAttributes = new { @class = "form-control donGia", @onchange = "calculateAmount(this)" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonGia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, new { htmlAttributes = new { @class = "form-control thanhTien", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgaySX, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgaySX, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgaySX, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgayHH, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgayHH, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgayHH, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Tổng Tiền", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="tongTien" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
+                    <hr />
+                </div>
+            }
+        </div>
+
+        <!-- Nút thêm chi tiết -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" id="addChiTiet" class="btn btn-primary">Thêm chi tiết</button>
+            </div>
+        </div>
+
+        <!-- Nút lưu -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+        <a href="@Url.Action("PrintOrder", "SupplierOrder", new { id = Model.DonHangNCC.MaDatHang })"
+           class="btn btn-primary" target="_blank">
+            In Hóa Đơn
+        </a>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại", "Index")
+</div>
+
+
+<script>
+
+
+    $(document).ready(function () {
+        // Tính thành tiền
+        function calculateAmount(row) {
+            var soLuong = parseFloat(row.find(".soLuong").val());
+            var donGia = parseFloat(row.find(".donGia").val());
+            var thanhTien = isNaN(soLuong) || isNaN(donGia) ? 0 : soLuong * donGia;
+            row.find(".thanhTien").val(thanhTien.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }));
+        }
+
+        // Gọi calculateAmount khi load trang
+        $(".chiTietDonHangNCC").each(function () {
+            calculateAmount($(this));
+        });
+
+        $(document).on("change", ".soLuong, .donGia", function () {
+            calculateAmount($(this).closest(".chiTietDonHangNCC"));
+        });
+
+        // Thêm chi tiết đơn hàng
+        $("#addChiTiet").click(function () {
+            var index = $("#chiTietDonHangNCCs .chiTietDonHangNCC").length;
+            var newChiTiet = `
+                    <div class="chiTietDonHangNCC">
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__MaSanPham">Mã sản phẩm</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" name="ChiTietDonHangNCCs[${index}].MaSanPham" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__TenSanPham">Tên sản phẩm</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" name="ChiTietDonHangNCCs[${index}].TenSanPham" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__SoLuong">Số lượng</label>
+                            <div class="col-md-10">
+                                <input class="form-control soLuong" type="number" name="ChiTietDonHangNCCs[${index}].SoLuong" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__DonGia">Đơn giá</label>
+                            <div class="col-md-10">
+                                <input class="form-control donGia" type="number" name="ChiTietDonHangNCCs[${index}].DonGia" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__DonViTinh">Đơn vị tính</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" name="ChiTietDonHangNCCs[${index}].DonViTinh" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__ThanhTien">Thành tiền</label>
+                            <div class="col-md-10">
+                                <input class="form-control thanhTien" type="text" name="ChiTietDonHangNCCs[${index}].ThanhTien" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__ChietKhau">Chiết khấu</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="number" name="ChiTietDonHangNCCs[${index}].ChietKhau" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__NgaySX">Ngày sản xuất</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" name="ChiTietDonHangNCCs[${index}].NgaySX" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2" for="ChiTietDonHangNCCs_${index}__NgayHH">Ngày hết hạn</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" name="ChiTietDonHangNCCs[${index}].NgayHH" required />
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
+                        <hr />
+                    </div>
+                `;
+            $("#chiTietDonHangNCCs").append(newChiTiet);
+        });
+
+        // Xóa chi tiết đơn hàng
+        $(document).on("click", ".removeChiTiet", function () {
+            $(this).closest(".chiTietDonHangNCC").remove();
+        });
+
+        // Kiểm tra dữ liệu trước khi submit form
+        $("form").submit(function (event) {
+            var isValid = true;
+
+            // Kiểm tra các trường bắt buộc trong thông tin chung
+            $("input[required], select[required]").each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                    $(this).addClass("is-invalid");
+                } else {
+                    $(this).removeClass("is-invalid");
+                }
+            });
+
+            // Kiểm tra các trường bắt buộc trong chi tiết đơn hàng
+            $(".chiTietDonHangNCC").each(function () {
+                $(this).find("input[required]").each(function () {
+                    if ($(this).val() === "") {
+                        isValid = false;
+                        $(this).addClass("is-invalid");
+                    } else {
+                        $(this).removeClass("is-invalid");
+                    }
+                });
+            });
+
+            if (!isValid) {
+                event.preventDefault(); // Ngăn form submit
+                alert("Vui lòng nhập đầy đủ thông tin bắt buộc.");
+            }
+        });
+    });
+</script>
+<script>
+    
+        function calculateAmount(element) {
+        var row = $(element).closest(".chiTietDonHangNCC");
+        var soLuong = parseFloat(row.find(".soLuong").val()) || 0;
+        var donGia = parseFloat(row.find(".donGia").val()) || 0;
+        var thanhTien = soLuong * donGia;
+
+        // Gán giá trị vào ô thành tiền của sản phẩm
+        row.find(".thanhTien").val(thanhTien.toFixed(2));
+
+        // Cập nhật tổng tiền
+        calculateTotal();
+    }
+
+        function calculateTotal() {
+        var total = 0;
+        $(".thanhTien").each(function () {
+            total += parseFloat($(this).val()) || 0;
+        });
+
+        $("#tongTien").val(total.toFixed(2));
+    }
+
+        function validateForm() {
+        var isValid = true;
+        var hasData = false;
+
+        $(".chiTietDonHangNCC").each(function () {
+            var soLuong = $(this).find(".soLuong").val();
+        var donGia = $(this).find(".donGia").val();
+
+        if (soLuong.trim() === "" || donGia.trim() === "") {
+            alert("Vui lòng nhập đầy đủ Số lượng và Đơn giá!");
+        isValid = false;
+        return false; // Dừng kiểm tra nếu có lỗi
+            }
+
+            if (parseFloat(soLuong) > 0 && parseFloat(donGia) > 0) {
+            hasData = true;
+            }
+        });
+
+        if (!hasData) {
+            alert("Chưa nhập dữ liệu!");
+        return false;
+        }
+
+        return isValid;
+    }
+
+        $(document).ready(function () {
+            calculateTotal();
+
+        $("#btnLuu").click(function (event) {
+            if (!validateForm()) {
+            event.preventDefault(); // Ngăn form submit nếu có lỗi
+            }
+        });
+    });
+</script>
+
+
+
+

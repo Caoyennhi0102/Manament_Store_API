@@ -1,0 +1,63 @@
+﻿/* Style cho tiêu đề trang */
+h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    color: red; /* Màu chữ đậm */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    font-weight:bold;
+}
+
+/* Style cho form */
+.form-group {
+    margin-bottom: 15px; /* Khoảng cách giữa các phần tử form */
+}
+
+label {
+    font-weight: bold; /* Chữ in đậm cho label */
+}
+
+.form-control {
+    border-radius: 5px; /* Góc bo tròn cho input */
+    padding: 10px; /* Khoảng cách bên trong input */
+}
+
+textarea.form-control {
+    resize: vertical; /* Cho phép thay đổi chiều cao textarea */
+}
+
+input[type="date"] {
+    /* Style cho datepicker nếu cần */
+}
+
+input[type="file"] {
+    /* Style cho input file nếu cần */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Màu nền xanh dương */
+    border-color: #007bff; /* Màu viền xanh dương */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Điều chỉnh padding cho nút */
+    border-radius: 5px; /* Góc bo tròn cho nút */
+}
+
+    .btn-primary:hover {
+        background-color: #0069d9; /* Màu nền xanh dương đậm hơn khi hover */
+        border-color: #0062cc; /* Màu viền xanh dương đậm hơn khi hover */
+    }
+
+/* Style cho validation message */
+.field-validation-error {
+    color: red; /* Màu đỏ cho thông báo lỗi */
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    margin-top: 5px; /* Khoảng cách trên thông báo lỗi */
+}
+
+/* Style cho form container (tùy chọn) */
+.form-container {
+    max-width: 800px; /* Chiều rộng tối đa của form */
+    margin: 0 auto; /* Căn giữa form */
+    padding: 20px; /* Khoảng cách bên trong form container */
+    border: 1px solid #dee2e6; /* Viền cho form container */
+    border-radius: 5px; /* Góc bo tròn cho form container */
+    background-color: #f8f9fa; /* Màu nền nhạt cho form container */
+}

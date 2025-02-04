@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "UpdateSupplier";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>CẬP NHẬT THÔNG TIN NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/UpdateSupplier.css">
+<div class="form-group">
+    <label for="searchSupplierID">Nhập mã nhà cung cấp:</label>
+    <input type="text" id="searchSupplierID" class="form-control" />
+    <button type="button" class="btn btn-primary mt-2" id="btnSearch">Tìm Kiếm</button>
+</div>
+<!-- Form cập nhật nhà cung cấp -->
+<form id="updateSupplierForm">
+    <input type="hidden" id="supplierID" name="supplierID" />
+
+    <div class="form-group">
+        <label for="TenNhaCungCap">Tên Nhà Cung Cấp:</label>
+        <input type="text" id="TenNhaCungCap" name="TenNhaCungCap" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="DiaChi">Địa Chỉ:</label>
+        <input type="text" id="DiaChi" name="DiaChi" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="SoDienThoai">Số Điện Thoại:</label>
+        <input type="text" id="SoDienThoai" name="SoDienThoai" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Website">Địa Chỉ Webste Nhà Cung Cấp:</label>
+        <input type="text" id="Website" name="Website" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="Fax">FAX:</label>
+        <input type="number" id="Fax" name="Fax" class="form-control" required />
+    </div>
+   
+    <div class="form-group">
+        <label for="MaSoThue">Mã Số Thuế Nhà Cung Cấp:</label>
+        <input type="text" id="MaSoThue" name="MaSoThue" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="SoTaiKhoan">Số Tài Khoản Ngân Hàng Nhà Cung Cấp:</label>
+        <input type="number" id="SoTaiKhoan" name="SoTaiKhoan" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="NganHang">Ngân Hàng Thụ Hưởng:</label>
+        <input type="text" id="NganHang" name="NganHang" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="ChutaiKhoan">Chủ Tài Khoản:</label>
+        <input type="text" id="ChutaiKhoan" name="ChutaiKhoan" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="GhiChu">Ghi Chú Lý Do Cạp Nhật:</label>
+        <input type="text" id="GhiChu" name="GhiChu" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="TrangThai">Trạng Thái:</label>
+        <select id="TrangThai" name="TrangThai" class="form-control">
+            <option value="Còn Hợp Tác">Còn Hợp Tác</option>
+            <option value="Ngưng Hợp Tác">Ngưng Hợp Tác</option>
+        </select>
+    </div>
+
+    <button type="button" class="btn btn-success mt-3" id="btnUpdate">Cập Nhật</button>
+</form>
+
+<!-- Hiển thị thông báo -->
+<div id="message" class="alert mt-3" style="display: none;"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Xử lý tìm kiếm nhà cung cấp
+        $("#btnSearch").click(function () {
+            var supplierID = $("#searchSupplierID").val().trim();
+
+            if (supplierID === "") {
+                showMessage("Vui lòng nhập mã nhà cung cấp!", "alert-danger");
+                return;
+            }
+              $.ajax({
+                url: '@Url.Action("SearchSupplierID", "Supplier")',
+                type: "POST",
+                data: { supplierID: supplierID },
+                success: function (response) {
+                    if (response.success) {
+                        $("#supplierID").val(supplierID);
+                        $("#TenNhaCungCap").val(response.data.TenNhaCungCap);
+                        $("#DiaChi").val(response.data.DiaChi);
+                        $("#SoDienThoai").val(response.data.SoDienThoai);
+                        $("#Email").val(response.data.Email);
+                        $("#Website").val(response.data.Website);
+                        $("#Fax").val(response.data.Fax);
+                        $("#MaSoThue").val(response.data.MaSoThue);
+                        $("#NgayThanhLap").val(response.data.NgayThanhLap);
+                        $("#SoTaiKhoan").val(response.data.SoTaiKhoan);
+                        $("#NganHang").val(response.data.NganHang);
+                        $("#ChutaiKhoan").val(response.data.ChutaiKhoan);
+                        $("#GhiChu").val(response.data.GhiChu);
+                        $("#TrangThai").val(response.data.TrangThai);
+                        showMessage("Tìm thấy nhà cung cấp!", "alert-success");
+                    } else {
+                        showMessage(response.message, "alert-danger");
+                    }
+                },
+                error: function () {
+                      showMessage("Lỗi tìm kiếm nhà cung cấp!", "alert-danger");
+                  }
+              });
+        });
+        // Xử lý cập nhật nhà cung cấp
+        $("#btnUpdate").click(function () {
+            var supplierData = {
+                supplierID: $("#supplierID").val(),
+                TenNhaCungCap: $("#TenNhaCungCap").val(),
+                DiaChi: $("#DiaChi").val(),
+                SoDienThoai: $("#SoDienThoai").val(),
+                Email: $("#Email").val(),
+                Website: $("#Website").val(),
+                Fax: $("#Fax").val(),
+                MaSoThue: $("#MaSoThue").val(),
+                NgayThanhLap: $("#NgayThanhLap").val(),
+                SoTaiKhoan: $("#SoTaiKhoan").val(),
+                NganHang: $("#NganHang").val(),
+                ChutaiKhoan: $("#ChutaiKhoan").val(),
+                GhiChu: $("#GhiChu").val(),
+                TrangThai: $("#TrangThai").val()
+            };
+              $.ajax({
+                url: '@Url.Action("UpdateSupplier", "Supplier")',
+                type: "POST",
+                data: supplierData,
+                success: function (response) {
+                    if (response.success) {
+                        showMessage(response.message, "alert-success");
+                    } else {
+                        showMessage(response.message, "alert-danger");
+                    }
+                },
+                error: function () {
+                    showMessage("Lỗi cập nhật nhà cung cấp!", "alert-danger");
+                }
+            });
+        });
+        // Hiển thị thông báo
+        function showMessage(message, alertClass) {
+            $("#message").removeClass().addClass("alert " + alertClass).text(message).show();
+            setTimeout(() => $("#message").fadeOut(), 3000);
+        }
+    });
+</script>
+

@@ -11,7 +11,7 @@
     }
 *@
 <h2>LƯU HỢP ĐỒNG</h2>
-
+<link rel="stylesheet" href="~/Content/ContractCreate.css" />
 @using (Html.BeginForm("ContractCreate", "Contract", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -46,5 +46,7 @@
         <input type="file" name="file" id="file" class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Lưu Hợp Đồng</button>
+    <button type="submit" class="btn btn-primary">
+        <i class="bi-cloud-arrow-up"></i> Lưu Hợp Đồng
+    </button>
 }
