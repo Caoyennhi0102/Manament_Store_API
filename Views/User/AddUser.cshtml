@@ -33,6 +33,19 @@
             <option value="User">User</option>
         </select>
     </div>
+    <div class="form-group">
+        <label for="GeneratedUserName">UserName</label>
+        <input type="text" class="form-control" id="GeneratedUserName" readonly>
+    </div>
+    <div class="form-group">
+        <label for="GeneratedPassword">Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="GeneratedPassword" readonly>
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">👁</button>
+            </div>
+        </div>
+    </div>
 
     <button type="submit" class="btn btn-primary">Tạo User</button>
 </form>
@@ -70,8 +83,11 @@
                 role: role
             },
             success: function (response) {
-                if (response.success) {
-                    alert(response.message);
+                 if (response.success) {
+                alert(response.message + "\nUsername: " + response.username + "\nPassword: " + response.password);
+                    // Hiển thị Username và Password tạo ra
+                    $('#GeneratedUserName').val(response.username);
+                    $('#GeneratedPassword').val(response.password);
 
                     // Hiển thị thông báo thành công
                     TempData["Message"] = response.message;
@@ -128,6 +144,15 @@
     $(document).ready(function () {
         updateUserTable();
     });
+    function togglePassword() {
+        var passwordInput = document.getElementById("GeneratedPassword");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+
 </script>
 
 <link rel="stylesheet" href="~/Content/AddUser.css" />

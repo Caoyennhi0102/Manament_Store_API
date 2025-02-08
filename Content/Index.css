@@ -1,0 +1,91 @@
+﻿/* Style cho toàn trang */
+body {
+    font-family: sans-serif; /* Chọn font chữ mặc định */
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+}
+
+/* Style cho tiêu đề trang */
+h2 {
+    color: #343a40; /* Màu chữ đậm */
+    margin-bottom: 20px;
+}
+
+/* Style cho thông báo thành công */
+.alert-success {
+    background-color: #d4edda; /* Màu nền xanh nhạt */
+    border-color: #c3e6cb; /* Viền xanh nhạt */
+    color: #155724; /* Chữ xanh đậm */
+    margin-bottom: 20px;
+}
+
+/* Style cho bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse; /* Gộp các đường viền ô */
+    margin-bottom: 20px;
+    border-color: #007bff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f5f5f5; /* Màu nền khi hover vào hàng */
+}
+
+.table thead th {
+    background-color: #007bff; /* Màu nền đen cho header */
+    color: white; /* Chữ trắng cho header */
+    text-align: left; /* Căn trái chữ trong header */
+    padding: 10px; /* Padding cho header */
+    border: 1px solid #dee2e6; /* Viền cho header */
+}
+
+.table tbody td {
+    padding: 10px; /* Padding cho các ô dữ liệu */
+    border: 1px solid #dee2e6; /* Viền cho các ô dữ liệu */
+    vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+/* Style cho nút */
+.btn-sm {
+    margin: 2px; /* Khoảng cách giữa các nút */
+}
+
+/* Style cho link "Chi tiết" */
+.btn-info {
+    background-color: #17a2b8; /* Màu xanh dương */
+    border-color: #17a2b8;
+    color: white;
+}
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+    }
+
+/* Style cho nút "Xác nhận" */
+.btn-success {
+    background-color: #28a745; /* Màu xanh lá cây */
+    border-color: #28a745;
+    color: white;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+/* Style cho phần tử cuối cùng của hàng (nút) */
+.table tbody tr td:last-child {
+    text-align: center; /* Căn giữa các nút */
+}
+
+/* Style cho tổng tiền */
+.table tbody tr td:nth-last-child(2) { /* Chọn cột thứ 2 từ cuối cùng (Tổng tiền) */
+    text-align: right; /* Căn phải cho tổng tiền */
+    font-weight: bold;
+}
+h2{
+    text-align:center;
+    color:red;
+    font-weight:bold;
+}
+

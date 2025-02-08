@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Manament_Store_API.Models.User>
+@{
+    Layout = "~/Views/Shared/_LayoutStoreManagement.cshtml";
+}
+<h2>Danh sách User chờ phê duyệt</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>UserID</th>
+            <th>Mã Nhân Viên</th>
+            <th>Vai trò</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserID</td>
+                <td>@user.MaNhanVien</td>
+                <td>@user.Roles</td>
+                <td>@user.TrangThai</td>
+                <td>
+                    <button class="btn btn-success" onclick="approveUser(@user.UserID)">Phê duyệt</button>
+                    <button class="btn btn-danger" onclick="rejectUser(@user.UserID)">Từ chối</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function approveUser(userId) {
+        fetch(`/Approve/ApproveUser`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: userId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.success) location.reload();
+            })
+            .catch(error => console.error("Lỗi:", error));
+    }
+
+    function rejectUser(userId) {
+        fetch(`/Approve/RejectUser`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: userId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.success) location.reload();
+            })
+            .catch(error => console.error("Lỗi:", error));
+    }
+</script>

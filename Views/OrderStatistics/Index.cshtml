@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutIndustry.cshtml";
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+
+<h2>BIỂU ĐỒ THÔNG KÊ ĐƠN ĐẶT HÀNG NHÀ CUNG CẤP</h2>
+
+
+
+<link rel="stylesheet" href="~/Content/GetOrder.css">
+<canvas id="thongKeChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/OrderStatistics/GetOrder",
+            type: "GET",
+            success: function (data) {
+                const ctx = document.getElementById("thongKeChart").getContext("2d");
+
+                const chart = new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: data.DonHangTheoThang.map(x => `${x.Thang}/${x.Nam}`),
+                        datasets: [
+                            {
+                                label: "Số lượng đơn theo tháng",
+                                data: data.DonHangTheoThang.map(x => x.SoLuong),
+                                backgroundColor: "rgba(75, 192, 192, 0.6)"
+                            },
+                            {
+                                label: "Tổng tiền theo nhà cung cấp",
+                                data: data.TongTienTheoNCC.map(x => x.TongTien),
+                                backgroundColor: "rgba(255, 99, 132, 0.6)"
+                            },
+                            {
+                                label: "Số lượng đơn theo trạng thái",
+                                data: data.DonHangTheoTrangThai.map(x => x.SoLuong),
+                                backgroundColor: "rgba(54, 162, 235, 0.6)"
+                            },
+                            {
+                                label: "Tổng tiền theo cửa hàng",
+                                data: data.TongTienTheoCuaHang.map(x => x.TongTien),
+                                backgroundColor: "rgba(255, 206, 86, 0.6)"
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            },
+            error: function (error) {
+                console.log("Lỗi khi lấy dữ liệu thống kê", error);
+            }
+        });
+    });
+</script>
+

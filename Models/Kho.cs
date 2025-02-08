@@ -14,12 +14,21 @@ namespace Manament_Store_API.Models
     
     public partial class Kho
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kho()
+        {
+            this.PhieuNhapHangs = new HashSet<PhieuNhapHang>();
+        }
+    
         public int MaKho { get; set; }
         public int MaCuaHang { get; set; }
         public string MaHangHoa { get; set; }
         public int SoLuongTon { get; set; }
+        public string TenKho { get; set; }
     
         public virtual CuaHang CuaHang { get; set; }
         public virtual HangHoa HangHoa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhapHang> PhieuNhapHangs { get; set; }
     }
 }

@@ -26,10 +26,18 @@ namespace Manament_Store_API.Models
         public int MaNhanVien { get; set; }
         public string GhiChu { get; set; }
         public string TrangThai { get; set; }
+        public int MaCuaHang { get; set; }
+        public int MaKho { get; set; }
+        public int MaDonDatHang { get; set; }
+        public string MaDanhMuc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuNhap> ChiTietPhieuNhaps { get; set; }
         public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual NhanVien NhanVien { get; set; }
+        public virtual CuaHang CuaHang { get; set; }
+        public virtual Kho Kho { get; set; }
+        public virtual DanhMucSanPham DanhMucSanPham { get; set; }
+        public virtual DonHangNCC DonHangNCC { get; set; }
     }
 }

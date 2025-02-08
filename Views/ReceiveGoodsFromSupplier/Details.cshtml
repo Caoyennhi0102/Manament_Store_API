@@ -1,0 +1,93 @@
+﻿@model Manament_Store_API.Models.DonHangNCC
+@{
+    ViewBag.Title = "Chi tiết đơn hàng #" + Model.MaDatHang;
+}
+@{
+    Layout = "~/Views/Shared/_LayoutWarehouseManagement.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>CHI TIẾT ĐƠN ĐẶT HÀNG NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/Detailss.css" />
+<div class="card">
+    <div class="card-header">
+        <h2>Thông Tin Đơn Hàng</h2>
+
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Mã Đơn Đặt Hàng:</dt>
+            <dd class="col-sm-9">@Model.MaDatHang</dd>
+
+            <dt class="col-sm-3">Nhà Cung Cấp:</dt>
+            <dd class="col-sm-9">@Model.NhaCungCap</dd>
+
+            <dt class="col-sm-3">Tên Cửa Hàng Nhận:</dt>
+            <dd class="col-sm-9">@Model.NhaCungCap.TenNhaCungCap</dd>
+
+            <dt class="col-sm-3">Họ Tên Nhân Viên Đặt Hàng:</dt>
+            <dd class="col-sm-9">@Model.NhanVien.HoTen</dd>
+
+            <dt class="col-sm-3">Ngày Đặt Hàng:</dt>
+            <dd class="col-sm-9">@Model.NgayDatHang.Value.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Ngày Giao Hàng Dự Kiến:</dt>
+            <dd class="col-sm-9">@Model.NgayGHDuKien.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Ngày Nhận Hàng Thực Tế:</dt>
+            <dd class="col-sm-9">@Model.NgayNHTT.Value.ToString("dd/MM/yyyy")</dd>
+
+            <dt class="col-sm-3">Ghi Chú:</dt>
+            <dd class="col-sm-9">@Model.GhiChu</dd>
+
+            <dt class="col-sm-3">Tổng Tiền:</dt>
+            <dd class="col-sm-9">@Model.TongTien.ToString("N0")</dd>
+
+            <dt class="col-sm-3">Trạng Thái:</dt>
+            <dd class="col-sm-9">@Model.TrangThai</dd>
+
+
+        </dl>
+        <h5>Chi Tiết Sản Phẩm</h5>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mã Chi Tiết Dơn Đặt Hàng</th>
+                    <th>Mã Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Đơn Vị Tính</th>
+                    <th>Số Lượng</th>
+                    <th>Đơn Giá</th>
+                    <th>Chiết Khấu</th>
+                    <th>Ngày Sản Xuất</th>
+                    <th>Ngày Hết Hạn</th>
+                    <th>Thành Tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach(var item in Model.ChiTietDonHangNCCs)
+            {
+                <tr>
+                    <td>@item.MaChiTietDonHang</td>
+                    <td>@item.MaSanPham</td>
+                    <td>@item.TenSanPham</td>
+                    <td>@item.DonViTinh</td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.DonGia.ToString("N0")</td>
+                    <td>@item.ChietKhau</td>
+                    <td>@item.NgaySX.ToString("dd/MM/yyyy")</td>
+                    <td>@item.NgayHH.ToString("dd/MM/yyyy")</td>
+                    <td>@item.ThanhTien.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="mt-3">
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+

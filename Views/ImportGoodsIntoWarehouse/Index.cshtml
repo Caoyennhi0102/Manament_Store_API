@@ -1,0 +1,185 @@
+﻿@model Manament_Store_API.Models.PhieuNhapHang
+
+@{
+    ViewBag.Title = "Nhập Hàng Vào Kho";
+    Layout = "~/Views/Shared/_LayoutWarehouseManagement.cshtml";
+}
+
+<h2>Nhập Hàng Vào Kho</h2>
+
+@using (Html.BeginForm("Create", "ImportGoodsIntoWarehouse", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Thông báo -->
+    if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+
+<div class="form-horizontal">
+    <h4>Phiếu Nhập Hàng</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <!-- Các thông tin chính -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaPhieuNhap, "Mã phiếu nhập", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.MaPhieuNhap, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNhanVien, "Mã nhân viên", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.MaNhanVien, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mã nhân viên" } })
+            @Html.ValidationMessageFor(model => model.MaNhanVien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayNhap, "Ngày nhập", htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.NgayNhap, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd"), @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNhaCungCap, "Nhà cung cấp", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.MaNhaCungCap, ViewBag.DSsupplier as SelectList, "-- Chọn NCC --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaNhaCungCap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaCuaHang, "Cửa hàng", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.MaCuaHang, ViewBag.DSStore as SelectList, "-- Chọn CH --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaCuaHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaKho, "Kho nhập", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.MaKho, ViewBag.Warehouse as SelectList, "-- Chọn kho --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaKho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaDanhMuc, "Danh mục SP", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.MaDanhMuc, ViewBag.Category as SelectList, "-- Chọn DM --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaDanhMuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.GhiChu, "Ghi chú", htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.GhiChu, new { @class = "form-control", rows = "2" })
+            </div>
+        </div>
+    </div>
+
+    <!-- Chi tiết sản phẩm -->
+    <h4>Danh sách sản phẩm</h4>
+    <table class="table table-bordered" id="productTable">
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Đơn vị tính</th>
+                <th>NSX</th>
+                <th>HSD</th>
+                <th>Thành tiền</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Row mẫu (dùng cho JavaScript) -->
+            <tr class="product-row">
+                <td>
+                    <input type="text" name="ChiTietPhieuNhaps[0].TenSanPham" class="form-control" required />
+                </td>
+                <td>
+                    <input type="number" name="ChiTietPhieuNhaps[0].SoLuong" class="form-control quantity" min="1" required />
+                </td>
+                <td>
+                    <input type="number" name="ChiTietPhieuNhaps[0].DonGia" class="form-control price" min="0" step="1000" required />
+                </td>
+                <td>
+                    <input type="text" name="ChiTietPhieuNhaps[0].DonViTinh" class="form-control" required />
+                </td>
+                <td>
+                    <input type="date" name="ChiTietPhieuNhaps[0].NgaySanXuat" class="form-control" required />
+                </td>
+                <td>
+                    <input type="date" name="ChiTietPhieuNhaps[0].NgayHetHan" class="form-control" required />
+                </td>
+                <td>
+                    <input type="text" name="ChiTietPhieuNhaps[0].ThanhTien" class="form-control total" readonly />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger remove-row">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button type="button" id="addProduct" class="btn btn-primary">Thêm sản phẩm</button>
+
+    <div class="form-group mt-3">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu phiếu nhập" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<script>
+    $(document).ready(function () {
+        // Thêm dòng mới
+        $('#addProduct').click(function () {
+            var index = $('#productTable tbody tr').length;
+            var newRow = $('.product-row:first').clone();
+
+            // Clear values
+            newRow.find('input').val('');
+
+            // Update index
+            newRow.html(newRow.html().replace(/\[0\]/g, '[' + index + ']'));
+            newRow.appendTo('#productTable tbody');
+        });
+
+        // Xóa dòng
+        $('#productTable').on('click', '.remove-row', function () {
+            if ($('#productTable tbody tr').length > 1) {
+                $(this).closest('tr').remove();
+            }
+        });
+
+        // Tính toán thành tiền
+        $('#productTable').on('input', '.quantity, .price', function () {
+            var row = $(this).closest('tr');
+            var quantity = parseFloat(row.find('.quantity').val()) || 0;
+            var price = parseFloat(row.find('.price').val()) || 0;
+            var total = quantity * price;
+            row.find('.total').val(total.toLocaleString());
+        });
+    });
+</script>

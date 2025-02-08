@@ -16,186 +16,189 @@
 *@
 <h2>Tạo mới đơn hàng</h2>
 <link rel="stylesheet" href="~/Content/CreateOrder.css" />
-<link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Thông tin đơn hàng</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <h4>Thông tin đơn hàng</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <!-- Mã nhà cung cấp -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.MaNhaCungCap, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DonHangNCC.MaNhaCungCap, (SelectList)ViewBag.MaNhaCungCap, "Chọn nhà cung cấp", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhaCungCap, "", new { @class = "text-danger" })
-            </div>
+    <!-- Mã nhà cung cấp -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.MaNhaCungCap, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DonHangNCC.MaNhaCungCap, (SelectList)ViewBag.MaNhaCungCap, "Chọn nhà cung cấp", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhaCungCap, "", new { @class = "text-danger" })
         </div>
-
-        <!-- Mã cửa hàng -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.MaCuaHang, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DonHangNCC.MaCuaHang, (SelectList)ViewBag.MaCuaHang, "Chọn cửa hàng", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.MaCuaHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Mã nhân viên -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.MaNhanVien, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DonHangNCC.MaNhanVien, (SelectList)ViewBag.MaNhanVien, "Chọn nhân viên", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhanVien, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Ngày đặt hàng -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.NgayDatHang, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DonHangNCC.NgayDatHang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.NgayDatHang, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Ngày giao hàng dự kiến -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.NgayGHDuKien, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DonHangNCC.NgayGHDuKien, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.NgayGHDuKien, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Ghi chú -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.DonHangNCC.GhiChu, new { @class = "form-control", rows = "3" })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.GhiChu, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Trạng thái -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.DonHangNCC.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DonHangNCC.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DonHangNCC.TrangThai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!-- Chi tiết đơn hàng -->
-        <h4>Chi tiết đơn hàng</h4>
-        <hr />
-
-        <div id="chiTietDonHangNCCs">
-            @for (int i = 0; i < Model.ChiTietDonHangNCCs.Count; i++)
-            {
-                <div class="chiTietDonHangNCC">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].SoLuong, new { htmlAttributes = new { @class = "form-control soLuong", @onchange = "calculateAmount(this)" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].SoLuong, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonGia, new { htmlAttributes = new { @class = "form-control donGia", @onchange = "calculateAmount(this)" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonGia, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, new { htmlAttributes = new { @class = "form-control thanhTien", @readonly = "readonly" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgaySX, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgaySX, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgaySX, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgayHH, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgayHH, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                            @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgayHH, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.Label("Tổng Tiền", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <input id="tongTien" class="form-control" readonly />
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
-                    <hr />
-                </div>
-            }
-        </div>
-
-        <!-- Nút thêm chi tiết -->
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="button" id="addChiTiet" class="btn btn-primary">Thêm chi tiết</button>
-            </div>
-        </div>
-
-        <!-- Nút lưu -->
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lưu" class="btn btn-default" />
-            </div>
-        </div>
-        <a href="@Url.Action("PrintOrder", "SupplierOrder", new { id = Model.DonHangNCC.MaDatHang })"
-           class="btn btn-primary" target="_blank">
-            In Hóa Đơn
-        </a>
-
     </div>
+
+    <!-- Mã cửa hàng -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.MaCuaHang, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DonHangNCC.MaCuaHang, (SelectList)ViewBag.MaCuaHang, "Chọn cửa hàng", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.MaCuaHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Mã nhân viên -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.MaNhanVien, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DonHangNCC.MaNhanVien, (SelectList)ViewBag.MaNhanVien, "Chọn nhân viên", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.MaNhanVien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Ngày đặt hàng -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.NgayDatHang, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DonHangNCC.NgayDatHang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.NgayDatHang, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Ngày giao hàng dự kiến -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.NgayGHDuKien, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DonHangNCC.NgayGHDuKien, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.NgayGHDuKien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Ghi chú -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.DonHangNCC.GhiChu, new { @class = "form-control", rows = "3" })
+            @Html.ValidationMessageFor(model => model.DonHangNCC.GhiChu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DonHangNCC.TrangThai, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.DonHangNCC.TrangThai,
+                new SelectList(new List<string> { "Chờ duyệt" }), // Chỉ hiển thị "Chờ duyệt"
+                new { @class = "form-control", @disabled = "disabled" })
+            @Html.HiddenFor(model => model.DonHangNCC.TrangThai) // Giữ giá trị khi submit
+            @Html.ValidationMessageFor(model => model.DonHangNCC.TrangThai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <!-- Chi tiết đơn hàng -->
+    <h4>Chi tiết đơn hàng</h4>
+    <hr />
+
+    <div class="chiTietDonHangNCCs">
+        @for (int i = 0; i < Model.ChiTietDonHangNCCs.Count; i++)
+        {
+            <div class="chiTietDonHangNCC">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].MaSanPham, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].TenSanPham, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].SoLuong, new { htmlAttributes = new { @class = "form-control soLuong", @onchange = "calculateAmount(this)" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].SoLuong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonGia, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonGia, new { htmlAttributes = new { @class = "form-control donGia", @onchange = "calculateAmount(this)" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonGia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].DonViTinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, new { htmlAttributes = new { @class = "form-control thanhTien", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ThanhTien, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].ChietKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgaySX, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgaySX, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgaySX, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ChiTietDonHangNCCs[i].NgayHH, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChiTietDonHangNCCs[i].NgayHH, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.ChiTietDonHangNCCs[i].NgayHH, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Tổng Tiền", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input id="tongTien" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
+                    <hr class="inline-hr" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 d-flex gap-3 align-items-center">
+            <!-- Nút Thêm chi tiết -->
+            <button type="button" id="addChiTiet" class="btn btn-primary">Thêm chi tiết</button>
+
+            <!-- Nút Lưu -->
+            <input type="submit" value="Lưu" class="btn btn-success" />
+
+            <!-- Nút In hóa đơn -->
+            <a href="@Url.Action("PrintOrder", "SupplierOrder", new { id = Model.DonHangNCC.MaDatHang })"
+               class="btn btn-primary"
+               target="_blank">
+                In Hóa Đơn
+            </a>
+        </div>
+    </div>
+</div>
 }
 
 <div>
@@ -283,8 +286,11 @@
                                 <input class="form-control" type="date" name="ChiTietDonHangNCCs[${index}].NgayHH" required />
                             </div>
                         </div>
-                        <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
-                        <hr />
+
+                        <div class="button-container">
+                          <button type="button" class="btn btn-danger removeChiTiet">Xóa</button>
+                           <hr class="inline-hr" />
+                        </div>
                     </div>
                 `;
             $("#chiTietDonHangNCCs").append(newChiTiet);

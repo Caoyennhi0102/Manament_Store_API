@@ -1,115 +1,170 @@
-﻿.btn-default i {
-    margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
-    font-size: 1.2em; /* Kích thước biểu tượng */
-}
-/* Style cho form */
+﻿/* Style chung cho form */
 .form-horizontal {
-    margin-top: 20px; /* Khoảng cách trên của form */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-    .form-horizontal h4 {
-        margin-bottom: 15px; /* Khoảng cách dưới của tiêu đề */
-        color: #333; /* Màu chữ tiêu đề */
-    }
-
+/* Style cho các nhóm form */
 .form-group {
-    margin-bottom: 15px; /* Khoảng cách dưới của mỗi nhóm trường */
+    margin-bottom: 15px;
 }
 
+/* Style cho label */
 .control-label {
-    font-weight: bold; /* Chữ in đậm cho label */
-    text-align: left; /* Căn trái label */
+    font-weight: bold;
+    color: #333;
 }
 
+/* Style cho input và select */
 .form-control {
-    border-radius: 5px; /* Góc bo tròn cho input */
-    padding: 8px; /* Padding cho input */
-    border: 1px solid #ccc; /* Viền cho input */
-    box-shadow: none; /* Loại bỏ box shadow mặc định */
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
-    .form-control:focus {
-        border-color: #80bdff; /* Màu viền khi focus */
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Box shadow khi focus */
-    }
-
-.is-invalid { /* Style cho input khi bị lỗi */
-    border-color: #dc3545; /* Màu viền đỏ */
+/* Style cho textarea */
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
 }
 
-.text-danger {
-    color: #dc3545; /* Màu chữ đỏ cho thông báo lỗi */
-    font-size: 14px; /* Kích thước chữ nhỏ hơn */
-    margin-top: 5px; /* Khoảng cách trên của thông báo lỗi */
-}
-
-/* Style cho nút */
+/* Style cho các nút */
 .btn {
-    border-radius: 5px; /* Góc bo tròn cho nút */
-    padding: 8px 15px; /* Padding cho nút */
-    font-weight: bold; /* Chữ in đậm cho nút */
-    cursor: pointer; /* Con trỏ chuột khi hover */
-    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: none;
+    transition: background-color 0.3s ease;
 }
-
-.btn-primary {
-    background-color: #007bff; /* Màu nền xanh */
-    border-color: #007bff; /* Màu viền xanh */
-    color: #fff; /* Màu chữ trắng */
-}
-
-    .btn-primary:hover {
-        background-color: #0069d9; /* Màu nền xanh đậm hơn khi hover */
-        border-color: #0062cc; /* Màu viền xanh đậm hơn khi hover */
-    }
-
-.btn-danger {
-    background-color: #dc3545; /* Màu nền đỏ */
-    border-color: #dc3545; /* Màu viền đỏ */
-    color: #fff; /* Màu chữ trắng */
-}
-
-    .btn-danger:hover {
-        background-color: #c30010; /* Màu nền đỏ đậm hơn khi hover */
-        border-color: #bd2130; /* Màu viền đỏ đậm hơn khi hover */
-    }
 
 .btn-default {
-    background-color: #fff; /* Màu nền trắng */
-    border-color: #ccc; /* Màu viền xám */
-    color: #333; /* Màu chữ đen */
+    background-color: #007bff;
+    color: white;
 }
 
     .btn-default:hover {
-        background-color: #f0f0f0; /* Màu nền xám nhạt hơn khi hover */
-        border-color: #ccc; /* Màu viền xám */
+        background-color: #0056b3;
     }
 
-/* Style cho bảng chi tiết */
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #218838;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+/* Style cho phần chi tiết đơn hàng */
 #chiTietDonHangNCCs {
-    border: 1px solid #ccc; /* Viền cho bảng */
-    padding: 10px; /* Padding cho bảng */
-    margin-bottom: 20px; /* Khoảng cách dưới của bảng */
+    margin-top: 20px;
 }
 
 .chiTietDonHangNCC {
-    border-bottom: 1px solid #ccc; /* Viền dưới cho mỗi dòng */
-    padding-bottom: 10px; /* Padding dưới cho mỗi dòng */
-    margin-bottom: 10px; /* Khoảng cách dưới cho mỗi dòng */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #fff;
 }
 
-    .chiTietDonHangNCC:last-child {
-        border-bottom: none; /* Loại bỏ viền dưới cho dòng cuối cùng */
-    }
+/* Style cho nút xóa chi tiết */
+.removeChiTiet {
+    margin-top: 10px;
+}
 
+/* Style cho nút "Thêm chi tiết" */
+#addChiTiet {
+    margin-bottom: 20px;
+}
 
-/* Style cho link quay lại */
+/* Style cho nút "Lưu" và "In Hóa Đơn" */
+.form-group .col-md-offset-2 {
+    display: flex;
+    flex-direction: row; /* Thêm dòng này để các nút nằm ngang */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    align-items: center; /* Căn chỉnh các nút theo chiều dọc */
+    justify-content: flex-start; /* Căn chỉnh các nút từ trái sang phải */
+}
+
+/* Style cho phần tổng tiền */
+#tongTien {
+    font-weight: bold;
+    color: #333;
+    background-color: #f1f1f1;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Style cho thông báo lỗi */
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 12px;
+}
+
+/* Style cho phần header */
+h2 {
+    color: red;
+    margin-bottom: 20px;
+    text-align:center;
+}
+
+h4 {
+    color: #555;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+/* Style cho link "Quay lại" */
 a {
-    color: #007bff; /* Màu chữ xanh */
-    text-decoration: none; /* Loại bỏ gạch chân */
+    color: #007bff;
+    text-decoration: none;
 }
 
     a:hover {
-        text-decoration: underline; /* Gạch chân khi hover */
+        text-decoration: underline;
     }
+
+.btn {
+    display: inline-block;
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+}
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa nút và đường kẻ */
+    margin: 15px 0;
+}
+.removeChiTiet {
+    flex-shrink: 0; /* Ngăn không cho nút co lại */
+}
+.inline-hr {
+    flex-grow: 1; /* Chiếm hết không gian còn lại */
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+/* Container nút thêm chi tiết */
+#addChiTiet {
+    margin: 20px 0;
+}

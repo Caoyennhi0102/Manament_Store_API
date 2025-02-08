@@ -38,15 +38,23 @@ namespace Manament_Store_API
              url: "bank/check-account",
             defaults: new { controller = "Bank", action = "CheckAccount" }
          );
-
-
+             routes.MapRoute(
+             name: "Approval",
+             url: "duyet-don/{action}/{id}",
+             defaults: new { controller = "SupplierOrderApproval", action = "PendingOrders", id = UrlParameter.Optional }
+         );
+            routes.MapRoute(
+             name: "ReceiveGoodsFromSupplier",
+             url: "nhan-hang/{action}/{id}",
+             defaults: new { controller = "ReceiveGoodsFromSupplier", action = "Index", id = UrlParameter.Optional }
+          );
 
 
 
             routes.MapRoute(
                 name: "SupplierDefault",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Supplier", action = "AddSupplier", id = UrlParameter.Optional }
+                defaults: new { controller = "ReceiveGoodsFromSupplier", action = "Index", id = UrlParameter.Optional }
             );
 
             

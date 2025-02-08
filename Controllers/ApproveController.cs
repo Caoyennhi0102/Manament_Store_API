@@ -18,86 +18,49 @@ namespace Manament_Store_API.Controllers
         // GET: Approve
         public ActionResult Index()
         {
-            return View();
+            var users = _sqlConnectionserver.Users.ToList();
+            return View(users);
         }
-
-        public ActionResult Approve(int userID, string Action, string OperationType)
+        [HttpPost]
+        public JsonResult ApproveUser(int userId)
         {
             try
             {
-                var user = _sqlConnectionserver.Users.FirstOrDefault(u => u.UserID == userID);
+                var user = _sqlConnectionserver.Users.FirstOrDefault(u => u.UserID == userId);
                 if (user == null)
                 {
-                    return Json(new { success = false, message = "User không tồn tại." });
+                    return Json(new { success = false, message = "Không tìm thấy User." });
                 }
-                if (OperationType == "Add")
+
+                // Cập nhật trạng thái phê duyệt
+                user.TrangThai = "Đã Duyệt";
+                user.TrangThaiDuyetQL = "Đã Duyệt";
+                _sqlConnectionserver.SaveChanges();
+
+                return Json(new { success = true, message = "User đã được phê duyệt." });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
+        [HttpPost]
+        public JsonResult RejectUser(int userId)
+        {
+            try
+            {
+                var user = _sqlConnectionserver.Users.FirstOrDefault(u => u.UserID == userId);
+                if (user == null)
                 {
-                    if (Action == "Approve")
-                    {
-                        user.TrangThaiDuyetQL = "Approve";
-                        user.DNLanDau = true;
-                        _sqlConnectionserver.SaveChanges();
-
-                        var emailService = new Service.EmailService();
-                        string subject = "User của bạn đã được phê duyệt";
-                        string body = $"Xin chào {user.UserName}{user.PasswordHash},<br/>User của bạn đã được phê duyệt. Vui lòng đăng nhập để đổi mật khẩu để sử dụng.";
-                        emailService.SendEmail(user.NhanVien.Email, subject, body);
-
-                        return Json(new { success = true, message = "Tài khoản đã được phê duyệt." });
-                    }
-                    else if (Action == "Reject")
-                    {
-                        user.TrangThaiDuyetQL = "Reject";
-                        _sqlConnectionserver.SaveChanges();
-
-                        return Json(new { success = true, message = "Tài khoản đã bị từ chối." });
-
-                    }
+                    return Json(new { success = false, message = "Không tìm thấy User." });
                 }
-                // Logic xử lý cho cập nhật user
-                if (OperationType == "Update")
-                {
-                    if (Action == "Approve")
-                    {
-                        user.TrangThaiDuyetQL = "Approve";
-                        _sqlConnectionserver.SaveChanges();
 
-                        var emailService = new Service.EmailService();
-                        string subject = "User của bạn đã được cập nhật và phê duyệt";
-                        string body = $"Xin chào {user.UserName},<br/>Thông tin tài khoản của bạn đã được cập nhật và phê duyệt. Vui lòng đăng nhập để sử dụng.";
-                        emailService.SendEmail(user.NhanVien.Email, subject, body);
+                // Cập nhật trạng thái từ chối
+                user.TrangThai = "Từ Chối";
+                user.TrangThaiDuyetQL = "Từ Chối";
+                _sqlConnectionserver.SaveChanges();
 
-                        return Json(new { success = true, message = "Cập nhật tài khoản đã được phê duyệt." });
-                    }
-                    else if (Action == "Reject")
-                    {
-                        user.TrangThaiDuyetQL = "Reject";
-                        _sqlConnectionserver.SaveChanges();
-
-                        return Json(new { success = true, message = "Cập nhật tài khoản đã bị từ chối." });
-                    }
-                }
-                // Logic xử lý cho xóa user
-                if (OperationType == "Delete")
-                {
-                    if (Action == "Approve")
-                    {
-                        _sqlConnectionserver.Users.Remove(user);
-                        _sqlConnectionserver.SaveChanges();
-
-                        var emailService = new Service.EmailService();
-                        string subject = "User của bạn đã bị xóa";
-                        string body = $"Xin chào {user.UserName},<br/>Tài khoản của bạn đã bị xóa khỏi hệ thống. Nếu có vấn đề gì, vui lòng liên hệ với bộ phận quản lý.";
-                        emailService.SendEmail(user.NhanVien.Email, subject, body);
-
-                        return Json(new { success = true, message = "Tài khoản đã bị xóa." });
-                    }
-                    else if (Action == "Reject")
-                    {
-                        return Json(new { success = true, message = "Xóa tài khoản đã bị từ chối." });
-                    }
-                }
-                return Json(new { success = false, message = "Hành động không hợp lệ." });
+                return Json(new { success = true, message = "User đã bị từ chối." });
             }
             catch (Exception ex)
             {

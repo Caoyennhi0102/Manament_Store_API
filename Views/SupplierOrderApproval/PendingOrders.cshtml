@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Manament_Store_API.Models.DonHangNCC>
+@{
+    ViewBag.Title = "PendingOrders";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutPurchasingManager.cshtml";
+}
+
+<h2>DANH SÁCH ĐƠN ĐẶT HÀNG NHÀ CUNG CẤP DUYỆT</h2>
+<link rel="stylesheet" href="~/Content/PendingOrders.css">
+
+<table class="table">
+    <tr>
+        <th>Mã Đặt Hàng</th>
+        <th>Nhà Cung Cấp</th>
+        <th>Cửa Hàng</th>
+        <th>Nhân Viên Đặt Hàng</th>
+        <th>Ngày Đặt Hàng</th>
+        <th>Ngày Giao Hàng Dự Kiến</th>
+        <th>Ngày Giao Hàng Thực Tế</th>
+        <th>Tổng Tiền</th>
+        <th>Thao Tác</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaDatHang</td>
+            <td>@item.NhaCungCap.TenNhaCungCap</td>
+            <td>@item.CuaHang.TenCH</td>
+            <td>@item.NhanVien.HoTen</td>
+            <td>@item.NgayDatHang.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayGHDuKien.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayNHTT.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.TongTien.ToString("N0") VND</td>
+            <td>
+                @Html.ActionLink("Xem", "ReviewOrder", new { id = item.MaDatHang }, new { @class = "btn btn-info" })
+            </td>
+        </tr>
+    }
+</table>
+

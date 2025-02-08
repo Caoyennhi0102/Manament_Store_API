@@ -18,6 +18,7 @@ namespace Manament_Store_API.Models
         public DanhMucSanPham()
         {
             this.HangHoas = new HashSet<HangHoa>();
+            this.PhieuNhapHangs = new HashSet<PhieuNhapHang>();
         }
     
         public string MaDanhMucSP { get; set; }
@@ -27,5 +28,7 @@ namespace Manament_Store_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HangHoa> HangHoas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuNhapHang> PhieuNhapHangs { get; set; }
     }
 }

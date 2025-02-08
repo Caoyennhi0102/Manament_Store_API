@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Manament_Store_API.Models.DonHangNCC>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutWarehouseManagement.cshtml";  // Đường dẫn Layout
+}
+@*
+    @{
+        bool isSessionActive = (bool)ViewBag.IsSessionActive;
+    }
+*@
+<h2>DANH SÁCH ĐƠN HÀNG CHỜ NHẬN</h2>
+<link rel="stylesheet" href="~/Content/Index.css" />
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+<table class="table table-hover">
+<thead class="thead-dark">
+    <tr>
+        <th>Mã Đơn Đặt Hàng</th>
+        <th>Nhà cung cấp</th>
+        <th>Tên Cửa Hàng Nhận</th>
+        <th>Họ Tên Nhân Viên Đặt Hàng</th>
+        <th>Ngày Đặt Hàng</th>
+        <th>Ngày Giao Hàng Dự Kiến</th>
+        <th>Ngày Nhận Hàng Thực Tế</th>
+        <th>Ghi Chú</th>
+        <th>Tổng tiền</th>
+        <th>Thao tác</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaDatHang</td>
+            <td>@item.NhaCungCap.TenNhaCungCap</td>
+            <td>@item.CuaHang.TenCH</td>
+            <td>@item.NhanVien.HoTen</td>
+            <td>@item.NgayDatHang.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayGHDuKien.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayNHTT.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.GhiChu</td>
+            <td>@item.TongTien.ToString("N0") VND</td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDatHang }, new { @class = "btn btn-info btn-sm" })
+                @using (Html.BeginForm("ConfirmReceipt", "ReceiveGoodsFromSupplier", new { id = item.MaDatHang }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-success btn-sm"
+                            onclick="return confirm('Xác nhận đã nhận hàng cho đơn @item.MaDatHang?')">
+                        Xác nhận
+                    </button>
+                }
+                @if (string.IsNullOrEmpty(item.POFilePath))
+                {
+                    using (Html.BeginForm("SavePO", "ReceiveGoodsFromSupplier", FormMethod.Post, new { enctype = "multipart/form-data", style = "display:inline-block;" }))
+                    {
+                        @Html.Hidden("id", item.MaDatHang)
+                        <input type="file" name="filePO" class="form-control-file" accept="image/*" required>
+                        <button type="submit" class="btn btn-warning btn-sm mt-1">Lưu PO</button>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Content(item.POFilePath)" target="_blank" class="btn btn-secondary btn-sm">Xem PO</a>
+                }
+            </td>
+        </tr>
+    }
+</tbody>
+</table>

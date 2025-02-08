@@ -56,27 +56,31 @@
         <AssociationConnector Association="QLCHTLModel.FK__QLCaNV__MaCongTh__5812160E" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__QLCaNV__MaCongTh__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__Kho__MaCuaHang__1332DBDC" ManuallyRouted="true" >
-          <ConnectorPoint PointX="17.875" PointY="25.941055240072743" />
-          <ConnectorPoint PointX="16.8125" PointY="25.941055240072743" />
-          <ConnectorPoint PointX="16.8125" PointY="23.125" />
-          <ConnectorPoint PointX="16.489583333333332" PointY="23.125" />
-          <ConnectorPoint PointX="16.322916666666668" PointY="23.125" />
+          <ConnectorPoint PointX="17.875" PointY="26.357136310018191" />
+          <ConnectorPoint PointX="17.083333333333332" PointY="26.357136310018191" />
+          <ConnectorPoint PointX="16.916666666666668" PointY="26.357136310018191" />
+          <ConnectorPoint PointX="16.75" PointY="26.357136310018191" />
+          <ConnectorPoint PointX="16.75" PointY="23.125" />
+          <ConnectorPoint PointX="16.552084583333333" PointY="23.125" />
+          <ConnectorPoint PointX="16.322916666666664" PointY="23.125" />
           <ConnectorPoint PointX="14.458333333333334" PointY="23.125" />
           <ConnectorPoint PointX="14.291666666666666" PointY="23.125" />
-          <ConnectorPoint PointX="11.864583333333334" PointY="23.125" />
-          <ConnectorPoint PointX="11.697916666666666" PointY="23.125" />
-          <ConnectorPoint PointX="11.5625" PointY="23.125" />
-          <ConnectorPoint PointX="11.5625" PointY="21.953125" />
-          <ConnectorPoint PointX="8.9300167239583335" PointY="21.953125" />
-          <ConnectorPoint PointX="8.7633500572916656" PointY="21.953125" />
-          <ConnectorPoint PointX="8.2317704583333349" PointY="21.953125" />
-          <ConnectorPoint PointX="8.065103791666667" PointY="21.953125" />
-          <ConnectorPoint PointX="8.0540351770833336" PointY="21.953125" />
-          <ConnectorPoint PointX="7.8873685104166675" PointY="21.953125" />
-          <ConnectorPoint PointX="4.75" PointY="21.953125" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="23.125" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="23.125" />
+          <ConnectorPoint PointX="11.958333333333334" PointY="23.125" />
+          <ConnectorPoint PointX="11.666666666666666" PointY="23.125" />
+          <ConnectorPoint PointX="11.5" PointY="23.125" />
+          <ConnectorPoint PointX="11.5" PointY="22" />
+          <ConnectorPoint PointX="8.536459333333335" PointY="22" />
+          <ConnectorPoint PointX="8.3697926666666671" PointY="22" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="22" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="22" />
+          <ConnectorPoint PointX="8.1302070833333335" PointY="22" />
+          <ConnectorPoint PointX="7.9635404166666666" PointY="22" />
+          <ConnectorPoint PointX="4.75" PointY="22" />
           <ConnectorPoint PointX="4.75" PointY="24.875" />
           <ConnectorPoint PointX="3.75" PointY="24.875" />
-          <ConnectorPoint PointX="3.75" PointY="24.297587890625" />
+          <ConnectorPoint PointX="3.75" PointY="24.489889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="QLCHTLModel.FK__NhanVien__MaCuaH__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="QLCHTLModel.FK__Pos__MaCuaHang__160F4887" ManuallyRouted="false" />
@@ -114,6 +118,10 @@
         <AssociationConnector Association="QLCHTLModel.FK__DonHangNC__MaCua__1A9EF37A" />
         <AssociationConnector Association="QLCHTLModel.FK__DonHangNC__MaNha__19AACF41" />
         <AssociationConnector Association="QLCHTLModel.FK__DonHangNC__MaNha__1B9317B3" />
+        <AssociationConnector Association="QLCHTLModel.FK_PhieuNhapHang_CuaHang" />
+        <AssociationConnector Association="QLCHTLModel.FK_PhieuNhapHang_Kho" />
+        <AssociationConnector Association="QLCHTLModel.FK_PhieuNhapHang_DanhMucSanPham" />
+        <AssociationConnector Association="QLCHTLModel.FK_PhieuNhapHang_DonHangNCC" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

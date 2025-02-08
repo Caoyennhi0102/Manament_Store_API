@@ -16,7 +16,36 @@
 <p>
     @Html.ActionLink("Tạo Đơn Đặt Hàng Nhà Cung Cấp Mới", "CreateOrder")
 </p>
-<table class="table">
+<div class="filter-options" style="margin-top: 20px;">
+    @{
+        var currentFilter = ViewBag.CurrentFilter as string ?? "all";
+    }
+    <label style="margin-right: 20px;">
+        <input type="radio" name="orderFilter" value="all"
+               @(currentFilter == "all" ? "checked" : "") /> Tất cả
+    </label>
+    <label style="margin-right: 20px;">
+        <input type="radio" name="orderFilter" value="delivered"
+               @(currentFilter == "delivered" ? "checked" : "") /> Đã giao
+    </label>
+    <label style="margin-right: 20px;">
+        <input type="radio" name="orderFilter" value="notdelivered"
+               @(currentFilter == "notdelivered" ? "checked" : "") /> Chưa giao
+    </label>
+    <label>
+        <input type="radio" name="orderFilter" value="late"
+               @(currentFilter == "late" ? "checked" : "") /> Giao trễ
+    </label>
+</div>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info mt-3">
+        @ViewBag.Message
+    </div>
+}
+else
+{
+<table class="table mt-3">
     <tr>
         <th>Mã Đặt Hàng</th>
         <th>Nhà Cung Cấp</th>
@@ -24,19 +53,21 @@
         <th>Nhân Viên Đặt Hàng</th>
         <th>Ngày Đặt Hàng</th>
         <th>Ngày Giao Hàng Dự Kiến</th>
+        <th>Ngày Giao Hàng thực Tế</th>
         <th>Tổng Tiền</th>
         <th>Trạng Thái</th>
         <th></th>
     </tr>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td>@item.MaDatHang</td>
             <td>@item.NhaCungCap.TenNhaCungCap</td>
             <td>@item.CuaHang.TenCH</td>
             <td>@item.NhanVien.HoTen</td>
-            <td>@item.NgayDatHang</td>
-            <td>@item.NgayGHDuKien</td>
+            <td>@item.NgayDatHang.Value.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayGHDuKien.ToString("dd/MM/yyyy")</td>
+            <td>@item.NgayNHTT.Value.ToString("dd/MM/yyyy")</td>
             <td>@item.TongTien</td>
             <td>@item.TrangThai</td>
             <td>
@@ -45,8 +76,20 @@
                 @Html.ActionLink("Hủy Đơn Hàng", "Delete", new { id = item.MaDatHang })
 
             </td>
-            
+
         </tr>
     }
 </table>
+}
+<script>
+    function filterOrders() {
+        const selected = document.querySelector('input[name="orderFilter"]:checked').value;
+        window.location.href = '@Url.Action("Index")?filter=' + selected;
+    }
+
+    // Gắn sự kiện change cho tất cả radio buttons
+    document.querySelectorAll('input[name="orderFilter"]').forEach(radio => {
+        radio.addEventListener('change', filterOrders);
+    });
+</script>
 

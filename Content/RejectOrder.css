@@ -1,0 +1,175 @@
+﻿
+/* Container chính */
+.container {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 20px auto;
+}
+
+/* Tiêu đề chính */
+h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Layout 2 cột */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Cột thông tin */
+.col-md-6 {
+    flex: 1;
+    min-width: 400px;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Tiêu đề section */
+h4 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Danh sách thông tin */
+.dl-horizontal dt {
+    float: left;
+    width: 200px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.dl-horizontal dd {
+    margin-left: 220px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 400;
+}
+
+/* Bảng chi tiết */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+}
+
+    .table th {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 15px;
+        text-align: left;
+        font-weight: 500;
+        position: sticky;
+        top: 0;
+    }
+
+    .table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ecf0f1;
+        color: #34495e;
+    }
+
+    .table tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f5f6fa;
+    }
+
+/* Nhóm nút */
+.btn-group {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    padding: 20px 0;
+    border-top: 2px solid #eee;
+}
+
+/* Nút duyệt */
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+    .btn-success:hover {
+        background-color: #219a52;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 10px rgba(39,174,96,0.3);
+    }
+
+/* Nút từ chối */
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+    .btn-danger:hover {
+        background-color: #c44133;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 10px rgba(231,76,60,0.3);
+    }
+
+/* Nút quay lại */
+.btn-default {
+    background-color: #bdc3c7;
+    border-color: #bdc3c7;
+    color: #2c3e50;
+    padding: 10px 25px;
+    transition: all 0.3s;
+}
+
+    .btn-default:hover {
+        background-color: #a1a6ab;
+        transform: translateY(-2px);
+    }
+
+/* Responsive */
+@@media (max-width: 768px) {
+    .col-md-6 {
+        flex: 100%;
+        min-width: auto;
+    }
+
+    .dl-horizontal dt {
+        width: 120px;
+        text-align: left;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 140px;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+

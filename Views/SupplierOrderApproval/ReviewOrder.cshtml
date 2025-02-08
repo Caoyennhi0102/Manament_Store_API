@@ -1,0 +1,82 @@
+﻿@model  Manament_Store_API.Models.DonHangNCC
+@{
+    ViewBag.Title = "Xét duyệt đơn hàng #" + Model.MaDatHang;
+}
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>CHI TIẾT ĐƠN ĐẶT HÀNG NHÀ CUNG CẤP</h2>
+<link rel="stylesheet" href="~/Content/RejectOrder.css">
+<div class="row">
+    <div class="col-md-6">
+        <h4>Thông Tin Đơn Đặt Hàng</h4>
+        <dl class="dl-horizontal">
+            <dt>Nhà Cung Cấp:</dt>
+            <dd>@Model.NhaCungCap.TenNhaCungCap</dd>
+
+            <dt>Tên Cửa Hàng Nhận :</dt>
+            <dd>@Model.CuaHang.TenCH</dd>
+
+            <dt>Họ và Tên Nhân Viên Đặt:</dt>
+            <dd>@Model.NhanVien.HoTen</dd>
+
+            <dt>Ngày Đặt Hàng</dt>
+            <dd>@Model.NgayDatHang.Value.ToString("dd/MM/yyyy")</dd>
+
+            <dt>Ngày Giao Hàng Dự Kiến</dt>
+            <dd>@Model.NgayGHDuKien.ToString("dd/MM/yyyy")</dd>
+
+            <dd>Ngày Nhận Hàng Thực Tế:</dd>
+            <dt>@Model.NgayNHTT.Value.ToString("dd/MM/yyyy")</dt>
+
+            <dt>Ghi Chú</dt>
+            <dd>@Model.GhiChu</dd>
+
+            <dt>Tổng Tiền:</dt>
+            <dd>@Model.TongTien.ToString("N0") VND</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <h4>Chi Tiết Đơn Hàng</h4>
+        <table class="table">
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Đơn Vị Tính</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>Chiết Khấu</th>
+                <th>Ngày Sản Xuất</th>
+                <th>Ngày Hết Hạn</th>
+                <th>Thành Tiền</th>
+            </tr>
+            @foreach (var detail in Model.ChiTietDonHangNCCs)
+            {
+                <tr>
+                    <td>@detail.MaSanPham</td>
+                    <td>@detail.TenSanPham</td>
+                    <td>@detail.DonViTinh</td>
+                    <td>@detail.SoLuong</td>
+                    <td>@detail.DonGia.ToString("N0")</td>
+                    <td>@detail.ChietKhau</td>
+                    <td>@detail.NgaySX.ToString("dd/MM/yyyy")</td>
+                    <td>@detail.NgayHH.ToString("dd/MM/yyyy")</td>
+                    <td>@detail.ThanhTien.ToString("N0") VND</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+@using (Html.BeginForm("ApproveOrder", "SupplierOrderApproval", new { id = Model.MaDatHang }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-success">Duyệt đơn</button>
+}
+
+@using (Html.BeginForm("RejectOrder", "SupplierOrderApproval", new { id = Model.MaDatHang }))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Từ chối</button>
+}
+
+@Html.ActionLink("Quay lại", "PendingOrders", null, new { @class = "btn btn-default" })

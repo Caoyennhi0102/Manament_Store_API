@@ -38,6 +38,7 @@ namespace Manament_Store_API.Models
         public System.DateTime NgaySX { get; set; }
         public System.DateTime NgayHetHan { get; set; }
         public string GhiChu { get; set; }
+        public string MaSanPhamNCC { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }

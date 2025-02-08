@@ -19,6 +19,12 @@ namespace Manament_Store_API.Models
         public int SoLuong { get; set; }
         public decimal DonGia { get; set; }
         public decimal ThanhTien { get; set; }
+        public System.DateTime NgayHetHan { get; set; }
+        public System.DateTime NgaySanXuat { get; set; }
+        public string MaSanPham { get; set; }
+        public string TenSanPham { get; set; }
+        public string DonViTinh { get; set; }
+        public int MaDonDatHang { get; set; }
     
         public virtual HangHoa HangHoa { get; set; }
         public virtual PhieuNhapHang PhieuNhapHang { get; set; }

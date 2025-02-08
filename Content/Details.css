@@ -1,0 +1,125 @@
+﻿
+/* Container chính */
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Tiêu đề */
+h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #3498db;
+    text-transform: uppercase;
+}
+
+/* Danh sách chi tiết */
+.dl-horizontal {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 15px 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+dt {
+    font-weight: 500;
+    color: #7f8c8d;
+    text-align: right;
+    padding-right: 15px;
+    min-width: 180px;
+}
+
+dd {
+    color: #2c3e50;
+    font-weight: 400;
+    margin: 0;
+    padding: 3px 0;
+}
+
+/* Phần nút tác vụ */
+.action-links {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Nút Cập nhật */
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 3px 10px rgba(52,152,219,0.3);
+    }
+
+/* Nút Quay lại */
+.btn-default {
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+    .btn-default:hover {
+        background-color: #7f8c8d;
+        transform: translateY(-2px);
+    }
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .dl-horizontal {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    dt {
+        text-align: left;
+        padding-right: 0;
+        border-bottom: 1px dotted #ddd;
+        padding-bottom: 5px;
+        min-width: auto;
+    }
+
+    dd {
+        padding-bottom: 15px;
+    }
+
+    .action-links {
+        flex-direction: column;
+    }
+}
+
+/* Định dạng các giá trị đặc biệt */
+dd:nth-child(4n) { /* Định dạng cho các trường số */
+    color: #27ae60;
+    font-weight: 500;
+}
+
+dt:nth-child(11) { /* Định dạng riêng cho Ngày hết hạn */
+    color: #e74c3c;
+}
+

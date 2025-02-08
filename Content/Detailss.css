@@ -1,0 +1,68 @@
+﻿/* Style chung */
+body {
+    font-family: sans-serif;
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+}
+
+h2 {
+    color: #343a40; /* Màu tiêu đề đậm */
+    text-align:center;
+    color:red;
+}
+
+/* Style cho card */
+.card {
+    border: none; /* Loại bỏ viền mặc định của card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #fff; /* Màu nền trắng cho header */
+    padding: 20px;
+    border-bottom: 1px solid #dee2e6; /* Viền dưới cho header */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Style cho dl (Definition list) */
+.row {
+    margin-bottom: 10px;
+}
+
+.col-sm-3 {
+    font-weight: bold;
+}
+
+/* Style cho table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .table th,
+    .table td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        text-align: left; /* Căn trái nội dung trong ô */
+    }
+
+    .table th {
+        background-color: #343a40; /* Màu nền đậm cho header bảng */
+        color: white;
+        font-weight: bold;
+    }
+
+/* Style cho nút "Quay lại" */
+.btn-secondary {
+    background-color: #6c757d; /* Màu xám */
+    border-color: #6c757d;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }

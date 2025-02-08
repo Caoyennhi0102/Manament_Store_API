@@ -122,25 +122,10 @@ namespace Manament_Store_API.Controllers
                 };
                 _sqlConnectionserver.Users.Add(newUser);
                 _sqlConnectionserver.SaveChanges();
-                var managerEmail = _sqlConnectionserver.NhanViens.Where(
-                    nv => nv.MaChucVu == _sqlConnectionserver.ChucVus.Where(cv => cv.TenChucVu == "Quản lý cửa hàng")
-                    .Select(cv => cv.MaChucVu)
-                    .FirstOrDefault() && nv.MaBoPhan == nhanvien.MaBoPhan)
-                    .Select(nv => nv.Email).FirstOrDefault();
-                if (string.IsNullOrEmpty(managerEmail))
-                {
-                    return Json(new { success = true, message = "User đã được tạo nhưng không tìm thấy Quản lý cửa hàng để gửi email phê duyệt." });
-                }
-                var emailService = new Service.EmailService();
-                string subject = "Phê duyệt User mới";
-                string body = $"Xin chào Quản lý,<br/>" +
-              $"Nhân viên {nhanvien.HoTen} (Mã NV: {MaNV}) đã được Admin tạo tài khoản.<br/>" +
-              $"Vui lòng phê duyệt tài khoản tại đường dẫn sau: " +
-              $"<a href='https://yourapp.com/User/Approve?UserId={newUser.UserID}&Action=Approve'>Phê duyệt</a> | " +
-              $"<a href='https://yourapp.com/User/Approve?UserId={newUser.UserID}&Action=Reject'>Từ chối</a>";
-                emailService.SendEmail(managerEmail, subject, body);
-
-                return Json(new { success = true, message = " User đã được tạo và đang chờ phê duyệt." });
+               
+                var approveController = new ApproveController();
+                 approveController.ApproveUser(newUser.UserID);
+                return Json(new { success = true, message = "Tạo User thành công!", username = username, password = password });
             }
             catch (Exception ex)
             {
@@ -180,30 +165,9 @@ namespace Manament_Store_API.Controllers
                 user.TrangThaiDuyetQL = userUpdate.TrangThaiDuyetQL = "Chờ Duyệt";
                 _sqlConnectionserver.SaveChanges();
 
-                var managerEmail = _sqlConnectionserver.NhanViens
-          .Where(nv =>
-              nv.MaChucVu == _sqlConnectionserver.ChucVus
-                  .Where(cv => cv.TenChucVu == "Quản lý cửa hàng")
-                  .Select(cv => cv.MaChucVu)
-                  .FirstOrDefault() &&
-              nv.MaBoPhan == nhanvien.MaBoPhan)
-          .Select(nv => nv.Email)
-          .FirstOrDefault();
-                if (string.IsNullOrEmpty(managerEmail))
-                {
-                    return Json(new { success = true, message = "User đã được tạo nhưng không tìm thấy Quản lý cửa hàng để gửi email phê duyệt." });
-                }
-                var emailService = new Service.EmailService();
-                string subject = "Phê duyệt User mới";
-                string body = $@"
-        Xin chào Quản lý,<br/><br/>
-        Nhân viên {user.MaNhanVien} (UserID: {user.UserID}) đã được cập nhật thông tin.<br/>
-        Vui lòng phê duyệt hoặc từ chối tài khoản tại đường dẫn sau:<br/>
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Approve'>Phê duyệt</a> | 
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Reject'>Từ chối</a>";
+                var approveController = new ApproveController();
+                return approveController.ApproveUser(userUpdate.UserID);
 
-                emailService.SendEmail(managerEmail, subject, body);
-                return Json(new { success = true, message = "User đã được cập nhật và email phê duyệt đã được gửi đến quản lý." });
             }
             catch (Exception ex)
             {
@@ -244,30 +208,8 @@ namespace Manament_Store_API.Controllers
                 userDelete.TrangThaiDuyetQL = "Chờ duyệt";
                 _sqlConnectionserver.Users.Remove(userDelete);
                 _sqlConnectionserver.SaveChanges();
-                var managerEmail = _sqlConnectionserver.NhanViens
-          .Where(nv =>
-              nv.MaChucVu == _sqlConnectionserver.ChucVus
-                  .Where(cv => cv.TenChucVu == "Quản lý cửa hàng")
-                  .Select(cv => cv.MaChucVu)
-                  .FirstOrDefault() &&
-              nv.MaBoPhan == nhanvien.MaBoPhan)
-          .Select(nv => nv.Email)
-          .FirstOrDefault();
-                if (string.IsNullOrEmpty(managerEmail))
-                {
-                    return Json(new { success = true, message = "User đã được tạo nhưng không tìm thấy Quản lý cửa hàng để gửi email phê duyệt." });
-                }
-                var emailService = new Service.EmailService();
-                string subject = "Phê duyệt User mới";
-                string body = $@"
-        Xin chào Quản lý,<br/><br/>
-        Nhân viên {userDelete.MaNhanVien} (UserID: {userDelete.UserID}) đã được xóa .<br/>
-        Vui lòng phê duyệt hoặc từ chối tài khoản tại đường dẫn sau:<br/>
-        <a href='https://yourapp.com/User/Approve?UserId={userDelete.UserID}&Action=Approve'>Phê duyệt</a> | 
-        <a href='https://yourapp.com/User/Approve?UserId={userDelete.UserID}&Action=Reject'>Từ chối</a>";
-
-                emailService.SendEmail(managerEmail, subject, body);
-                return Json(new { success = true, message = "User đã được xóa khỏi hệ thống và email phê duyệt đã được gửi đến quản lý." });
+                var approveController = new ApproveController();
+                return approveController.ApproveUser(userDelete.UserID);
             }
             catch (Exception ex)
             {
@@ -307,30 +249,8 @@ namespace Manament_Store_API.Controllers
                 var nhanvien = _sqlConnectionserver.NhanViens.FirstOrDefault(u => u.MaNhanVien == MaNV);
                 _sqlConnectionserver.Users.Remove(user);
                 _sqlConnectionserver.SaveChanges();
-                var managerEmail = _sqlConnectionserver.NhanViens
-          .Where(nv =>
-              nv.MaChucVu == _sqlConnectionserver.ChucVus
-                  .Where(cv => cv.TenChucVu == "Quản lý cửa hàng")
-                  .Select(cv => cv.MaChucVu)
-                  .FirstOrDefault() &&
-              nv.MaBoPhan == nhanvien.MaBoPhan)
-          .Select(nv => nv.Email)
-          .FirstOrDefault();
-                if (string.IsNullOrEmpty(managerEmail))
-                {
-                    return Json(new { success = true, message = "User đã được tạo nhưng không tìm thấy Quản lý cửa hàng để gửi email phê duyệt." });
-                }
-                var emailService = new Service.EmailService();
-                string subject = "Phê duyệt User mới";
-                string body = $@"
-        Xin chào Quản lý,<br/><br/>
-        Nhân viên {user.MaNhanVien} (UserID: {user.UserID}) đã được khóa  .<br/>
-        Vui lòng phê duyệt hoặc từ chối tài khoản tại đường dẫn sau:<br/>
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Approve'>Phê duyệt</a> | 
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Reject'>Từ chối</a>";
-
-                emailService.SendEmail(managerEmail, subject, body);
-                return Json(new { success = true, message = "User đã được khóa  và email phê duyệt đã được gửi đến quản lý." });
+                var approveController = new ApproveController();
+                return approveController.ApproveUser(user.UserID);
             }
             catch (Exception ex)
             {
@@ -370,30 +290,8 @@ namespace Manament_Store_API.Controllers
                 var nhanvien = _sqlConnectionserver.NhanViens.FirstOrDefault(u => u.MaNhanVien == MaNV);
                 _sqlConnectionserver.Users.Remove(user);
                 _sqlConnectionserver.SaveChanges();
-                var managerEmail = _sqlConnectionserver.NhanViens
-          .Where(nv =>
-              nv.MaChucVu == _sqlConnectionserver.ChucVus
-                  .Where(cv => cv.TenChucVu == "Quản lý cửa hàng")
-                  .Select(cv => cv.MaChucVu)
-                  .FirstOrDefault() &&
-              nv.MaBoPhan == nhanvien.MaBoPhan)
-          .Select(nv => nv.Email)
-          .FirstOrDefault();
-                if (string.IsNullOrEmpty(managerEmail))
-                {
-                    return Json(new { success = true, message = "User đã được tạo nhưng không tìm thấy Quản lý cửa hàng để gửi email phê duyệt." });
-                }
-                var emailService = new Service.EmailService();
-                string subject = "Phê duyệt User mới";
-                string body = $@"
-        Xin chào Quản lý,<br/><br/>
-        Nhân viên {user.MaNhanVien} (UserID: {user.UserID}) (Ngày cập nhật:{user.NgayCapNhat}) đã được mở khóa.<br/>
-        Vui lòng phê duyệt hoặc từ chối tài khoản tại đường dẫn sau:<br/>
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Approve'>Phê duyệt</a> | 
-        <a href='https://yourapp.com/User/Approve?UserId={user.UserID}&Action=Reject'>Từ chối</a>";
-
-                emailService.SendEmail(managerEmail, subject, body);
-                return Json(new { success = true, message = "User đã được mở khóa  và email phê duyệt đã được gửi đến quản lý." });
+                var approveController = new ApproveController();
+                return approveController.ApproveUser(user.UserID);
             }
             catch (Exception ex)
             {
