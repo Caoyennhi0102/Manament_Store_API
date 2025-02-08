@@ -1,0 +1,60 @@
+﻿/* Style chung */
+body {
+    font-family: sans-serif;
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+}
+
+h2 {
+    color: red; /* Màu tiêu đề đậm */
+    text-align:center;
+    font-weight:bold;
+}
+
+/* Style cho phần thông tin chung */
+.dl-horizontal {
+    margin-bottom: 20px;
+}
+
+    .dl-horizontal dt {
+        font-weight: bold;
+        width: 160px; /* Điều chỉnh độ rộng của label */
+        clear: left; /* Đảm bảo label nằm trên giá trị */
+        text-align: left;
+    }
+
+    .dl-horizontal dd {
+        margin-left: 180px; /* Khoảng cách giữa label và giá trị */
+    }
+
+/* Style cho bảng danh sách sản phẩm */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    .table th,
+    .table td {
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        text-align: left; /* Căn trái nội dung trong ô */
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+
+    .table th {
+        background-color: #343a40; /* Màu nền đậm cho header bảng */
+        color: white;
+        font-weight: bold;
+    }
+
+/* Style cho nút "Quay Lại" */
+.btn-default {
+    background-color: #6c757d; /* Màu xám */
+    border-color: #6c757d;
+    color: white;
+}
+
+    .btn-default:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }

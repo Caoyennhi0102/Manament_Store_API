@@ -1,0 +1,68 @@
+﻿@model Manament_Store_API.Models.PhieuNhapHang
+
+@{
+    ViewBag.Title = "Chi Tiết Phiếu Nhập";
+    Layout = "~/Views/Shared/_LayoutWarehouseManagement.cshtml";
+}
+
+<h2>Chi Tiết Phiếu Nhập: @Model.MaPhieuNhap</h2>
+<link rel="stylesheet" href="~/Content/ImportVoucherDetails.css" />
+<div>
+    <h4>Thông Tin Chung</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Ngày Nhập:</dt>
+        <dd>@Model.NgayNhap.ToString("dd/MM/yyyy")</dd>
+
+        <dt>Nhà Cung Cấp:</dt>
+        <dd>@Model.NhaCungCap.TenNhaCungCap</dd>
+
+        <dt>Cửa Hàng:</dt>
+        <dd>@Model.CuaHang.TenCH</dd>
+
+        <dt>Kho:</dt>
+        <dd>@Model.Kho.TenKho</dd>
+
+        <dt>Trạng Thái:</dt>
+        <dd>@Model.TrangThai</dd>
+
+        <dt>Ghi Chú:</dt>
+        <dd>@Model.GhiChu</dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Danh Sách Sản Phẩm</h4>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>Thành Tiền</th>
+                <th>Ngày SX</th>
+                <th>Ngày Hết Hạn</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ct in Model.ChiTietPhieuNhaps)
+            {
+                <tr>
+                    <td>@ct.MaSanPham</td>
+                    <td>@ct.TenSanPham</td>
+                    <td>@ct.SoLuong</td>
+                    <td>@ct.DonGia.ToString("N0")</td>
+                    <td>@ct.ThanhTien.ToString("N0")</td>
+                    <td>@ct.NgaySanXuat.ToString("dd/MM/yyyy")</td>
+                    <td>@ct.NgayHetHan.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Quay Lại", "Index", null, new { @class = "btn btn-default" })
+</p>

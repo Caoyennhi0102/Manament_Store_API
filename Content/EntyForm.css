@@ -1,0 +1,116 @@
+﻿/* Style cho toàn trang */
+body {
+    font-family: sans-serif;
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+}
+
+/* Style cho tiêu đề trang */
+h2 {
+    color: red; /* Màu chữ đậm */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight:bold;
+}
+
+/* Style cho form tìm kiếm */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border-radius: 5px; /* Bo tròn góc input */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Màu xanh dương */
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+/* Style cho bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse; /* Gộp các đường viền ô */
+    margin-bottom: 20px;
+}
+
+    .table th,
+    .table td {
+        padding: 10px; /* Padding cho các ô dữ liệu */
+        border: 1px solid #dee2e6; /* Viền cho các ô dữ liệu */
+        text-align: left; /* Căn trái nội dung trong ô */
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+
+    .table th {
+        background-color: #343a40; /* Màu nền đen cho header */
+        color: white; /* Chữ trắng cho header */
+        font-weight: bold;
+    }
+
+.table-bordered {
+    border: 1px solid #dee2e6; /* Viền cho toàn bảng */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 123, 255, 0.05); /* Màu nền nhạt cho hàng lẻ */
+}
+
+/* Style cho nút "Chi tiết" */
+.btn-info {
+    background-color: #17a2b8; /* Màu xanh dương */
+    border-color: #17a2b8;
+    color: white;
+}
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+    }
+
+/* Style cho nút "In Mã Vạch" (đã disabled) */
+.btn-secondary[disabled] {
+    background-color: #cccccc; /* Màu xám nhạt */
+    border-color: #cccccc;
+    color: #666666; /* Chữ xám đậm */
+    cursor: default; /* Con trỏ chuột mặc định */
+}
+
+/* Style cho phân trang */
+.pagination {
+    margin-top: 20px;
+}
+
+    .pagination li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    .pagination a {
+        color: #007bff;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+    }
+
+        .pagination a:hover {
+            background-color: #f5f5f5;
+        }
+
+    .pagination .active a {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+/* Style cho thông báo không tìm thấy */
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}

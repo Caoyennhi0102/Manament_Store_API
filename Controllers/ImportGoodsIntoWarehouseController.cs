@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -66,7 +67,7 @@ namespace Manament_Store_API.Controllers
                         ct.ThanhTien = ct.SoLuong * ct.DonGia;
 
                         var goods = _sqlConnectionServer.HangHoas.FirstOrDefault(h => h.MaSanPhamNCC == ct.MaSanPham);
-                        var IsCodeProductCode = new Service.ProductCode();
+                      
                         var IsProductCode = new Service.CodeProduct();
                         string maHH = IsProductCode.GenerateMaHangHoa();
                         if (goods == null)
@@ -74,7 +75,7 @@ namespace Manament_Store_API.Controllers
                             goods = new HangHoa
                             {
 
-                                MaHangHoa = IsCodeProductCode.GenerateBarcodeWithZXing(maHH),
+                                MaHangHoa = maHH,
                                 TenHangHoa = ct.TenSanPham,
                                 MaDanhMucSP = phieuNhap.MaDanhMuc,
                                 MaNhaCungCap = phieuNhap.MaNhaCungCap,
@@ -136,6 +137,33 @@ namespace Manament_Store_API.Controllers
                 var category = _sqlConnectionServer.DanhMucSanPhams.ToList();
                 ViewBag.Category = new SelectList(category, "MaDanhMuc", "TenDanhMuc");
                 return View(phieuNhap);
+            }
+        }
+        public ActionResult PrintBarcode(string maPhieuNhap)
+        {
+            try
+            {
+                var phieuNhap = _sqlConnectionServer.PhieuNhapHangs.Include(p => p.ChiTietPhieuNhaps).FirstOrDefault(p => p.MaPhieuNhap == maPhieuNhap);
+                if(phieuNhap == null)
+                {
+                    TempData["ErrorMessage"] = "Không tìm thấy phiếu nhập";
+                    return RedirectToAction("Index");
+                }
+
+                var ListGoods = new List<string>();
+                foreach(var ct in phieuNhap.ChiTietPhieuNhaps)
+                {
+                    var goods = _sqlConnectionServer.HangHoas.FirstOrDefault(h => h.MaSanPhamNCC == ct.MaSanPham);
+                    if(goods != null)
+                    {
+                        ListGoods.Add(goods.MaHangHoa);
+                    }
+                }
+                return View(ListGoods);
+            }catch(Exception ex)
+            {
+                TempData["ErrorMessage"] = "Lỗi khi tạo mã vạch: " + ex.Message;
+                return RedirectToAction("Index");
             }
         }
         protected override void Dispose(bool disposing)

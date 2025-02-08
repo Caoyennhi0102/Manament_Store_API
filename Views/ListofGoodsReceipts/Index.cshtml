@@ -1,0 +1,73 @@
+﻿@model PagedList.IPagedList<Manament_Store_API.Models.PhieuNhapHang>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh Sách Phiếu Nhập";
+    Layout = "~/Views/Shared/_LayoutWarehouseManagement.cshtml";  // Đường dẫn Layout
+}
+
+<h2>Danh Sách Phiếu Nhập</h2>
+<link rel="stylesheet" href="~/Content/EntyForm.css" />
+<!-- Form tìm kiếm -->
+@using (Html.BeginForm("Index", "ListofGoodsReceipts", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="searchString">Tìm kiếm:</label>
+        <input type="text" name="searchString" value="@ViewBag.CurrentFilter" class="form-control" placeholder="Nhập mã phiếu, trạng thái hoặc nhà cung cấp..." />
+        <button type="submit" class="btn btn-primary mt-2">Tìm kiếm</button>
+    </div>
+}
+
+<!-- Bảng danh sách phiếu nhập -->
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning">
+        Không có phiếu nhập nào được tìm thấy.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>@Html.ActionLink("Mã Phiếu", "Index", new { sortOrder = ViewBag.MaPhieuNhapSort, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>@Html.ActionLink("Ngày Nhập", "Index", new { sortOrder = ViewBag.NgayNhapSort, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>Nhà Cung Cấp</th>
+                <th>Cửa Hàng</th>
+                <th>Kho</th>
+                <th>@Html.ActionLink("Trạng Thái", "Index", new { sortOrder = ViewBag.TrangThaiSort, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaPhieuNhap</td>
+                    <td>@item.NgayNhap.ToString("dd/MM/yyyy")</td>
+                    <td>@item.NhaCungCap.TenNhaCungCap</td>
+                    <td>@item.CuaHang.TenCH</td>
+                    <td>@item.Kho.TenKho</td>
+                    <td>@item.TrangThai</td>
+                    <td>
+                        @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaPhieuNhap }, new { @class = "btn btn-info btn-sm", @style = "margin-right: 5px;" })
+                        @if (item.ChiTietPhieuNhaps != null && item.ChiTietPhieuNhaps.Any())
+                        {
+                            @Html.ActionLink("In Mã Vạch", "PrintBarcode", new { maPhieuNhap = item.MaPhieuNhap }, new { @class = "btn btn-info btn-sm" })
+                        }
+                        else
+                        {
+                            <button class="btn btn-secondary btn-sm" disabled>In Mã Vạch</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<!-- Phân trang -->
+<div class="text-center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

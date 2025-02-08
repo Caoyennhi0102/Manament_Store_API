@@ -1,0 +1,51 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "PrintBarcode";
+}
+
+<h2>Mã Vạch Hàng Hóa - Phiếu Nhập</h2>
+<div class="row" id="barcode-container">
+    @foreach (var maHangHoa in Model)
+    {
+        <div class="col-md-4 mb-4 text-center">
+            <svg class="barcode" data-code="@maHangHoa"></svg>
+            <div class="mt-2">@maHangHoa</div>
+        </div>
+    }
+</div>
+<button class="btn btn-primary" onclick="window.print()">
+    <i class="fas fa-print"></i> In Mã Vạch
+</button>
+
+<style>
+    @@media print {
+        body * {
+            visibility: hidden;
+        }
+
+        #barcode-container, #barcode-container * {
+            visibility: visible;
+        }
+
+        #barcode-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.barcode').forEach(function (svg) {
+            const code = svg.getAttribute('data-code');
+            JsBarcode(svg, code, {
+                format: "CODE128",
+                displayValue: true,
+                fontSize: 12,
+                height: 40,
+                margin: 10
+            });
+        });
+    });
+</script>

@@ -127,6 +127,12 @@
     <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
     </Reference>
@@ -271,6 +277,7 @@
     <Compile Include="Controllers\ImportGoodsIntoWarehouseController.cs" />
     <Compile Include="Controllers\IndustryController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
+    <Compile Include="Controllers\ListofGoodsReceiptsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogOutController.cs" />
     <Compile Include="Controllers\OrderStatisticsController.cs" />
@@ -429,7 +436,6 @@
     <Compile Include="Service\PasswordRandom.cs" />
     <Compile Include="Service\PositionCode.cs" />
     <Compile Include="Service\ProductCategory.cs" />
-    <Compile Include="Service\ProductCode.cs" />
     <Compile Include="Service\StoreCode.cs" />
     <Compile Include="Service\SupplierCode.cs" />
     <Compile Include="Service\TranslationService.cs" />
@@ -481,14 +487,17 @@
     <Content Include="Content\EditImage.css" />
     <Content Include="Content\EditLanguage.css" />
     <Content Include="Content\EditTranslation.css" />
+    <Content Include="Content\EntyForm.css" />
     <Content Include="Content\GeneralList.css" />
     <Content Include="Content\GetOrder.css" />
     <Content Include="Content\GrantingPermissions.css" />
+    <Content Include="Content\ImportVoucherDetails.css" />
     <Content Include="Content\Index.css" />
     <Content Include="Content\IndexLanguage .css" />
     <Content Include="Content\IndexTranslation.css" />
     <Content Include="Content\LockUser.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\PendingOrders.css" />
     <Content Include="Content\RejectOrder.css" />
     <Content Include="Content\RevokePermissions.css" />
@@ -617,10 +626,12 @@
     <Content Include="Views\Approve\Index.cshtml" />
     <Content Include="Views\OrderStatistics\Index.cshtml" />
     <Content Include="Views\ImportGoodsIntoWarehouse\Index.cshtml" />
+    <Content Include="Views\ImportGoodsIntoWarehouse\PrintBarcode.cshtml" />
+    <Content Include="Views\ListofGoodsReceipts\Index.cshtml" />
+    <Content Include="Views\ListofGoodsReceipts\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Barcodes\" />
     <Folder Include="Image\Uploads\" />
     <Folder Include="Uploads\Contrat\" />
     <Folder Include="Uploads\PO\" />
